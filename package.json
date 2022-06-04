@@ -9,6 +9,7 @@
   "engines": {
     "node": ">=10"
   },
+  "type": "module",
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
@@ -19,7 +20,6 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -42,14 +42,18 @@
     "@size-limit/preset-small-lib": "^7.0.8",
     "@types/jest": "^28.1.0",
     "eslint": "^8.16.0",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.4.1",
     "husky": "^8.0.1",
     "jest": "^28.1.0",
     "prettier": "2.6.2",
     "size-limit": "^7.0.8",
     "ts-jest": "^28.0.3",
+    "ts-node": "^10.8.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.4.0",
-    "typescript": "^4.7.2"
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
   }
 }

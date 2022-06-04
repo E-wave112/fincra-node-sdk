@@ -3,7 +3,7 @@
   "include": ["src", "types"],
   "exclude": ["node_modules", "**/test/*"],
   "compilerOptions": {
-    "module": "esnext",
+    "module": "ESNext",
     "lib": ["dom", "esnext"],
     "target": "ES5",
     "importHelpers": true,
@@ -32,6 +32,7 @@
     // error out if import and file system have a casing mismatch. Recommended by TS
     "forceConsistentCasingInFileNames": true,
     // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
-    "noEmit": true
+    "noEmit": true,
+    "strictPropertyInitialization":false
   }
 }
