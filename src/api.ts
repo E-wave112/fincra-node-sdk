@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+import { BaseError } from "./utils/errors/error.base";
 import { getUrl } from "./utils/url";
 
 /**
@@ -30,7 +31,11 @@ export class FincraCore {
      * @returns { AxiosInstance } an axios instance for processing requests
      */
     getBaseUrl(): AxiosInstance{
-        return this.request;
+        try {
+            return this.request;
+        } catch (error:any) {
+            throw new BaseError({message: error.response.data})
+        }
     }
     
 }
