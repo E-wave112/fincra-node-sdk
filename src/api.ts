@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+import { BaseError } from "./utils/errors/error.base";
 import { getUrl } from "./utils/url";
 
 /**
@@ -25,14 +26,17 @@ export class FincraCore {
             }
         })
     }
+
     /**
-     * 
-     * @returns { AxiosInstance } an axios instance for processing requests
+     * It returns an AxiosInstance object for making requests to fincra api
+     * @returns An AxiosInstance
      */
-    getBaseUrl(): AxiosInstance{
-        return this.request;
+    public getBaseUrl(): AxiosInstance{
+        try {
+            return this.request;
+        } catch (error:any) {
+            throw new BaseError({message: error.response.data})
+        }
     }
     
 }
-
-// export default new FincraCore('pk_NjI3ZmVmYmU1YTY1ZWM5OWJhOWFmMGJlOjoxMjE2NzA=', 'hzjMvDeY0dmBrDPSxZH5exnmdNc0aUXy')
