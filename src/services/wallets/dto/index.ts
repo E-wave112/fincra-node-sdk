@@ -1,1 +1,1 @@
-export * from './wallet-logs.dto'
+export * from './wallet-logs.dto';
