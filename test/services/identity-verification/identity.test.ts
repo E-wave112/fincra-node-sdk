@@ -1,0 +1,1 @@
+import { VerifyBankAccount } from "../../../src/services";

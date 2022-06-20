@@ -1,9 +1,12 @@
+import {config} from 'dotenv';
 import { Conversion } from './services/conversions/conversion';
 import { Business } from './services/business-id/business';
 import { ChargeBacks } from './services/chargebacks/chargeback';
 import { Quote } from './services/quotes/quote';
 import { VerifyBankAccount } from './services/identity-verification/verify-bank';
 import { Wallet } from './services/wallets/wallet';
+import sanitizedConfig from './config/envconfig';
+config();
 
 /**
  * The Fincra class is the main class that is used to access the other classes
@@ -27,9 +30,14 @@ export class Fincra {
   public wallet = new Wallet(this.publicKey, this.secretKey);
 }
 
+// const fin = new Fincra(
+//   'pk_NjI3ZmVmYmU1YTY1ZWM5OWJhOWFmMGJlOjoxMjE2NzA=',
+//   'hzjMvDeY0dmBrDPSxZH5exnmdNc0aUXy'
+// );
+
 const fin = new Fincra(
-  'pk_NjI3ZmVmYmU1YTY1ZWM5OWJhOWFmMGJlOjoxMjE2NzA=',
-  'hzjMvDeY0dmBrDPSxZH5exnmdNc0aUXy'
+  sanitizedConfig.FINCRA_PUBLIC_KEY,
+  sanitizedConfig.FINCRA_SECRET_KEY
 );
 
 // let result = fin.convert.getBusinessConversions("627fefbe5a65ec99ba9af0be")
