@@ -8,7 +8,7 @@ import { CreateQuoteDto } from './dto';
  * @extends FincraCore
  * @param {string} publicKey - The public key of the merchant
  * @param {string} secretKey - The secret key of the merchant
- * 
+ *
  */
 export class Quote extends FincraCore {
   constructor(publicKey: string, secretKey: string) {
