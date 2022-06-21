@@ -1,6 +1,6 @@
 import { FincraCore } from '../../api';
 import { BaseError } from '../../utils/errors/error.base';
-import { WalletLogsDto } from './dto';
+// import { WalletLogsDto } from './dto';
 
 /**
  * The wallet module for handling the wallet related operations.
