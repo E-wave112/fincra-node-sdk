@@ -1,4 +1,4 @@
-import {config} from 'dotenv';
+import { config } from 'dotenv';
 import { Conversion } from './services/conversions/conversion';
 import { Business } from './services/business-id/business';
 import { ChargeBacks } from './services/chargebacks/chargeback';
