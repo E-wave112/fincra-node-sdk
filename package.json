@@ -39,8 +39,10 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.8",
+    "@types/dotenv": "^8.2.0",
     "@types/jest": "^28.1.0",
     "class-validator": "^0.13.2",
+    "dotenv": "^16.0.1",
     "eslint": "^8.16.0",
     "eslint-plugin-prettier": "^3.4.1",
     "husky": "^8.0.1",
