@@ -10,7 +10,7 @@ import { VerifyBankAccountDto } from './dto';
  * @param {string} secretKey - The secret key of the merchant
  *
  */
-export class VerifyBankAccount extends FincraCore {
+export class VerifyCreds extends FincraCore {
   constructor(publicKey: string, secretKey: string) {
     super(publicKey, secretKey);
   }

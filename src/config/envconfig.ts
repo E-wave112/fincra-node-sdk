@@ -1,5 +1,5 @@
 import * as path from 'path';
-import {config} from 'dotenv';
+import { config } from 'dotenv';
 
 // Parsing the env file from the root directory of the project
 config({ path: path.join(__dirname, '../../.env') });
@@ -10,22 +10,22 @@ config({ path: path.join(__dirname, '../../.env') });
 // as someone could skip these varibales or not setup a .env file at all
 
 interface ENV {
-    NODE_ENV: string | undefined;
-    FINCRA_SECRET_KEY: string | undefined;
-    FINCRA_PUBLIC_KEY: string | undefined;
+  NODE_ENV: string | undefined;
+  FINCRA_SECRET_KEY: string | undefined;
+  FINCRA_PUBLIC_KEY: string | undefined;
 }
 
 interface Config {
-    NODE_ENV: string;
-    FINCRA_SECRET_KEY: string;
-    FINCRA_PUBLIC_KEY: string;
+  NODE_ENV: string;
+  FINCRA_SECRET_KEY: string;
+  FINCRA_PUBLIC_KEY: string;
 }
 
 // Loading process.env as ENV interface
 
 const getConfig = (): ENV => {
   return {
-    NODE_ENV : process.env.NODE_ENV,
+    NODE_ENV: process.env.NODE_ENV,
     FINCRA_SECRET_KEY: process.env.FINCRA_SECRET_KEY,
     FINCRA_PUBLIC_KEY: process.env.FINCRA_PUBLIC_KEY,
   };
