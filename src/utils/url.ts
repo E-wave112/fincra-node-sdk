@@ -1,6 +1,5 @@
 import { BASE_URL_PROD, BASE_URL } from './constants';
 
-
 /**
  * If the public key starts with pk_prod, return the production URL, otherwise return the sandbox URL
  * @param {string} publicKey - Your public key.
