@@ -1,7 +1,6 @@
 import { FincraCore } from '../../api';
 import { BaseError } from '../../utils';
 // import { WalletLogsDto } from './dto';
-// need docs
 
 /**
  * The wallet module for handling the wallet related operations.
@@ -26,6 +25,11 @@ export class Wallet extends FincraCore {
   //     }
   // }
 
+  /**
+   * It lists all the wallets of a business.
+   * @param {string} id - The id of the business
+   * @returns an array of wallet objects.
+   */
   public async listWallet(id: string) {
     try {
       const request = this.getBaseUrl();
@@ -38,6 +42,11 @@ export class Wallet extends FincraCore {
     }
   }
 
+  /**
+   * It gets a wallet by id.
+   * @param {string} id - The id of the wallet you want to retrieve.
+   * @returns The wallet object
+   */
   public async getWallet(id: string) {
     try {
       const request = this.getBaseUrl();
