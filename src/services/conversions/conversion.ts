@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError } from '../../utils/errors/error.base';
+import { BaseError } from '../../utils';
 
 /**
  * The conversion module for handling the conversion related operations.
