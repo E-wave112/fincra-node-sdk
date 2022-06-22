@@ -13,7 +13,7 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
-    "format": "npx prettier --write .",
+    "format": "yarn prettier --write .",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
