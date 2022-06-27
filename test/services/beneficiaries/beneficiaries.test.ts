@@ -58,7 +58,7 @@ describe('service that creates a beneficiary', () => {
 });
 
 describe('service to return the list of all beneficiaries related to a business', () => {
-  it('returns an array of beneficiary objects linked to a user', async () => {
+  it('returns an array of beneficiary objects linked to a business', async () => {
     try {
       const data: ListBeneficiaryDto = {
         businessId: 'd8932371-95a6-42da-920a-6a95b28ed375',
@@ -73,7 +73,7 @@ describe('service to return the list of all beneficiaries related to a business'
 });
 
 describe('service to fetch a single beneficiary tied to a business', () => {
-  it('returns a beneficiary object linked to a user', async () => {
+  it('returns a beneficiary object linked to a merchant', async () => {
     try {
       const data: FetchDeleteBeneficiaryDto = {
         businessId: 'd8932371-95a6-42da-920a-6a95b28ed375',

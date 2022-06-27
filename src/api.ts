@@ -11,8 +11,8 @@ export class FincraCore {
   request;
   /**
    * This is a constructor for creating a fincra core instance
-   * @param { string } publicKey user public key
-   * @param { string } secretKey user secret key
+   * @param { string } publicKey merchant public key
+   * @param { string } secretKey merchant secret key
    * @returns { FincraCore } a fincra core instance
    */
   constructor(publicKey: string, secretKey: string) {
