@@ -1,5 +1,6 @@
 import { FincraCore } from '../../api';
 import { BaseError } from '../../utils';
+import { CreateConversionDto, FetchConversionDto } from './dto';
 
 /**
  * The conversion module for handling the conversion related operations.
@@ -22,7 +23,6 @@ export class Conversion extends FincraCore {
     try {
       const request = this.getBaseUrl();
       const response = await request.get(`/conversions?business=${id}`);
-      console.log(response.data);
       return response.data;
     } catch (error: any) {
       throw new BaseError({ message: error.response.data });
@@ -31,13 +31,13 @@ export class Conversion extends FincraCore {
 
   /**
    * It fetches a conversion by id.
-   * @param {string} id - The id of the conversion you want to fetch.
+   * @param {FetchConversionDto} data - FetchConversionDto
    * @returns The conversion object
    */
-  public async fetchConversion(id: string) {
+  public async fetchConversion(data: FetchConversionDto) {
     try {
       const request = this.getBaseUrl();
-      const response = await request.get(`/conversions/${id}`);
+      const response = await request.get(`/conversions/${data.conversionId}?business=${data.business}`);
       return response.data;
     } catch (error: any) {
       console.error(error);
@@ -45,9 +45,18 @@ export class Conversion extends FincraCore {
     }
   }
 
-  // TODO: Add a function to create a conversion
+ /**
+  * It creates a conversion for a business.
+  * @param {CreateConversionDto} conversion - CreateConversionDto
+  * @returns The response from the API which contains the conversion object
+  */
+  public async createConversion(conversion: CreateConversionDto) {
+    try {
+      const request = this.getBaseUrl();
+      const response = await request.post('/conversions/initiate', conversion);
+      return response.data;
+    } catch (error: any) {
+      throw new BaseError({ message: error.response.data });
+    }
+  }
 }
-
-// const conv = new Conversion('pk_NjI3ZmVmYmU1YTY1ZWM5OWJhOWFmMGJlOjoxMjE2NzA=', 'hzjMvDeY0dmBrDPSxZH5exnmdNc0aUXy')
-// const getId = conv.fetchConversion('B-YhsUdg86mu9t')
-// console.log(getId)

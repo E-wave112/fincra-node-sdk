@@ -6,7 +6,7 @@ const walletInstance = new Wallet(keys[0], keys[1]);
 describe('it should list all the wallets of a specific merchant', () => {
   it('returns an array of wallets', async () => {
     try {
-      const businessId: string = '92223bba-6873-4b99-996c-621b1c78ad72';
+      const businessId: string = '627fefbe5a65ec99ba9af0be';
       const result = await walletInstance.listWallet(businessId);
       expect(result).toHaveBeenCalledWith(businessId);
       expect(typeof result).toBe('object');

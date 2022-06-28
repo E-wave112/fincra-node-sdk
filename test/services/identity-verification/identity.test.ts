@@ -8,8 +8,8 @@ describe('service to verify an account detail', () => {
   it('returns a message object to verify an account', async () => {
     try {
       const verifierDto = new VerifyBankAccountDto();
-      verifierDto.accountNumber = '0420803622';
-      verifierDto.bankCode = '044';
+      verifierDto.accountNumber = '0410809624';
+      verifierDto.bankCode = '011';
       const result = await verifierInstance.verifyBankAccount(verifierDto);
       expect(result).toHaveBeenCalledWith(verifierDto);
       expect(typeof result).toBe('object');

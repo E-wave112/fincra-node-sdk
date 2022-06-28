@@ -38,6 +38,7 @@ export class Beneficiary extends FincraCore {
     }
   }
 
+  // TODO
   /**
    * returns all the beneficiaries linked to business/merchant
    * @param {ListBeneficiaryDto} data - ListBeneficiaryDto - This is the data that will be sent to the API.

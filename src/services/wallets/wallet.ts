@@ -14,6 +14,7 @@ export class Wallet extends FincraCore {
     super(publicKey, secretKey);
   }
 
+  // TODO
   // public async listWalletLogs(data:WalletLogsDto){
   //     try {
   //         const request = this.getBaseUrl()
