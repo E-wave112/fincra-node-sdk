@@ -1,4 +1,4 @@
 export enum PayoutBeneficiaryType {
-    individual = 'individual',
-    corporation = 'corporation',
+  individual = 'individual',
+  corporation = 'corporation',
 }

@@ -1,5 +1,13 @@
 import sanitizedConfig from './config/envconfig';
-import { Conversion, Business, ChargeBacks, Quote,VerifyCreds, Wallet, Payout } from './services';
+import {
+  Conversion,
+  Business,
+  ChargeBacks,
+  Quote,
+  VerifyCreds,
+  Wallet,
+  Payout,
+} from './services';
 
 /**
  * The Fincra class is the main class that is used to access the other classes

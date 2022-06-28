@@ -1,64 +1,70 @@
-import { IsString, IsOptional, IsNotEmpty, IsEmail, IsObject, ValidateNested } from "class-validator";
-import { AddressDto } from "../../../beneficiaries/dto";
-import { PayoutDocumentDto } from "./";
+import {
+  IsString,
+  IsOptional,
+  IsNotEmpty,
+  IsEmail,
+  IsObject,
+  ValidateNested,
+} from 'class-validator';
+import { AddressDto } from '../../../beneficiaries/dto';
+import { PayoutDocumentDto } from './';
 export class PayoutBeneficiaryDto {
+  @IsOptional()
+  @IsString()
+  firstName?: string;
 
-    @IsOptional()
-    @IsString()
-    firstName?: string;
+  @IsOptional()
+  @IsString()
+  lastName?: string;
 
-    @IsOptional()
-    @IsString()
-    lastName?: string;
+  @IsOptional()
+  @IsString()
+  @IsEmail()
+  email?: string;
 
-    @IsOptional()
-    @IsString()
-    @IsEmail()
-    email?: string;
+  @IsString()
+  @IsNotEmpty()
+  type: string;
 
-    @IsString()
-    @IsNotEmpty()
-    type: string;
+  @IsString()
+  @IsNotEmpty()
+  accountHolderName: string;
 
-    @IsString()
-    @IsNotEmpty()
-    accountHolderName: string;
+  @IsString()
+  @IsNotEmpty()
+  accountNumber: string;
 
-    @IsString()
-    @IsNotEmpty()
-    accountNumber: string;
+  @IsOptional()
+  @IsString()
+  mobileMoneyCode?: string;
 
-    @IsOptional()
-    @IsString()
-    mobileMoneyCode?: string;
+  @IsOptional()
+  @IsString()
+  country?: string;
 
-    @IsOptional()
-    @IsString()
-    country?: string;
+  @IsOptional()
+  @IsString()
+  bankCode?: string;
 
-    @IsOptional()
-    @IsString()
-    bankCode?: string;
+  @IsOptional()
+  @IsString()
+  bankSwiftCode?: string;
 
-    @IsOptional()
-    @IsString()
-    bankSwiftCode?: string;
+  @IsOptional()
+  @IsString()
+  sortCode?: string;
 
-    @IsOptional()
-    @IsString()
-    sortCode? : string;
+  @IsOptional()
+  @IsString()
+  registrationNumber?: string;
 
-    @IsOptional()
-    @IsString()
-    registrationNumber?: string;
+  @IsOptional()
+  @IsObject()
+  @ValidateNested()
+  address?: AddressDto;
 
-    @IsOptional()
-    @IsObject()
-    @ValidateNested()
-    address?: AddressDto;
-
-    @IsOptional()
-    @IsObject()
-    @ValidateNested()
-    document?: PayoutDocumentDto;
+  @IsOptional()
+  @IsObject()
+  @ValidateNested()
+  document?: PayoutDocumentDto;
 }
