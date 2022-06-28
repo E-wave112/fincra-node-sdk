@@ -1,12 +1,11 @@
-import { IsString, IsOptional, IsNotEmpty } from "class-validator";
+import { IsString, IsOptional, IsNotEmpty } from 'class-validator';
 
 export class FetchConversionDto {
-    @IsString()
-    @IsNotEmpty()
-    conversionId: string;
+  @IsString()
+  @IsNotEmpty()
+  conversionId: string;
 
-    @IsOptional()
-    @IsString()
-    business: string;
-
+  @IsOptional()
+  @IsString()
+  business: string;
 }

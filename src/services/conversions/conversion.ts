@@ -37,7 +37,9 @@ export class Conversion extends FincraCore {
   public async fetchConversion(data: FetchConversionDto) {
     try {
       const request = this.getBaseUrl();
-      const response = await request.get(`/conversions/${data.conversionId}?business=${data.business}`);
+      const response = await request.get(
+        `/conversions/${data.conversionId}?business=${data.business}`
+      );
       return response.data;
     } catch (error: any) {
       console.error(error);
@@ -45,11 +47,11 @@ export class Conversion extends FincraCore {
     }
   }
 
- /**
-  * It creates a conversion for a business.
-  * @param {CreateConversionDto} conversion - CreateConversionDto
-  * @returns The response from the API which contains the conversion object
-  */
+  /**
+   * It creates a conversion for a business.
+   * @param {CreateConversionDto} conversion - CreateConversionDto
+   * @returns The response from the API which contains the conversion object
+   */
   public async createConversion(conversion: CreateConversionDto) {
     try {
       const request = this.getBaseUrl();
