@@ -10,7 +10,7 @@ const chargeBackInstance = new ChargeBacks(keys[0], keys[1]);
 describe('this service returns all the chargebacks for a particular chargeback', () => {
   it('returns an array of chargeback objects', async () => {
     try {
-      const businessId: string = '77702f15-40cc-4315-a690-ff7c103e6a97';
+      const businessId: string = '627fefbe5a65ec99ba9af0be';
       const result = await chargeBackInstance.listChargeBacks(businessId);
       expect(result).toHaveBeenCalledWith(businessId);
       expect(typeof result).toBe('object');
