@@ -1,12 +1,5 @@
-import { config } from 'dotenv';
-import { Conversion } from './services/conversions/conversion';
-import { Business } from './services/business-id/business';
-import { ChargeBacks } from './services/chargebacks/chargeback';
-import { Quote } from './services/quotes/quote';
-import { VerifyCreds } from './services/identity-verification/verify-bank';
-import { Wallet } from './services/wallets/wallet';
 import sanitizedConfig from './config/envconfig';
-config();
+import { Conversion, Business, ChargeBacks, Quote,VerifyCreds, Wallet, Payout } from './services';
 
 /**
  * The Fincra class is the main class that is used to access the other classes
@@ -28,6 +21,7 @@ export class Fincra {
   public quote = new Quote(this.publicKey, this.secretKey);
   public verify = new VerifyCreds(this.publicKey, this.secretKey);
   public wallet = new Wallet(this.publicKey, this.secretKey);
+  public payouts = new Payout(this.publicKey, this.secretKey);
 }
 
 // const fin = new Fincra(

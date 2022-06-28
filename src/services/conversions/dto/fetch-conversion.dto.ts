@@ -7,5 +7,5 @@ export class FetchConversionDto {
 
   @IsOptional()
   @IsString()
-  business: string;
+  business?: string;
 }
