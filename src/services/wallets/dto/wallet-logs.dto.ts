@@ -9,20 +9,20 @@ export class WalletLogsDto {
   @IsOptional()
   @IsString()
   @IsNotEmpty()
-  amount: string;
+  amount?: string;
 
   @IsOptional()
   @IsString()
   @IsNotEmpty()
-  perPage: string;
+  perPage?: string;
 
   @IsOptional()
   @IsString()
   @IsNotEmpty()
-  page: string;
+  page?: string;
 
   @IsOptional()
   @IsString()
   @IsNotEmpty()
-  action: string;
+  action?: string;
 }
