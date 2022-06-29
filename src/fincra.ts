@@ -7,6 +7,7 @@ import {
   VerifyCreds,
   Wallet,
   Payout,
+  Subaccount,
 } from './services';
 
 /**
@@ -30,6 +31,7 @@ export class Fincra {
   public verify = new VerifyCreds(this.publicKey, this.secretKey);
   public wallet = new Wallet(this.publicKey, this.secretKey);
   public payouts = new Payout(this.publicKey, this.secretKey);
+  public subacct = new Subaccount(this.publicKey, this.secretKey);
 }
 
 // const fin = new Fincra(
