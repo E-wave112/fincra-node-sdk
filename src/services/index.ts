@@ -6,3 +6,4 @@ export * from './wallets/wallet';
 export * from './identity-verification/verify-bank';
 export * from './beneficiaries/beneficiary';
 export * from './payouts/payout';
+export * from './subaccounts/subaccount';

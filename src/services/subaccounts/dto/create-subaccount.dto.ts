@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsNotEmpty } from 'class-validator';
+import { IsString, IsOptional, IsNotEmpty, IsEmail } from 'class-validator';
 
 export class CreateSubAccountDto {
   @IsString()
@@ -11,6 +11,7 @@ export class CreateSubAccountDto {
 
   @IsOptional()
   @IsString()
+  @IsEmail()
   email?: string;
 
   @IsOptional()
