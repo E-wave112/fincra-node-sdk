@@ -1,7 +1,10 @@
-import { FincraCore } from "../../api";
-import { BaseError, excludeFields } from "../../utils";
-import { CreateSubAccountDto, UpdateSubAccountDto, FetchSubAccountDto } from "./dto";
-
+import { FincraCore } from '../../api';
+import { BaseError, excludeFields } from '../../utils';
+import {
+  CreateSubAccountDto,
+  UpdateSubAccountDto,
+  FetchSubAccountDto,
+} from './dto';
 
 /**
  * The subaccount module for handling the subaccounts related operations.
@@ -15,16 +18,19 @@ export class Subaccount extends FincraCore {
     super(publicKey, secretKey);
   }
 
- /**
-  * It creates a sub account for a business
-  * @param {CreateSubAccountDto} data - CreateSubAccountDto
-  * @returns The response from the API call, containing the sub account details
-  */
+  /**
+   * It creates a sub account for a business
+   * @param {CreateSubAccountDto} data - CreateSubAccountDto
+   * @returns The response from the API call, containing the sub account details
+   */
   public async createSubAccount(data: CreateSubAccountDto) {
     try {
       const request = this.getBaseUrl();
-      const dataBody = excludeFields(["businessId"], data);
-      const response = await request.post(`/profile/business/${data.businessId}/sub-accounts`, dataBody);
+      const dataBody = excludeFields(['businessId'], data);
+      const response = await request.post(
+        `/profile/business/${data.businessId}/sub-accounts`,
+        dataBody
+      );
       return response.data;
     } catch (error: any) {
       throw new BaseError({ message: error.response.data });
@@ -36,16 +42,18 @@ export class Subaccount extends FincraCore {
    * @param {string} id - The id of the business account
    * @returns A list of sub accounts
    */
-  public async listSubAccounts(id:string) {
-      try {
-          const request = this.getBaseUrl();
-            const response = await request.get(`/profile/business/${id}/sub-accounts`);
-            console.log(response.data);
-            return response.data;
-      } catch (error:any) {
-        console.error(error);
-        throw new BaseError({ message: error.response.data });
-      }
+  public async listSubAccounts(id: string) {
+    try {
+      const request = this.getBaseUrl();
+      const response = await request.get(
+        `/profile/business/${id}/sub-accounts`
+      );
+      console.log(response.data);
+      return response.data;
+    } catch (error: any) {
+      console.error(error);
+      throw new BaseError({ message: error.response.data });
+    }
   }
 
   /**
@@ -56,7 +64,9 @@ export class Subaccount extends FincraCore {
   public async fetchSubAccount(data: FetchSubAccountDto) {
     try {
       const request = this.getBaseUrl();
-      const response = await request.get(`/profile/business/${data.businessId}/sub-accounts/${data.subAccountId}`);
+      const response = await request.get(
+        `/profile/business/${data.businessId}/sub-accounts/${data.subAccountId}`
+      );
       return response.data;
     } catch (error: any) {
       throw new BaseError({ message: error.response.data });
@@ -71,8 +81,11 @@ export class Subaccount extends FincraCore {
   public async updateSubAccount(data: UpdateSubAccountDto) {
     try {
       const request = this.getBaseUrl();
-      const dataBody = excludeFields(["business", "subAccountId"], data);
-      const response = await request.patch(`/profile/business/${data.business}/sub-accounts/${data.subAccountId}`, dataBody);
+      const dataBody = excludeFields(['business', 'subAccountId'], data);
+      const response = await request.patch(
+        `/profile/business/${data.business}/sub-accounts/${data.subAccountId}`,
+        dataBody
+      );
       return response.data;
     } catch (error: any) {
       throw new BaseError({ message: error.response.data });
