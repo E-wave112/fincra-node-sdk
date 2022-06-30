@@ -1,21 +1,23 @@
 import { FincraCore } from '../../api';
-import { BaseError } from '../../utils';
+import { BaseError, Environment, excludeFields } from '../../utils';
 import {
   CreateBeneficiaryDto,
   FetchDeleteBeneficiaryDto,
   UpdateBeneficiaryDto,
   ListBeneficiaryDto,
 } from './dto';
-import { excludeFields } from '../../utils';
 
 /**
  * The Beneficiary module for handling the beneficary related operations.
  * @class Beneficiary
  * @extends FincraCore
+ * @param {string} publicKey - The public key of the merchant
+ * @param {string} secretKey - The secret key of the merchant
+ * @param {Environment} environment - The environment of the merchant
  */
 export class Beneficiary extends FincraCore {
-  constructor(publicKey: string, secretKey: string) {
-    super(publicKey, secretKey);
+  constructor(publicKey: string, secretKey: string, environment?: Environment) {
+    super(publicKey, secretKey, environment);
   }
 
   /**

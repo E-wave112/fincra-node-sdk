@@ -1,18 +1,22 @@
 # fincra-node-sdk
 
-a soon to be official Fincra SDK in NodeJs
-
 > A community supported fincra sdk for developers to use in their NodeJS projects.
 
 ## Getting Started
 
 - To start using this sdk, create an account at https://api.fincra.com/ or a sandbox account at https://sandboxapi.fincra.com/ if you haven't already.
-- You can then retrieve your API keys from your dashboard [here](https://app.fincra.com/) or [here](https://sandbox.fincra.com/dashboard) [dashboard](https://dashboard.thepeer.co/)
+- You can then retrieve your API keys from your dashboard [here](https://app.fincra.com/) or [here](https://sandbox.fincra.com/dashboard).
 
 ## Installation
 
 ```js
 npm install fincra-node-sdk
+```
+
+### Or with yarn
+
+```js
+yarn add fincra-node-sdk
 ```
 
 ## Usage
@@ -35,7 +39,7 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY, { sandbox: true });
 
 **Note:**
 
-- sandbox is optional, if you don't specify it, it will default to false, and you will be using the production(live) API. for example:
+- sandbox is optional, if you don't specify it, it will default to false, and you will be using the [production(live)](https://api.fincra.com/) API. for example:
 
 ```js
 const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
@@ -89,5 +93,3 @@ const wallets = fincra.wallet.listWallet('627fefbe5a65ec99ba9af0be');
 | Parameters   | Data type | Required | Description                     |
 | ------------ | --------- | -------- | ------------------------------- |
 | `businessId` | `string`  | `true`   | ` the business id of the user`. |
-
-|

@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import { Environment } from './utils';
 import { BaseError } from './utils/errors/error.base';
 import { getUrl } from './utils/url';
 
@@ -6,20 +7,24 @@ import { getUrl } from './utils/url';
  * @class Fincra REST api initializer
  */
 export class FincraCore {
-  publicKey;
-  secretKey;
-  request;
+  public publicKey;
+  public secretKey;
+  public environment;
+  public request;
+
   /**
    * This is a constructor for creating a fincra core instance
    * @param { string } publicKey merchant public key
    * @param { string } secretKey merchant secret key
+   * @param { Environment } environment fincra environment
    * @returns { FincraCore } a fincra core instance
    */
-  constructor(publicKey: string, secretKey: string) {
+  constructor(publicKey: string, secretKey: string, environment?: Environment) {
     this.publicKey = publicKey;
     this.secretKey = secretKey;
+    this.environment = environment;
     this.request = axios.create({
-      baseURL: getUrl(publicKey),
+      baseURL: getUrl(environment),
       headers: {
         'api-key': secretKey,
         'Content-Type': 'application/json',

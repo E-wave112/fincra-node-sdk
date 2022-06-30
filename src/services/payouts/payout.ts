@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError } from '../../utils';
+import { BaseError, Environment } from '../../utils';
 import { CreatePayoutDto, WalletToWalletTransferDto } from './dto';
 
 /**
@@ -8,10 +8,11 @@ import { CreatePayoutDto, WalletToWalletTransferDto } from './dto';
  * @extends FincraCore
  * @param {string} publicKey - The public key of the merchant
  * @param {string} secretKey - The secret key of the merchant
+ * @param {Environment} environment - The environment of the merchant
  */
 export class Payout extends FincraCore {
-  constructor(publicKey: string, secretKey: string) {
-    super(publicKey, secretKey);
+  constructor(publicKey: string, secretKey: string, environment?: Environment) {
+    super(publicKey, secretKey, environment);
   }
 
   /**
