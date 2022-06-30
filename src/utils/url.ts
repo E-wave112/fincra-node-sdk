@@ -6,7 +6,7 @@ import { Environment } from './interfaces';
  * @param {string} publicKey - Your public key.
  * @returns The base url for the public key
  */
-export const getUrl = (env: Environment = {sandbox:false}): string => {
+export const getUrl = (env: Environment = { sandbox: false }): string => {
   if (env.sandbox) {
     return BASE_URL;
   }
