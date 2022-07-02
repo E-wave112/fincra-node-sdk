@@ -19,7 +19,7 @@ export class VerifyCreds extends FincraCore {
   /**
    * It verifies a bank account
    * @param {VerifyBankAccountDto} data - The data object that will be sent to the API.
-   * @returns The response is a JSON object with the following properties:
+   * @returns The bank account object.
    */
   public async verifyBankAccount(data: VerifyBankAccountDto) {
     try {
@@ -28,6 +28,24 @@ export class VerifyCreds extends FincraCore {
       console.log(response.data);
       return response.data;
     } catch (error: any) {
+      throw new BaseError({ message: error.response.data });
+    }
+  }
+  /**
+   * It verifies a successful transaction
+   * @param reference - The reference of the payout you want to fetch.
+   * @returns The transaction object.
+   */
+  public async verifyPayment(reference: string) {
+    try {
+      const request = this.getBaseUrl();
+      const response = await request.get(
+        `/checkout/payments/merchant-reference/${reference}`
+      );
+      console.log(response.data);
+      return response.data;
+    } catch (error: any) {
+      console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
