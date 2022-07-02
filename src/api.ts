@@ -7,9 +7,6 @@ import { getUrl } from './utils/url';
  * @class Fincra REST api initializer
  */
 export class FincraCore {
-  public publicKey;
-  public secretKey;
-  public environment;
   public request;
 
   /**
@@ -19,7 +16,11 @@ export class FincraCore {
    * @param { Environment } environment fincra environment
    * @returns { FincraCore } a fincra core instance
    */
-  constructor(publicKey: string, secretKey: string, environment?: Environment) {
+  constructor(
+    public publicKey: string,
+    public secretKey: string,
+    public environment?: Environment
+  ) {
     this.publicKey = publicKey;
     this.secretKey = secretKey;
     this.environment = environment;
