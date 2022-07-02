@@ -3,11 +3,11 @@ import { IsString, IsOptional } from 'class-validator';
 export class AddressDto {
   @IsOptional()
   @IsString()
-  Country?: string;
+  country?: string;
 
   @IsOptional()
   @IsString()
-  State?: string;
+  state?: string;
 
   @IsOptional()
   @IsString()

@@ -16,8 +16,8 @@ describe('it should create a payout', () => {
         beneficiary: {
           country: 'GB',
           address: {
-            Country: 'US',
-            State: 'San fransisco',
+            country: 'US',
+            state: 'San fransisco',
             city: 'Menlo park',
             street: 'wall street',
             zip: '94025',
