@@ -22,19 +22,43 @@ import { Environment } from './utils';
  * const fincra = new Fincra('pk_NjI3ZmVmYmU1YTY1ZWM5OWJhOWFmMGJlOjoxMjE2NzA=', 'hzjMvDeY0dmBrDPSxZH5exnmdNc0aUXy', {sandbox: true});
  **/
 export class Fincra {
-  constructor(public publicKey: string, public secretKey: string, public environment?: Environment) {
+  constructor(
+    public publicKey: string,
+    public secretKey: string,
+    public environment?: Environment
+  ) {
     this.publicKey = publicKey;
     this.secretKey = secretKey;
     this.environment = environment;
   }
-  public convert = new Conversion(this.publicKey, this.secretKey, this.environment);
-  public business = new Business(this.publicKey, this.secretKey, this.environment);
-  public chargebacks = new ChargeBacks(this.publicKey, this.secretKey, this.environment);
+  public convert = new Conversion(
+    this.publicKey,
+    this.secretKey,
+    this.environment
+  );
+  public business = new Business(
+    this.publicKey,
+    this.secretKey,
+    this.environment
+  );
+  public chargebacks = new ChargeBacks(
+    this.publicKey,
+    this.secretKey,
+    this.environment
+  );
   public quote = new Quote(this.publicKey, this.secretKey, this.environment);
-  public verify = new VerifyCreds(this.publicKey, this.secretKey, this.environment);
+  public verify = new VerifyCreds(
+    this.publicKey,
+    this.secretKey,
+    this.environment
+  );
   public wallet = new Wallet(this.publicKey, this.secretKey, this.environment);
   public payouts = new Payout(this.publicKey, this.secretKey, this.environment);
-  public subacct = new Subaccount(this.publicKey, this.secretKey, this.environment);
+  public subacct = new Subaccount(
+    this.publicKey,
+    this.secretKey,
+    this.environment
+  );
 }
 
 // const fin = new Fincra(
@@ -45,7 +69,7 @@ export class Fincra {
 const fin = new Fincra(
   sanitizedConfig.FINCRA_PUBLIC_KEY,
   sanitizedConfig.FINCRA_SECRET_KEY,
-  {sandbox:false}
+  { sandbox: false }
 );
 
 // let result = fin.convert.getBusinessConversions("627fefbe5a65ec99ba9af0be")

@@ -7,7 +7,9 @@ import {
 } from '../../../src/services/beneficiaries/dto';
 import { keys } from '../../env';
 
-const beneficiaryInstance = new Beneficiary(keys[0], keys[1], {sandbox: true});
+const beneficiaryInstance = new Beneficiary(keys[0], keys[1], {
+  sandbox: true,
+});
 
 describe('service that creates a beneficiary', () => {
   it('returns a message object of a created beneficiary', async () => {

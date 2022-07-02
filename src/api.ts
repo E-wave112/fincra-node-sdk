@@ -16,7 +16,11 @@ export class FincraCore {
    * @param { Environment } environment fincra environment
    * @returns { FincraCore } a fincra core instance
    */
-  constructor(public publicKey: string, public secretKey: string, public environment?: Environment) {
+  constructor(
+    public publicKey: string,
+    public secretKey: string,
+    public environment?: Environment
+  ) {
     this.publicKey = publicKey;
     this.secretKey = secretKey;
     this.environment = environment;
