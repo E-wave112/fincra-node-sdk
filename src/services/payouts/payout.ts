@@ -1,6 +1,10 @@
 import { FincraCore } from '../../api';
 import { BaseError, Environment } from '../../utils';
-import { CreatePayoutDto, WalletToWalletTransferDto } from './dto';
+import {
+  CreatePayoutDto,
+  WalletToWalletTransferDto,
+  UploadPayoutDto,
+} from './dto';
 
 /**
  * The Payout module for handling the payout related operations.
@@ -98,5 +102,15 @@ export class Payout extends FincraCore {
   }
 
   // TODO: upload transaction document
+  public async uploadTransactionDocument(data: UploadPayoutDto) {
+    try {
+      const request = this.getBaseUrl();
+      const response = await request.post(`/payouts/documents-upload `, data);
+      return response.data;
+    } catch (error: any) {
+      console.error(error);
+      throw new BaseError({ message: error.response.data });
+    }
+  }
   // TODO: list payouts
 }
