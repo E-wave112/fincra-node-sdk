@@ -8,3 +8,4 @@ export * from './beneficiaries/beneficiary';
 export * from './payouts/payout';
 export * from './subaccounts/subaccount';
 export * from './collections/collection';
+export * from './virtual-accounts/vaccounts';
