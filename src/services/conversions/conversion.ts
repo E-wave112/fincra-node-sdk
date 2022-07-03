@@ -1,6 +1,6 @@
 import { FincraCore } from '../../api';
 import { BaseError, Environment } from '../../utils';
-import { CreateConversionDto, FetchConversionDto } from './dto';
+import { CreateConversionDto } from './dto';
 
 /**
  * The conversion module for handling the conversion related operations.
@@ -32,15 +32,13 @@ export class Conversion extends FincraCore {
 
   /**
    * It fetches a conversion by id.
-   * @param {FetchConversionDto} data - FetchConversionDto
+   * @param {string} conversionId - FetchConversionDto
    * @returns The conversion object
    */
-  public async fetchConversion(data: FetchConversionDto) {
+  public async fetchConversion(conversionId: string) {
     try {
       const request = this.getBaseUrl();
-      const response = await request.get(
-        `/conversions/${data.conversionId}?business=${data.business}`
-      );
+      const response = await request.get(`/conversions/${conversionId}`);
       return response.data;
     } catch (error: any) {
       console.error(error);

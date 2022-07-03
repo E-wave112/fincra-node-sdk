@@ -1,11 +1,8 @@
 import { Conversion } from '../../../src/services';
-import {
-  CreateConversionDto,
-  FetchConversionDto,
-} from '../../../src/services/conversions/dto';
+import { CreateConversionDto } from '../../../src/services/conversions/dto';
 import { keys } from '../../env';
 
-const conversionInstance = new Conversion(keys[0], keys[1]);
+const conversionInstance = new Conversion(keys[0], keys[1], { sandbox: true });
 
 describe('service to fetch all the conversions performed by a merchant', () => {
   it('returns an array of conversion objects', async () => {
@@ -25,12 +22,10 @@ describe('service to fetch all the conversions performed by a merchant', () => {
 describe('service to fetch the detail of a single conversion', () => {
   it('returns a conversion object', async () => {
     try {
-      const data: FetchConversionDto = {
-        conversionId: '34513461-7ab8-4f47-b088-3e474f90477f',
-        business: '25fdf110-2c80-4284-bed9-21f428fea3fe',
-      };
-      const result = await conversionInstance.fetchConversion(data);
-      expect(result).toHaveBeenCalledWith(data);
+      const conversionId = '34513461-7ab8-4f47-b088-3e474f90477f';
+
+      const result = await conversionInstance.fetchConversion(conversionId);
+      expect(result).toHaveBeenCalledWith(conversionId);
       expect(typeof result).toBe('object');
     } catch (error) {
       expect(error).toBeInstanceOf(Error);

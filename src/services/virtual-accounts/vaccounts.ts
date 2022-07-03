@@ -9,7 +9,7 @@ import { BaseError, Environment } from '../../utils';
  * @param {string} secretKey - The secret key of the merchant
  * @param {Environment} environment - The environment of the merchant
  **/
-export class Collection extends FincraCore {
+export class VirtualAccount extends FincraCore {
   constructor(publicKey: string, secretKey: string, environment?: Environment) {
     super(publicKey, secretKey, environment);
   }
