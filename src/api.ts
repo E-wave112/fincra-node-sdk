@@ -1,7 +1,11 @@
 import axios, { AxiosInstance } from 'axios';
-import { Environment } from './utils';
-import { BaseError } from './utils/errors/error.base';
-import { getUrl } from './utils/url';
+import {
+  AxiosStruct,
+  Environment,
+  getUrl,
+  BaseError,
+  excludeFields,
+} from './utils';
 
 /**
  * @class Fincra REST api initializer
@@ -28,6 +32,7 @@ export class FincraCore {
       baseURL: getUrl(environment),
       headers: {
         'api-key': secretKey,
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
     });
@@ -40,6 +45,25 @@ export class FincraCore {
   public getBaseUrl(): AxiosInstance {
     try {
       return this.request;
+    } catch (error: any) {
+      throw new BaseError({ message: error.response.data });
+    }
+  }
+
+  public async useGetRequest(req: AxiosStruct) {
+    try {
+      const customHeaders = excludeFields(
+        ['common', 'delete', 'get', 'head', 'put', 'patch', 'post'],
+        this.request.defaults.headers
+      );
+      const getUrl = this.request.defaults.baseURL;
+      const requestInstance = await axios.request({
+        url: `${getUrl}/${req.url}`,
+        method: req.method,
+        headers: customHeaders,
+        data: req.data,
+      });
+      return requestInstance;
     } catch (error: any) {
       throw new BaseError({ message: error.response.data });
     }
