@@ -7,3 +7,4 @@ export * from './verification/verify';
 export * from './beneficiaries/beneficiary';
 export * from './payouts/payout';
 export * from './subaccounts/subaccount';
+export * from './collections/collection';

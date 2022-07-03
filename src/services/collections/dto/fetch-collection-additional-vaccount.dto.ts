@@ -1,11 +1,11 @@
-import { IsString, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsNotEmpty } from 'class-validator';
 
 export class FetchCollectionVirtualAccountDto {
   @IsOptional()
   @IsString()
   business?: string;
 
-  @IsOptional()
+  @IsNotEmpty()
   @IsString()
-  reference?: string;
+  reference: string;
 }

@@ -101,7 +101,6 @@ export class Payout extends FincraCore {
     }
   }
 
-  // TODO: upload transaction document
   public async uploadTransactionDocument(data: UploadPayoutDto) {
     try {
       const request = this.getBaseUrl();
