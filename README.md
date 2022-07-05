@@ -53,29 +53,29 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 
 <!-- create an hyperlink for easy navigation of the readme file -->
 
-[**1**. **Business**](#business)
+**1**. [**Business**](#business)
 
 - [Get Business details](#get-business-details)
 
-[**2**. **Beneficiaries**](#beneficiaries)
+**2**. [**Beneficiaries**](#beneficiaries)
 
-[**3**. **Chargebacks**](#chargebacks)
+**3**. [**Chargebacks**](#chargebacks)
 
-[**4**. **Collections**](#collections)
+**4**. [**Collections**](#collections)
 
-[**5**. **Conversions**](#conversions)
+**5**. [**Conversions**](#conversions)
 
-[**6**. **Identity-verification**](#identity-verification)
+**6**. [**Identity-verification**](#identity-verification)
 
-[**7**. **Payouts**](#payouts)
+**7**. [**Payouts**](#payouts)
 
-[**8**. **Quotes**](#quotes)
+**8**. [**Quotes**](#quotes)
 
-[**9**. **Subaccounts**](#subaccounts)
+**9**. [**Subaccounts**](#subaccounts)
 
-[**10**. **Virtual-accounts**](#virtual-accounts)
+**10**. [ **Virtual-accounts**](#virtual-accounts)
 
-[**11**. **Wallets**](#wallets)
+**11**. [**Wallets**](#wallets)
 
 - [Get Wallets](#get-wallets)
 <!-- add the business -->
