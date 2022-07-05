@@ -6,6 +6,7 @@ import {
   CreateInstantApprovalVirtualAccountDto,
   CreateCorporateVirtualAccountDto,
   ListSubVirtualAccountsDto,
+  ListMerchantVirtualAccountsDto,
 } from '../../../src/services/virtual-accounts/dto';
 
 const virtualAccountInstance = new VirtualAccount(keys[0], keys[1], {
@@ -286,6 +287,26 @@ describe('service to fetch a single account by the virtualAccountId', () => {
         virtualAccountId
       );
       expect(result).toHaveBeenCalledWith(virtualAccountId);
+      expect(typeof result).toBe('object');
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
+  });
+});
+
+describe('service to fetch all virtual accounts belonging to a merchant', () => {
+  it('should return an array of virtual accounts', async () => {
+    try {
+      const data: ListMerchantVirtualAccountsDto = {
+        currency: 'NGN',
+        businessName: 'The Learning Bulletin',
+        // issuedDate: "2021-10-03",
+        // requestedDate: "2021-09-03",
+        // accountNumber: "0234521090",
+        // status: "approved"
+      };
+      const result = await virtualAccountInstance.listMerchantVirtual(data);
+      expect(result).toHaveBeenCalledWith(data);
       expect(typeof result).toBe('object');
     } catch (error) {
       expect(error).toBeInstanceOf(Error);

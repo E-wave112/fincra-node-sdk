@@ -12,7 +12,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test",
+    "test": "jest --config jestconfig.js --no-cache",
     "format": "yarn prettier --write .",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
@@ -31,11 +31,11 @@
   "size-limit": [
     {
       "path": "dist/fincra-node-sdk.cjs.production.min.js",
-      "limit": "10 KB"
+      "limit": "20 KB"
     },
     {
       "path": "dist/fincra-node-sdk.esm.js",
-      "limit": "10 KB"
+      "limit": "20 KB"
     }
   ],
   "devDependencies": {
