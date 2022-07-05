@@ -1,34 +1,35 @@
 # fincra-node-sdk
 
-> A community supported fincra sdk for developers to use in their NodeJS projects.
+> A community supported NodeJS sdk that enables developers to build fintech products securely and seamlessy.
 
 ## Getting Started
 
-- To start using this sdk, create an account at https://api.fincra.com/ or a sandbox account at https://sandboxapi.fincra.com/ if you haven't already.
-- You can then retrieve your API keys from your dashboard [here](https://app.fincra.com/) or [here](https://sandbox.fincra.com/dashboard).
+- To start using this sdk, create an account at https://api.fincra.com or a sandbox account at https://sandboxapi.fincra.com if you haven't already.
+- You can then retrieve your API keys from your dashboard either from [here](https://app.fincra.com/) or [here](https://sandbox.fincra.com/dashboard).
+- Want to contribute to this project?, please read the [Contributing]() guide!
 
 ## Installation
 
 ```js
-npm install fincra-node-sdk
+npm install fincra-node
 ```
 
 ### Or with yarn
 
 ```js
-yarn add fincra-node-sdk
+yarn add fincra-node
 ```
 
 ## Usage
 
 ```js
-const Fincra = require('fincra-node-sdk');
+const Fincra = require('fincra-node');
 ```
 
-## Or with Typescript
+### with Typescript
 
 ```ts
-import Fincra from 'fincra-node-sdk';
+import Fincra from 'fincra-node';
 ```
 
 ### instantiate the Fincra class

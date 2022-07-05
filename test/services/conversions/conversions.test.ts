@@ -22,7 +22,7 @@ describe('service to fetch all the conversions performed by a merchant', () => {
 describe('service to fetch the detail of a single conversion', () => {
   it('returns a conversion object', async () => {
     try {
-      const conversionId = '34513461-7ab8-4f47-b088-3e474f90477f';
+      const conversionId = '34513461';
 
       const result = await conversionInstance.fetchConversion(conversionId);
       expect(result).toHaveBeenCalledWith(conversionId);

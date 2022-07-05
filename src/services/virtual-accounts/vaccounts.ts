@@ -11,6 +11,7 @@ import {
   CreateInstantApprovalVirtualAccountDto,
   CreateCorporateVirtualAccountDto,
   ListSubVirtualAccountsDto,
+  ListMerchantVirtualAccountsDto,
 } from './dto';
 
 /**
@@ -33,10 +34,8 @@ export class VirtualAccount extends FincraCore {
         '/profile/virtual-accounts/requests',
         data
       );
-      console.log(response.data);
       return response.data;
     } catch (error: any) {
-      console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
@@ -51,10 +50,8 @@ export class VirtualAccount extends FincraCore {
         `/profile/virtual-accounts/business/${data.businessId}/sub-accounts/${data.subAccountId}/requests`,
         dataBody
       );
-      console.log(response.data);
       return response.data;
     } catch (error: any) {
-      console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
@@ -69,10 +66,8 @@ export class VirtualAccount extends FincraCore {
         `/profile/virtual-accounts/business/${data.businessId}/sub-accounts/${data.subAccountId}/requests/auto`,
         dataBody
       );
-      console.log(response.data);
       return response.data;
     } catch (error: any) {
-      console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
@@ -87,10 +82,8 @@ export class VirtualAccount extends FincraCore {
         `/profile/virtual-accounts/business/${data.businessId}/sub-accounts/${data.subAccountId}/requests`,
         dataBody
       );
-      console.log(response.data);
       return response.data;
     } catch (error: any) {
-      console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
@@ -99,10 +92,8 @@ export class VirtualAccount extends FincraCore {
     try {
       const request = this.getBaseUrl();
       const response = await request.get('/profile/virtual-accounts/requests');
-      console.log(response.data);
       return response.data;
     } catch (error: any) {
-      console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
@@ -113,10 +104,8 @@ export class VirtualAccount extends FincraCore {
       const response = await request.get(
         `/profile/virtual-accounts?currency=${currency}`
       );
-      console.log(response.data);
       return response.data;
     } catch (error: any) {
-      console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
@@ -133,8 +122,7 @@ export class VirtualAccount extends FincraCore {
       console.log(response.data);
       return response.data;
     } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+      throw new BaseError({ message: error.message });
     }
   }
 
@@ -144,13 +132,25 @@ export class VirtualAccount extends FincraCore {
       const response = await request.get(
         `/profile/virtual-accounts/${virtualAccountId}`
       );
-      console.log(response.data);
       return response.data;
     } catch (error: any) {
-      console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
 
   //TODO: List merchant virtual accounts
+  public async listMerchantVirtual(data: ListMerchantVirtualAccountsDto) {
+    try {
+      const requestObj: AxiosStruct = {
+        method: 'GET',
+        url: `/profile/virtual-accounts`,
+        data,
+      };
+      const response = await this.useGetRequest(requestObj);
+      console.log(response.data);
+      return response.data;
+    } catch (error: any) {
+      throw new BaseError({ message: error.message });
+    }
+  }
 }

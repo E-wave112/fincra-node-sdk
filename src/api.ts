@@ -56,9 +56,10 @@ export class FincraCore {
         ['common', 'delete', 'get', 'head', 'put', 'patch', 'post'],
         this.request.defaults.headers
       );
+
       const getUrl = this.request.defaults.baseURL;
       const requestInstance = await axios.request({
-        url: `${getUrl}/${req.url}`,
+        url: `${getUrl}${req.url}`,
         method: req.method,
         headers: customHeaders,
         data: req.data,
