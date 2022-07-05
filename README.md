@@ -53,8 +53,9 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 
 <!-- create an hyperlink for easy navigation of the readme file -->
 
-[**1**.  **Business**](#business)
-  - [Get Business details](#get-business-details)
+[**1**. **Business**](#business)
+
+- [Get Business details](#get-business-details)
 
 [**2**. **Beneficiaries**](#beneficiaries)
 
@@ -75,7 +76,8 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 [**10**. **Virtual-accounts**](#virtual-accounts)
 
 [**11**. **Wallets**](#wallets)
-   - [Get Wallets](#get-wallets)
+
+- [Get Wallets](#get-wallets)
 <!-- add the business -->
 
 ### Business
