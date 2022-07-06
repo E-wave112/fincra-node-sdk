@@ -22,7 +22,11 @@ export class Collection extends FincraCore {
   ) {
     super(publicKey, secretKey, environment);
   }
-
+  /**
+   * this method creates a temporary virtual account that can be used to receive funds over a time period
+   * @param {PayWithTransferDto} data - the data to be sent to the server
+   * @returns a virtual account object
+   */
   public async payWithTransfer(data: PayWithTransferDto) {
     try {
       const request = this.getBaseUrl();
@@ -37,6 +41,11 @@ export class Collection extends FincraCore {
     }
   }
 
+  /**
+   * this methods returns a single or multiple collection of a main virtual account
+   * @param {ListCollectionMainVirtualAccountDto} data - the data to be sent to the server
+   * @returns an array of collection objects
+   */
   public async listCollectionMain(data: ListCollectionMainVirtualAccountDto) {
     try {
       const request = this.getBaseUrl();
@@ -49,7 +58,11 @@ export class Collection extends FincraCore {
       throw new BaseError({ message: error.response.data });
     }
   }
-
+  /**
+   * this method returns a single collection of an additional virtual account by its reference
+   * @param {FetchCollectionVirtualAccountDto} data - the data to be sent to the server
+   * @returns a collection object
+   */
   public async fetchCollectionAddition(data: FetchCollectionVirtualAccountDto) {
     try {
       const request = this.getBaseUrl();
