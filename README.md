@@ -6,7 +6,7 @@
 
 - To start using this sdk, create an account at https://api.fincra.com or a sandbox account at https://sandboxapi.fincra.com if you haven't already.
 - You can then retrieve your API keys from your dashboard either from [here](https://app.fincra.com/) or [here](https://sandbox.fincra.com/dashboard).
-- Want to contribute to this project? please read the [Contributing]() guide!
+- Want to contribute to this project? please read the [Contributing](https://github.com/E-wave112/fincra-node-sdk/blob/dev/CONTRIBUTING.md) guide!
 
 ## Installation
 
