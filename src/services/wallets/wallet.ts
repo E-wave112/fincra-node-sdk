@@ -1,6 +1,6 @@
 import { FincraCore } from '../../api';
-import { BaseError, Environment } from '../../utils';
-// import { WalletLogsDto } from './dto';
+import { IAxiosStruct, BaseError, IEnvironment } from '../../utils';
+import { WalletLogsDto } from './dto';
 
 /**
  * The wallet module for handling the wallet related operations.
@@ -8,24 +8,37 @@ import { BaseError, Environment } from '../../utils';
  * @extends FincraCore
  * @param {string} publicKey - The public key of the merchant
  * @param {string} secretKey - The secret key of the merchant
- * @param {Environment} environment - The environment of the merchant
+ * @param {IEnvironment} environment - The environment of the merchant
  */
 export class Wallet extends FincraCore {
-  constructor(publicKey: string, secretKey: string, environment?: Environment) {
+  constructor(
+    publicKey: string,
+    secretKey: string,
+    environment?: IEnvironment
+  ) {
     super(publicKey, secretKey, environment);
   }
 
-  // TODO
-  // public async listWalletLogs(data:WalletLogsDto){
-  //     try {
-  //         const request = this.getBaseUrl()
-  //         const response = await request.get(`/wallets/logs`, data)
-  //         console.log(response.data)
-  //         return response.data
-  //     } catch (error:any) {
-  //         throw new BaseError({message: error.response.data})
-  //     }
-  // }
+  // TODO done
+  /**
+   * It lists all the logs and activities of wallets performed by a business
+   * @param {WalletLogsDto} data - WalletLogsDto - the data to be sent to the API
+   * @returns an array of wallet objects.
+   */
+  public async listWalletLogs(data: WalletLogsDto) {
+    try {
+      const reqObj: IAxiosStruct = {
+        method: 'GET',
+        url: `/wallets/logs`,
+        data: data,
+      };
+      const response = await this.useGetRequest(reqObj);
+      console.log(response.data);
+      return response.data;
+    } catch (error: any) {
+      throw new BaseError({ message: error.response.data });
+    }
+  }
 
   /**
    * It lists all the wallets of a business.
@@ -39,7 +52,7 @@ export class Wallet extends FincraCore {
       console.log(response.data);
       return response.data;
     } catch (error: any) {
-      console.error(error);
+      // console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }

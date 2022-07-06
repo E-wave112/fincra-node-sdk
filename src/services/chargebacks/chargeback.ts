@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError, Environment } from '../../utils';
+import { BaseError, IEnvironment } from '../../utils';
 import { AcceptChargeBackDto, RejectChargeBackDto } from './dto';
 
 /**
@@ -8,10 +8,14 @@ import { AcceptChargeBackDto, RejectChargeBackDto } from './dto';
  * @extends FincraCore
  * @param {string} publicKey - The public key of the merchant
  * @param {string} secretKey - The secret key of the merchant
- * @param {Environment} environment - The environment of the merchant
+ * @param {IEnvironment} environment - The environment of the merchant
  */
 export class ChargeBacks extends FincraCore {
-  constructor(publicKey: string, secretKey: string, environment?: Environment) {
+  constructor(
+    publicKey: string,
+    secretKey: string,
+    environment?: IEnvironment
+  ) {
     super(publicKey, secretKey, environment);
   }
 

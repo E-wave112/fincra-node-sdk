@@ -1,3 +1,3 @@
-export interface Environment {
+export interface IEnvironment {
   sandbox: boolean;
 }

@@ -1,5 +1,10 @@
 import { FincraCore } from '../../api';
-import { BaseError, Environment, excludeFields } from '../../utils';
+import {
+  IAxiosStruct,
+  BaseError,
+  IEnvironment,
+  excludeFields,
+} from '../../utils';
 import {
   CreateBeneficiaryDto,
   FetchDeleteBeneficiaryDto,
@@ -13,10 +18,14 @@ import {
  * @extends FincraCore
  * @param {string} publicKey - The public key of the merchant
  * @param {string} secretKey - The secret key of the merchant
- * @param {Environment} environment - The environment of the merchant
+ * @param {IEnvironment} environment - The environment of the merchant
  */
 export class Beneficiary extends FincraCore {
-  constructor(publicKey: string, secretKey: string, environment?: Environment) {
+  constructor(
+    publicKey: string,
+    secretKey: string,
+    environment?: IEnvironment
+  ) {
     super(publicKey, secretKey, environment);
   }
 
@@ -35,27 +44,30 @@ export class Beneficiary extends FincraCore {
       );
       return response.data;
     } catch (error: any) {
-      console.error(error);
+      // console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
 
-  // TODO
+  // TODO done
   /**
    * returns all the beneficiaries linked to business/merchant
    * @param {ListBeneficiaryDto} data - ListBeneficiaryDto - This is the data that will be sent to the API.
-   * @returns The response is an array of beneficiaries
+   * @returns The response is an array of beneficiary objects
    */
   public async listBeneficiaries(data: ListBeneficiaryDto) {
     try {
-      const request = this.getBaseUrl();
-      // const dataBody = excludeFields(['businessId'], data)
-      const response = await request.get(
-        `/profile/beneficiaries/business/${data.businessId}`
-      );
+      const dataBody = excludeFields(['businessId'], data);
+      const requestObj: IAxiosStruct = {
+        method: 'GET',
+        url: `/profile/beneficiaries/business/${data.businessId}`,
+        data: dataBody,
+      };
+      const response = await this.useGetRequest(requestObj);
+      console.log(response.data);
       return response.data;
     } catch (error: any) {
-      console.error(error);
+      // console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
@@ -73,7 +85,7 @@ export class Beneficiary extends FincraCore {
       );
       return response.data;
     } catch (error: any) {
-      console.error(error);
+      // console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
@@ -93,7 +105,7 @@ export class Beneficiary extends FincraCore {
       );
       return response.data;
     } catch (error: any) {
-      console.error(error);
+      // console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }
@@ -111,7 +123,7 @@ export class Beneficiary extends FincraCore {
       );
       return response.data;
     } catch (error: any) {
-      console.error(error);
+      // console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }

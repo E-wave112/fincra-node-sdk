@@ -1,7 +1,25 @@
 import { Wallet } from '../../../src/services';
 import { keys } from '../../env';
+import { WalletLogsDto } from '../../../src/services/wallets/dto';
 
-const walletInstance = new Wallet(keys[0], keys[1]);
+const walletInstance = new Wallet(keys[0], keys[1], { sandbox: true });
+
+describe('it should list all the logs and activities of wallets performed by a business', () => {
+  it('returns an array of log objects', async () => {
+    try {
+      const logs: WalletLogsDto = {
+        business: '627fefbe5a65ec99ba9af0be',
+        page: '1',
+        perPage: '10',
+      };
+      const result = await walletInstance.listWalletLogs(logs);
+      expect(result).toHaveBeenCalledWith(logs);
+      expect(typeof result).toBe('object');
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
+  });
+});
 
 describe('it should list all the wallets of a specific merchant', () => {
   it('returns an array of wallets', async () => {
