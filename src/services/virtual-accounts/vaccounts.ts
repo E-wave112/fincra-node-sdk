@@ -30,7 +30,11 @@ export class VirtualAccount extends FincraCore {
   ) {
     super(publicKey, secretKey, environment);
   }
-
+  /**
+   * this method creates a virtual account
+   * @param { CreateVirtualAccountDto} data - the data to be sent to the server
+   * @returns a virtual account object
+   */
   public async createVirtualAccount(data: CreateVirtualAccountDto) {
     try {
       const request = this.getBaseUrl();
@@ -43,7 +47,11 @@ export class VirtualAccount extends FincraCore {
       throw new BaseError({ message: error.response.data });
     }
   }
-
+  /**
+   * this method creates an individual sub virtual account
+   * @param {CreateIndividualSubAccountDto} data - the data to be sent to the server
+   * @returns a virtual account object
+   */
   public async createIndividualSubVirtualAccount(
     data: CreateIndividualSubAccountDto
   ) {
@@ -60,6 +68,11 @@ export class VirtualAccount extends FincraCore {
     }
   }
 
+  /**
+   * this method creates an instant approval virtual account
+   * @param {CreateInstantApprovalVirtualAccountDto} data - the data to be sent to the server
+   * @returns a virtual account object
+   */
   public async createInstantApprovalVirtualAccount(
     data: CreateInstantApprovalVirtualAccountDto
   ) {
@@ -75,7 +88,11 @@ export class VirtualAccount extends FincraCore {
       throw new BaseError({ message: error.response.data });
     }
   }
-
+  /**
+   * this method creates a corporate virtual account
+   * @param {CreateCorporateVirtualAccountDto} data - the data to be sent to the server
+   * @returns a virtual account object
+   */
   public async createCorporateSubVirtualAccount(
     data: CreateCorporateVirtualAccountDto
   ) {
@@ -91,7 +108,10 @@ export class VirtualAccount extends FincraCore {
       throw new BaseError({ message: error.response.data });
     }
   }
-
+  /**
+   * this method lists all the requests for a virtual account made by the merchant
+   * @returns a list of virtual account requests
+   */
   public async listVirtualAccountRequests() {
     try {
       const request = this.getBaseUrl();
@@ -102,6 +122,11 @@ export class VirtualAccount extends FincraCore {
     }
   }
 
+  /**
+   * this method fetches a virtual account by its currency
+   * @param {string} currency - the currency of the virtual account
+   * @returns a virtual account object
+   */
   public async fetchVirtualAccountByCurrency(currency: string) {
     try {
       const request = this.getBaseUrl();
@@ -114,6 +139,11 @@ export class VirtualAccount extends FincraCore {
     }
   }
 
+  /**
+   * this method lists all the virtual accounts for a sub account
+   * @param {ListSubVirtualAccountsDto} data - the data to be sent to the server
+   * @returns a list of virtual account objects
+   */
   public async listSubVirtualAccounts(data: ListSubVirtualAccountsDto) {
     try {
       const dataBody = excludeFields(['businessId', 'subAccountId'], data);
@@ -129,7 +159,11 @@ export class VirtualAccount extends FincraCore {
       throw new BaseError({ message: error.message });
     }
   }
-
+  /**
+   * this method fetches a single virtual account by its id
+   * @param {string} virtualAccountId - the id of the virtual account
+   * @returns a virtual account object
+   */
   public async fetchSingleVirtualAccount(virtualAccountId: string) {
     try {
       const request = this.getBaseUrl();
@@ -143,6 +177,11 @@ export class VirtualAccount extends FincraCore {
   }
 
   //TODO: List merchant virtual accounts done
+  /**
+   * this method lists all the virtual accounts for a merchant
+   * @param {ListMerchantVirtualAccountsDto} data - the data to be sent to the server
+   * @returns a list of virtual account objects
+   */
   public async listMerchantVirtual(data: ListMerchantVirtualAccountsDto) {
     try {
       const requestObj: IAxiosStruct = {

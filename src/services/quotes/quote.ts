@@ -24,7 +24,7 @@ export class Quote extends FincraCore {
    * It takes in a CreateQuoteDto object, makes a post request to the quotes endpoint, and returns the
    * response data
    * @param {CreateQuoteDto} data - The data to be sent to the server.
-   * @returns The response from the API
+   * @returns The response from the API; a quote object
    */
   public async createQuote(data: CreateQuoteDto) {
     try {

@@ -1,23 +1,33 @@
 # fincra-node-sdk
+
 > A community supported NodeJS sdk that enables developers to build fintech products securely and seamlessy.
 
 ## Getting Started
+
 - To start using this sdk, create an account at https://api.fincra.com or a sandbox account at https://sandboxapi.fincra.com if you haven't already.
 - You can then retrieve your API keys from your dashboard either from [here](https://app.fincra.com/) or [here](https://sandbox.fincra.com/dashboard).
 - Want to contribute to this project? please read the [Contributing]() guide!
+
 ## Installation
+
 ```js
 npm install fincra-node
 ```
+
 ### Or with yarn
+
 ```js
 yarn add fincra-node
 ```
+
 ## Usage
+
 ```js
 const Fincra = require('fincra-node');
 ```
+
 ### with Typescript
+
 ```ts
 import Fincra from 'fincra-node';
 ```
@@ -44,9 +54,11 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 <!-- create an hyperlink for easy navigation of the readme file -->
 
 **1**. [**Business**](#business)
+
 - [Get Business details](#get-business-details)
 
 **2**. [**Beneficiaries**](#beneficiaries)
+
 - [Create a beneficiary](#create-a-beneficiary)
 - [Fetch a beneficiary](#fetch-beneficiaries)
 - [List beneficiaries](#list-beneficiaries)
@@ -54,11 +66,16 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 - [Delete a beneficiary](#delete-a-beneficiary)
 
 **3**. [**Chargebacks**](#chargebacks)
+
 - [List chargebacks](#list-chargebacks)
 - [Accept a chargeback](#accept-a-chargeback)
 - [Reject a chargeback](#reject-a-chargeback)
 
 **4**. [**Collections**](#collections)
+
+- [Pay With Transfer](#pay-with-transfer)
+- [List Collection for a main Virtual Account](#list-collection-for-a-main-virtual-account)
+- [Fetch a collection for an additional virtual account](#fetch-a-collection-for-an-additional-virtual-account)
 
 **5**. [**Conversions**](#conversions)
 
@@ -187,7 +204,6 @@ const fetchBen = fincra.beneficiary.fetchBeneficiary(data);
 | `businessId`    | `string`  | `true`   | `the business unique identifier`. |
 | `beneficiaryId` | `string`  | `true`   | `the id of the beneficiary`       |
 
-
 #### `Update a beneficiary`
 
 > This method is used for updating a Beneficiary.
@@ -253,7 +269,6 @@ const deleteBen = fincra.beneficiary.deleteBeneficiary(data);
 | `businessId`    | `string`  | `true`   | `the business unique identifier`. |
 | `beneficiaryId` | `string`  | `true`   | `the id of the beneficiary`       |
 
-
 ### Chargebacks
 
 > the chargeback service
@@ -272,7 +287,6 @@ const listCharge = fincra.chargebacks.listChargeBacks(businessId);
 | Parameters   | Data type | Required | Description                       |
 | ------------ | --------- | -------- | --------------------------------- |
 | `businessId` | `string`  | `true`   | `the business unique identifier`. |
-
 
 #### `Accept a chargeback`
 
@@ -293,7 +307,6 @@ const acceptCharge = fincra.chargebacks.acceptChargeBack(acceptCharge);
 | -------------- | --------- | -------- | ----------------------------------- |
 | `businessId`   | `string`  | `true`   | `the business unique identifier`.   |
 | `chargeBackId` | `string`  | `true`   | `the id of the specific chargeback` |
-
 
 #### `Reject a chargeback`
 
@@ -317,9 +330,80 @@ const rejectCharge = fincra.chargebacks.rejectChargeBack(data);
 | `chargeBackId` | `string`  | `true`   | `the current page`                |
 | `reason`       | `string`  | `true`   | `the reason for the chargeback`   |
 
+### Collections
+
+> The Collections service enables you to perform actions such as viewing all deposits that come into your account etc.
+
+#### `Pay With Transfer`
+
+> This method lets you create a temporary virtual account that can be used to receive payments over a period of time
+
+```ts
+const data = {
+  expiresAt: '30',
+  name: 'Edmond Kirsch',
+  merchantReference: '627fefbe5a65ec99ba9cf0fe',
+};
+
+const payWithTransfer = fincra.collection.payWithTransfer(data);
+```
+
+#### Parameters supported
+
+| Parameters          | Data type | Required | Description                                                 |
+| ------------------- | --------- | -------- | ----------------------------------------------------------- |
+| `expiresAt`         | `string`  | `true`   | `the expiry of the virtual account in minutes`.             |
+| `name`              | `string`  | `false`  | `The name that should be on the account`                    |
+| `merchantReference` | `string`  | `false`  | `The unique identifier of the transaction on your system .` |
+
+#### `List Collection for a main Virtual Account`
+
+> This service can be used to view both a single or multiple collections of a main virtual account
+
+```ts
+const data = {
+  business: '627fefbe5a65ec99ba9af0be',
+  reference: '677gefbe5a65ec99ba9af3be',
+  page: '1',
+  perPage: '30',
+};
+const listCollection = fincra.collection.listCollectionMain(data);
+```
+
+#### Parameters supported
+
+| Parameters  | Data type | Required | Description                                       |
+| ----------- | --------- | -------- | ------------------------------------------------- |
+| `business`  | `string`  | `true`   | `the business unique identifier`.                 |
+| `reference` | `string`  | `false`  | `The reference of the transaction`.               |
+| `page`      | `string`  | `false`  | `the current page`                                |
+| `perPage`   | `string`  | `false`  | `the number of collections to be viewed per page` |
+
+#### `Fetch a collection for an additional virtual account`
+
+> This method is used for retrieving a single collection of an additional virtual account by a reference
+
+```ts
+const data = {
+  reference: '77gefbe5a65ec99ba9af3be',
+  business: '627fefbe5a65ec99ba9af0be',
+};
+const fetchCollection = fincra.collection.fetchCollectionAddition(data);
+```
+
+#### Parameters supported
+
+| Parameters  | Data type | Required | Description                               |
+| ----------- | --------- | -------- | ----------------------------------------- |
+| `reference` | `string`  | `true`   | `The unique reference of the collection`. |
+| `business`  | `string`  | `false`  | `the business unique identifier`.         |
+
 ### Wallets
-> The wallet service consists of endpoints that provide information such as account balances, wallet number of a wallet, or wallets for a business. With the wallet service, You can manage the account balance for your business and that of your subaccounts. 
+
+> The wallet service consists of endpoints that provide information such as account balances, wallet number of a wallet, or wallets for a business. With the wallet service, You can manage the account balance for your business and that of your subaccounts.
+
 #### `Get wallets`
+
 > This service lists all wallets belonging to a business.
 
 ```ts
