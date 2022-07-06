@@ -1,33 +1,23 @@
 # fincra-node-sdk
-
 > A community supported NodeJS sdk that enables developers to build fintech products securely and seamlessy.
 
 ## Getting Started
-
 - To start using this sdk, create an account at https://api.fincra.com or a sandbox account at https://sandboxapi.fincra.com if you haven't already.
 - You can then retrieve your API keys from your dashboard either from [here](https://app.fincra.com/) or [here](https://sandbox.fincra.com/dashboard).
 - Want to contribute to this project? please read the [Contributing]() guide!
-
 ## Installation
-
 ```js
 npm install fincra-node
 ```
-
 ### Or with yarn
-
 ```js
 yarn add fincra-node
 ```
-
 ## Usage
-
 ```js
 const Fincra = require('fincra-node');
 ```
-
 ### with Typescript
-
 ```ts
 import Fincra from 'fincra-node';
 ```
@@ -54,11 +44,9 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 <!-- create an hyperlink for easy navigation of the readme file -->
 
 **1**. [**Business**](#business)
-
 - [Get Business details](#get-business-details)
 
 **2**. [**Beneficiaries**](#beneficiaries)
-
 - [Create a beneficiary](#create-a-beneficiary)
 - [Fetch a beneficiary](#fetch-beneficiaries)
 - [List beneficiaries](#list-beneficiaries)
@@ -66,7 +54,6 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 - [Delete a beneficiary](#delete-a-beneficiary)
 
 **3**. [**Chargebacks**](#chargebacks)
-
 - [List chargebacks](#list-chargebacks)
 - [Accept a chargeback](#accept-a-chargeback)
 - [Reject a chargeback](#reject-a-chargeback)
@@ -200,7 +187,6 @@ const fetchBen = fincra.beneficiary.fetchBeneficiary(data);
 | `businessId`    | `string`  | `true`   | `the business unique identifier`. |
 | `beneficiaryId` | `string`  | `true`   | `the id of the beneficiary`       |
 
-|
 
 #### `Update a beneficiary`
 
@@ -267,7 +253,6 @@ const deleteBen = fincra.beneficiary.deleteBeneficiary(data);
 | `businessId`    | `string`  | `true`   | `the business unique identifier`. |
 | `beneficiaryId` | `string`  | `true`   | `the id of the beneficiary`       |
 
-|
 
 ### Chargebacks
 
@@ -288,7 +273,6 @@ const listCharge = fincra.chargebacks.listChargeBacks(businessId);
 | ------------ | --------- | -------- | --------------------------------- |
 | `businessId` | `string`  | `true`   | `the business unique identifier`. |
 
-|
 
 #### `Accept a chargeback`
 
@@ -310,7 +294,6 @@ const acceptCharge = fincra.chargebacks.acceptChargeBack(acceptCharge);
 | `businessId`   | `string`  | `true`   | `the business unique identifier`.   |
 | `chargeBackId` | `string`  | `true`   | `the id of the specific chargeback` |
 
-|
 
 #### `Reject a chargeback`
 
@@ -335,10 +318,9 @@ const rejectCharge = fincra.chargebacks.rejectChargeBack(data);
 | `reason`       | `string`  | `true`   | `the reason for the chargeback`   |
 
 ### Wallets
-
+> The wallet service consists of endpoints that provide information such as account balances, wallet number of a wallet, or wallets for a business. With the wallet service, You can manage the account balance for your business and that of your subaccounts. 
 #### `Get wallets`
-
-- This service lists all wallets belonging to a business.
+> This service lists all wallets belonging to a business.
 
 ```ts
 const businessId = '627fefbe5a65ec99ba9af0be';
