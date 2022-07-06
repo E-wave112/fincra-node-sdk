@@ -18,6 +18,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+          
+      - name: Set Env variables
+        run: |
+          touch .env
+          echo "FINCRA_PUBLIC_KEY=${{secrets.FINCRA_PUBLIC_KEY}}" >> .env
+          echo "FINCRA_SECRET_KEY=${{secrets.FINCRA_SECRET_KEY}}" >> .env
+          cat .env
 
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
