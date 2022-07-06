@@ -40,3 +40,4 @@ envvars*
 !.vscode/extensions.json
 
 file.js
+test.ts

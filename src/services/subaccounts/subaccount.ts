@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError, excludeFields, Environment } from '../../utils';
+import { BaseError, excludeFields, IEnvironment } from '../../utils';
 import {
   CreateSubAccountDto,
   UpdateSubAccountDto,
@@ -12,10 +12,14 @@ import {
  * @extends FincraCore
  * @param {string} publicKey - The public key of the merchant
  * @param {string} secretKey - The secret key of the merchant
- * @param {Environment} environment - The environment of the merchant
+ * @param {IEnvironment} environment - The environment of the merchant
  */
 export class Subaccount extends FincraCore {
-  constructor(publicKey: string, secretKey: string, environment?: Environment) {
+  constructor(
+    publicKey: string,
+    secretKey: string,
+    environment?: IEnvironment
+  ) {
     super(publicKey, secretKey, environment);
   }
 

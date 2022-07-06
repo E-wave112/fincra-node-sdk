@@ -1,8 +1,8 @@
 import { FincraCore } from '../../api';
 import {
-  AxiosStruct,
+  IAxiosStruct,
   BaseError,
-  Environment,
+  IEnvironment,
   excludeFields,
 } from '../../utils';
 import {
@@ -20,10 +20,14 @@ import {
  * @extends FincraCore
  * @param {string} publicKey - The public key of the merchant
  * @param {string} secretKey - The secret key of the merchant
- * @param {Environment} environment - The environment of the merchant
+ * @param {IEnvironment} environment - The environment of the merchant
  **/
 export class VirtualAccount extends FincraCore {
-  constructor(publicKey: string, secretKey: string, environment?: Environment) {
+  constructor(
+    publicKey: string,
+    secretKey: string,
+    environment?: IEnvironment
+  ) {
     super(publicKey, secretKey, environment);
   }
 
@@ -113,7 +117,7 @@ export class VirtualAccount extends FincraCore {
   public async listSubVirtualAccounts(data: ListSubVirtualAccountsDto) {
     try {
       const dataBody = excludeFields(['businessId', 'subAccountId'], data);
-      const requestObj: AxiosStruct = {
+      const requestObj: IAxiosStruct = {
         method: 'GET',
         url: `/profile/virtual-accounts/business/${data.businessId}/sub-accounts/${data.subAccountId}`,
         data: dataBody,
@@ -138,10 +142,10 @@ export class VirtualAccount extends FincraCore {
     }
   }
 
-  //TODO: List merchant virtual accounts
+  //TODO: List merchant virtual accounts done
   public async listMerchantVirtual(data: ListMerchantVirtualAccountsDto) {
     try {
-      const requestObj: AxiosStruct = {
+      const requestObj: IAxiosStruct = {
         method: 'GET',
         url: `/profile/virtual-accounts`,
         data,

@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 import {
-  AxiosStruct,
-  Environment,
+  IAxiosStruct,
+  IEnvironment,
   getUrl,
   BaseError,
   excludeFields,
@@ -17,13 +17,13 @@ export class FincraCore {
    * This is a constructor for creating a fincra core instance
    * @param { string } publicKey merchant public key
    * @param { string } secretKey merchant secret key
-   * @param { Environment } environment fincra environment
+   * @param { IEnvironment } environment fincra environment
    * @returns { FincraCore } a fincra core instance
    */
   constructor(
     public publicKey: string,
     public secretKey: string,
-    public environment?: Environment
+    public environment?: IEnvironment
   ) {
     this.publicKey = publicKey;
     this.secretKey = secretKey;
@@ -50,7 +50,7 @@ export class FincraCore {
     }
   }
 
-  public async useGetRequest(req: AxiosStruct) {
+  public async useGetRequest(req: IAxiosStruct) {
     try {
       const customHeaders = excludeFields(
         ['common', 'delete', 'get', 'head', 'put', 'patch', 'post'],

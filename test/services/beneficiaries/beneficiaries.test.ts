@@ -64,6 +64,8 @@ describe('service to return the list of all beneficiaries related to a business'
     try {
       const data: ListBeneficiaryDto = {
         businessId: '627fefbe5a65ec99ba9af0be',
+        page: '2',
+        perPage: '10',
       };
       const result = await beneficiaryInstance.listBeneficiaries(data);
       expect(result).toHaveBeenCalledWith(data);

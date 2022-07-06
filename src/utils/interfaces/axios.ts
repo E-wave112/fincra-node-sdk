@@ -1,5 +1,5 @@
-export interface AxiosStruct {
+export interface IAxiosStruct {
   method: string;
   url: string;
-  data: any;
+  data?: any;
 }
