@@ -40,9 +40,9 @@ export class KycDto {
   @IsString()
   businessCategory?: string;
 
-  // @IsOptional()
-  // @IsString()
-  // additionalInformation?: string;
+  @IsOptional()
+  @IsString()
+  additionalInfo?: string;
 
   @IsOptional()
   @IsObject()

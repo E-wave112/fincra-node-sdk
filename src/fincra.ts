@@ -34,7 +34,7 @@ export class Fincra {
     this.secretKey = secretKey;
     this.environment = environment;
   }
-  public convert = new Conversion(
+  public conversion = new Conversion(
     this.publicKey,
     this.secretKey,
     this.environment
