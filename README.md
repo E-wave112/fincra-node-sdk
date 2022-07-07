@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-- To start using this sdk, create an account at https://api.fincra.com or a sandbox account at https://sandboxapi.fincra.com if you haven't already.
+- To start using this sdk, create an account at <https://api.fincra.com> or a sandbox account at <https://sandboxapi.fincra.com> if you haven't already.
 - You can then retrieve your API keys from your dashboard either from [here](https://app.fincra.com/) or [here](https://sandbox.fincra.com/dashboard).
 - Want to contribute to this project? please read the [Contributing](https://github.com/E-wave112/fincra-node-sdk/blob/dev/CONTRIBUTING.md) guide!
 
@@ -122,8 +122,9 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 
 **11**. [**Wallets**](#wallets)
 
-- [Get Wallets](#get-wallets)
-<!-- add the business -->
+- [List wallets](#list-wallets)
+- [Fetch a wallet](#fetch-a-wallet)
+- [List Wallet Logs](#list-wallet-logs)
 
 ### Business
 
@@ -429,24 +430,11 @@ const fetchCollection = fincra.collection.fetchCollectionAddition(data);
 | `reference` | `string`  | `true`   | `The unique reference of the collection`. |
 | `business`  | `string`  | `true`   | `the business unique identifier`.         |
 
-### Wallets
-
-> The wallet service consists of services that provide information such as account balances, wallet number of a wallet, or wallets for a business. With the wallet service, You can manage the account balance for your business and that of your subaccounts.
-
-#### `Get wallets`
-
-> This service lists all wallets belonging to a business.
-
-```ts
-const businessId = '62c5c5876805783477ef9f7a';
-const wallets = fincra.wallet.listWallet(businessId);
-```
-
 #### Parameters supported
 
-| Parameters   | Data type | Required | Description                        |
-| ------------ | --------- | -------- | ---------------------------------- |
-| `businessId` | `string`  | `true`   | ` the business unique identifier`. |
+| Parameters   | Data type | Required | Description                       |
+| ------------ | --------- | -------- | --------------------------------- |
+| `businessId` | `string`  | `true`   | `the business unique identifier`. |
 
 ### Conversions
 
@@ -972,7 +960,7 @@ const createIndividual =
 
 #### `Create corporate virtual account for your sub-account`
 
-> This API lets you create a single corporate virtual account for your sub account
+> This method lets you create a single corporate virtual account for your sub account
 
 ```ts
 const createCorporateVirtualAccountObj = {
@@ -1027,7 +1015,7 @@ const createCorporate =
 
 #### `List merchant virtual accounts`
 
-> This endpoint fetches all virtual accounts belonging to a merchant
+> This method fetches all virtual accounts belonging to a merchant
 
 ```ts
 const data = {
@@ -1063,7 +1051,7 @@ const virtualAccountRequests =
 
 #### `Fetch a virtual account by currency`
 
-> This endpoint is used for retrieving a virtual account that is belongs to a merchant by currency
+> This method is used for retrieving a virtual account that is belongs to a merchant by currency
 
 ```ts
 const currency = 'NGN';
@@ -1079,7 +1067,7 @@ const fetchVirtualAccount =
 
 #### `Fetch a single virtual account`
 
-> This endpoint is used for retrieving a virtual account attached to a merchant.
+> This method is used for retrieving a virtual account attached to a merchant.
 
 ```ts
 const virtualAccountId = '62c1be78a14d91ca07297cfd';
@@ -1095,7 +1083,7 @@ const fetchSingle =
 
 #### `List Sub-account Virtual Accounts`
 
-> This endpoint allows you to get a list of virtual accounts that belongs to a subaccount.
+> This method allows you to get a list of virtual accounts that belongs to a subaccount.
 
 ```ts
 const data = {
@@ -1104,9 +1092,7 @@ const data = {
   page: '1',
   perPage: '20',
 };
-const listSubVirtualAcct = await fincra.virtualAccount.listSubVirtualAccounts(
-  data
-);
+const listSubVirtualAcct = fincra.virtualAccount.listSubVirtualAccounts(data);
 ```
 
 #### Parameters Supported
@@ -1117,3 +1103,62 @@ const listSubVirtualAcct = await fincra.virtualAccount.listSubVirtualAccounts(
 | `subAccountId` | `string`  | `true`   | `The ID of the subaccount.`       |
 | `page`         | `string`  | `false`  | `The page number.`                |
 | `perPage`      | `string`  | `false`  | `The number of records per page.` |
+
+### Wallets
+
+> The wallet service consists of services that provide information such as account balances, wallet number of a wallet, or wallets for a business. With the wallet service, You can manage the account balance for your business and that of your subaccounts.
+
+#### `List wallets`
+
+> This method lists all wallets belonging to a business.
+
+```ts
+const businessId = '62c5c5876805783477ef9f7a';
+const wallets = fincra.wallet.listWallet(businessId);
+```
+
+#### Parameters Supported
+
+| Parameters   | Data type | Required | Description               |
+| ------------ | --------- | -------- | ------------------------- |
+| `businessId` | `string`  | `true`   | `The ID of the business.` |
+
+#### `Fetch a wallet`
+
+> This method provides information to the merchant about wallet balance, numbers, etc regarding a specific wallet.
+
+```ts
+const walletId = '62c1be78a14d91ca07297cfd';
+const getWallet = fincra.wallet.getWallet(walletId);
+```
+
+#### Parameters Supported
+
+| Parameters | Data type | Required | Description             |
+| ---------- | --------- | -------- | ----------------------- |
+| `walletId` | `string`  | `true`   | `The ID of the wallet.` |
+
+#### `List Wallet Logs`
+
+> This method retreives the wallet logs of a merchant's wallet
+
+```ts
+const data = {
+  business: '627fefbe5a65ec99ba9af0be',
+  amount: '200',
+  action: 'credit',
+  page: '1',
+  perPage: '10',
+};
+const walletLogs = fincra.wallet.listWalletLogs(data);
+```
+
+#### Parameters Supported
+
+| Parameters | Data type | Required | Description                                                          |
+| ---------- | --------- | -------- | -------------------------------------------------------------------- |
+| `business` | `string`  | `true`   | `The ID of the business.`                                            |
+| `amount`   | `string`  | `false`  | `The amount of the transaction.`                                     |
+| `action`   | `string`  | `false`  | `The action of the transaction.it is usually one of credit or debit` |
+| `page`     | `string`  | `false`  | `The page number.`                                                   |
+| `perPage`  | `string`  | `false`  | `The number of records per page.`                                    |

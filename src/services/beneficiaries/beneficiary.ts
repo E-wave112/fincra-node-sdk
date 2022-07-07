@@ -68,7 +68,7 @@ export class Beneficiary extends FincraCore {
       return response.data;
     } catch (error: any) {
       // console.error(error);
-      throw new BaseError({ message: error.response.data });
+      throw new BaseError({ message: error.message });
     }
   }
 

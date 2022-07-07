@@ -24,7 +24,7 @@ describe('it should list all the logs and activities of wallets performed by a b
 describe('it should list all the wallets of a specific merchant', () => {
   it('returns an array of wallets', async () => {
     try {
-      const businessId: string = '627fefbe5a65ec99ba9af0be';
+      const businessId: string = '627fefbe5a65ec99ba9af0bf';
       const result = await walletInstance.listWallet(businessId);
       expect(result).toHaveBeenCalledWith(businessId);
       expect(typeof result).toBe('object');
