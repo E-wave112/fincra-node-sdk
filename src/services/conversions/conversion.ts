@@ -22,7 +22,7 @@ export class Conversion extends FincraCore {
   /**
    * This function gets all the conversions for a business
    * @param {string} id - The id of the business you want to get the conversions for.
-   * @returns An array of conversions
+   * @returns An array of conversions objects
    */
   public async getBusinessConversions(id: string) {
     try {

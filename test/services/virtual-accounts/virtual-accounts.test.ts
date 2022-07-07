@@ -42,7 +42,7 @@ describe('service to create a virtual account', () => {
           birthDate: '2021-11-07',
           occupation: 'Engineer',
           businessCategory: 'Engineering',
-          // Additional information: "Nada"
+          additionalInfo: 'Nada',
         },
         channel: 'vfd',
         accountType: 'corporate',
@@ -104,7 +104,7 @@ describe('service to create an individual sub virtual account', () => {
             birthDate: '2021-11-07',
             occupation: 'Engineer',
             businessCategory: 'Engineering',
-            // Additional information: "Nada"
+            additionalInfo: 'Nada',
           },
         };
       const result =
@@ -158,7 +158,7 @@ describe('service  for creating Individual virtual account for your sub-account 
             birthDate: '2021-11-07',
             occupation: 'Engineer',
             businessCategory: 'Engineering',
-            // Additional information: "Nada"
+            additionalInfo: 'Nada',
           },
         };
       const result =
