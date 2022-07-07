@@ -28,11 +28,11 @@
   "size-limit": [
     {
       "path": "dist/fincra-node-sdk.cjs.production.min.js",
-      "limit": "20 KB"
+      "limit": "10 KB"
     },
     {
       "path": "dist/fincra-node-sdk.esm.js",
-      "limit": "20 KB"
+      "limit": "10 KB"
     }
   ],
   "devDependencies": {
