@@ -1,6 +1,6 @@
 # fincra-node-sdk
 
-> A community supported NodeJS sdk that enables developers to build fintech products securely and seamlessy leveraging [Fincra's](https://fincra.com) API.
+> A community supported NodeJS SDK that enables developers to build fintech products securely and seamlessy leveraging [Fincra's](https://fincra.com) API.
 
 ## Getting Started
 
