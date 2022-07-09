@@ -1,26 +1,42 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+orbs:
+  node: circleci/node@4.2.1
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+  build-and-test:
+    executor: node/default
     steps:
       - checkout
+      - node/install-packages
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: installing packages
+          command: |
+            yarn install
+      - run:
+          name: Running tests
+          command: |
+            yarn test
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  ship-software:
     jobs:
-      - say-hello
+      - build-and-test
+    on: push
+    matrix:
+      node: ['14.x', '16.x', '18.x']
+      os: [ubuntu-latest, windows-latest, macos-latest]
+    secrets:
+      FINCRA_PUBLIC_KEY:
+        default: ${{ secrets.FINCRA_PUBLIC_KEY }}
+      FINCRA_SECRET_KEY:
+        default: ${{ secrets.FINCRA_SECRET_KEY }}
+    retry:
+      allow_failures: true
+      on: push
+        pull_request
+      attempts:
+        max: 3
+        interval:
+          minutes: 5
+      delay:
+        minutes: 5
