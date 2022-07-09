@@ -11,17 +11,11 @@ jobs:
       - run:
           name: installing packages
           command: |
-            if [ -e yarn.lock ]; then
-            yarn install --frozen-lockfile
-            elif [ -e package-lock.json ]; then
-            npm ci
-            else
-            npm i
-            fi
+            npm install
       - run:
           name: Running tests
           command: |
-            yarn test
+            npm run test
 
 workflows:
   ship-software:
