@@ -55,11 +55,11 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 ## Available Services exposed by the SDK
 The following methods are available with this SDK
 
-1. [Business](#1-business)
+**1**. [**Business**](#1-business)
 
 - [Get Business details](#get-business-details)
 
-2. [Beneficiaries](#2-beneficiaries)
+**2**. [**Beneficiaries**](#2-beneficiaries)
 
 - [Create a beneficiary](#create-a-beneficiary)
 - [Fetch a beneficiary](#fetch-beneficiaries)
@@ -67,33 +67,66 @@ The following methods are available with this SDK
 - [Update a beneficiary](#update-a-beneficiary)
 - [Delete a beneficiary](#delete-a-beneficiary)
 
-3. [Chargebacks](#3-chargebacks)
+**3**. [**Chargebacks**](#3-chargebacks)
 
 - [List chargebacks](#list-chargebacks)
 - [Accept a chargeback](#accept-a-chargeback)
 - [Reject a chargeback](#reject-a-chargeback)
 
-4. [Collections](#4-collections)
+**4**. [**Collections**](#4-collections)
 
 - [Pay With Transfer](#pay-with-transfer)
 - [List Collection for a main Virtual Account](#list-collection-for-a-main-virtual-account)
 - [Fetch a collection for an additional virtual account](#fetch-a-collection-for-an-additional-virtual-account)
 
-5. [Conversions](#5-conversions)
+**5**. [**Conversions**](#5-conversions)
 
-6. [Payouts](#6-payouts)
+- [Convert a currency](#convert-a-currency)
+- [Fetch a conversion](#fetch-a-conversion)
+- [List conversions](#list-conversions)
 
-7. [Quotes](#7-quotes)
+**6**. [**Payouts**](#6-payouts)
 
-8. [Subaccounts](#8-subaccounts)
+- [Wallet to wallet transfer](#wallet-to-wallet-transfer)
+- [Create a Payout](#create-a-payout)
+- [Upload a payout(transaction) document](#upload-transaction-document)
+- [Fetch a payout by reference](#fetch-a-payout-by-reference)
+- [Fetch a payout by Customer Reference](#fetch-a-payout-by-customer-reference)
+- [List Banks](#list-banks)
 
-9. [Verification](#9-verification)
+**7**. [**Quotes**](#7-quotes)
 
-10. [Virtual-accounts](#10-virtual-accounts)
+- [Create a quote](#create-a-quote)
 
-11. [Wallets](#11-wallets)
+**8**. [**Subaccounts**](#8-subaccounts)
 
-- [Get Wallets](#get-wallets)
+- [Create a subaccount](#create-a-subaccount)
+- [List subaccounts](#list-sub-accounts)
+- [Fetch a subaccount](#fetch-a-sub-account)
+- [Update a subaccount](#update-a-sub-account)
+
+**9**. [**Verification**](#9-verification)
+
+- [Verify account Number](#verify-account-number)
+- [Verify Payment](#verify-payment)
+
+**10**. [**Virtual-accounts**](#10-virtual-accounts)
+
+- [Create a virtual account](#create-a-virtual-account)
+- [Create Individual virtual account for your sub-account (Instant Approval)](#create-individual-virtual-account-for-your-sub-account-instant-approval)
+- [Create individual virtual account for your sub-account](#create-individual-virtual-account-for-your-sub-account)
+- [Create corporate virtual account for your sub-account](#create-corporate-virtual-account-for-your-sub-account)
+- [List merchant virtual accounts](#list-merchant-virtual-accounts)
+- [List virtual account requests](#list-virtual-account-requests)
+- [Fetch a virtual account by currency](#fetch-a-virtual-account-by-currency)
+- [Fetch a single virtual account](#fetch-a-single-virtual-account)
+- [List Sub-account Virtual Accounts](#list-sub-account-virtual-accounts)
+
+**11**. [**Wallets**](#11-wallets)
+
+- [List wallets](#list-wallets)
+- [Fetch a wallet](#fetch-a-wallet)
+- [List Wallet Logs](#list-wallet-logs)
 <!-- add the business -->
 
 ### 1. Business
@@ -292,7 +325,7 @@ const listCharge = fincra.chargebacks.listChargeBacks(businessId);
 
 #### Accept a chargeback
 
-This service lets you accept a chargeback
+This method lets you accept a chargeback
 
 ```ts
 const data = {
@@ -334,11 +367,11 @@ const rejectCharge = fincra.chargebacks.rejectChargeBack(data);
 
 ### 4. Collections
 
-> The Collections service enables you to perform actions such as viewing all deposits that come into your account etc.
+The Collections service enables you to perform actions such as viewing all deposits that come into your account etc.
 
 #### `Pay With Transfer`
 
-> This method lets you create a temporary virtual account that can be used to receive payments over a period of time
+This method lets you create a temporary virtual account that can be used to receive payments over a period of time
 
 ```ts
 const data = {
@@ -352,7 +385,7 @@ const payWithTransfer = fincra.collection.payWithTransfer(data);
 
 #### Parameters supported
 
-| **Parameters**          | **Data type** | **Required** | **Description**                                                 |
+| **Parameters**   | **Data type** | **Required** | **Description**                                                 |
 | ------------------- | --------- | -------- | ----------------------------------------------------------- |
 | `expiresAt`         | string  | true   | The expiry of the virtual account in minutes.             |
 | `name`              | string | false  | The name that should be on the account.                    |
