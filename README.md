@@ -11,7 +11,10 @@ A community suported NodeJS SDK for developers.
 ## Getting Started
 
 - To get started with this SDK, create an [account]((https://api.fincra.com/)) on Fincra or a [sandbox account](https://sandboxapi.fincra.com/) if you haven't already.
-- You can then retrieve your API keys from your [sandbox dashboard](https://sandbox.fincra.com/dashboard) or [account dashboard.](https://app.fincra.com/).
+- You can then retrieve your API keys from your [sandbox dashboard](https://sandbox.fincra.com/dashboard) or [account dashboard](https://app.fincra.com/).
+
+#### Want to contribute?
+Contributions are welcome! Kindly refer to the [contribution guidelines](CONTRIBUTING.md).
 
 ## Installation
 This SDK can be installed with `npm` or `yarn`.
@@ -1141,7 +1144,3 @@ const walletLogs = fincra.wallet.listWalletLogs(data);
 | `action`   | string  | false  | The action of the transaction.it is usually one of credit or debit |
 | `page`     | string  | false  | The page number.                                                  |
 | `perPage`  | string  | false  | The number of records per page.                                    |
-
-
-Want to contribute?
-Contributions are welcome! Kindly refer to the [contribution guidelines](CONTRIBUTING.md).
