@@ -25,6 +25,7 @@ $ git rebase origin/main
 
 This will keep your changes in sync with the main branch and most importantly, the git history will be clean and releasable.
 
-
 ### LICENSE
-This project is [MIT Licensed](https://github.com/E-wave112/fincra-node-sdk/blob/main/LICENSE).
+
+This project is licenced under the [GNU GPL Licence](https://github.com/E-wave112/fincra-node-sdk/blob/main/LICENCE).
+

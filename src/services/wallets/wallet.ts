@@ -36,7 +36,8 @@ export class Wallet extends FincraCore {
       console.log(response.data);
       return response.data;
     } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+      console.error(error.message);
+      throw new BaseError({ message: error.message });
     }
   }
 
@@ -49,10 +50,8 @@ export class Wallet extends FincraCore {
     try {
       const request = this.getBaseUrl();
       const response = await request.get(`/wallets/?businessID=${id}`);
-      console.log(response.data);
       return response.data;
     } catch (error: any) {
-      // console.error(error);
       throw new BaseError({ message: error.response.data });
     }
   }

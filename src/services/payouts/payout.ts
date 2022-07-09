@@ -59,7 +59,7 @@ export class Payout extends FincraCore {
   }
 
   /**
-   * It allows a merchant a payout by it's transaction reference
+   * It allows a merchant fetch a payout by it's transaction reference
    * @param {string} reference - The reference of the payout you want to fetch.
    * @returns The transaction object.
    */
@@ -105,6 +105,11 @@ export class Payout extends FincraCore {
     }
   }
 
+  /**
+   * this method allows a merchant to upload a payout document
+   * @param {UploadPayoutDto} data - UploadPayoutDto
+   * @returns The transaction object.
+   */
   public async uploadTransactionDocument(data: UploadPayoutDto) {
     try {
       const request = this.getBaseUrl();
