@@ -7,15 +7,12 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install-packages
-      - run:
-          name: installing packages
-          command: |
-            npm install
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
           name: Running tests
           command: |
-            npm run test
+            yarn test
 
 workflows:
   ship-software:
