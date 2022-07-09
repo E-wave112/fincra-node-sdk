@@ -1,6 +1,7 @@
 <!-- generate a contributing.md file -->
 
-## Thank you for your contributing to this SDK, kindly follow the guidelines below:
+# Contributing Guidelines
+Thank you for your contributing to this SDK, kindly follow the guidelines below:
 
 - Create a fork of the repository.
 - Create a new branch for your contribution.
@@ -10,13 +11,13 @@
 
 **Recommended**: It is possible that the dev/main branch would have been updated before you made a contribution so you can frequently keep rebasing off the main branch while you make your contributions. i.e
 
-- fetch from origin
+- Fetch from origin
 
 ```
 $ git fetch origin
 ```
 
-- then you can rebase off the main branch like so:
+- Then you can rebase off the main branch like so:
 
 ```
 $ git rebase origin/main
@@ -26,4 +27,4 @@ This will keep your changes in sync with the main branch and most importantly, t
 
 
 ### LICENSE
-This project is [MIT](https://github.com/E-wave112/fincra-node-sdk/blob/main/LICENSE) LICENSED
+This project is [MIT Licensed](https://github.com/E-wave112/fincra-node-sdk/blob/main/LICENSE).
