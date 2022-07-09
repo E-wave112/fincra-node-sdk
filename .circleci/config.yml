@@ -22,21 +22,4 @@ workflows:
     jobs:
       - build-and-test
     on: push
-    matrix:
-      node: ['14.x', '16.x', '18.x']
-      os: [ubuntu-latest, windows-latest, macos-latest]
-    secrets:
-      FINCRA_PUBLIC_KEY:
-        default: ${{ secrets.FINCRA_PUBLIC_KEY }}
-      FINCRA_SECRET_KEY:
-        default: ${{ secrets.FINCRA_SECRET_KEY }}
-    retry:
-      allow_failures: true
-      on: push
-        pull_request
-      attempts:
-        max: 3
-        interval:
-          minutes: 5
-      delay:
-        minutes: 5
+       pull_request
