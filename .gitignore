@@ -41,3 +41,6 @@ envvars*
 
 file.js
 test.ts
+
+# gh actions
+.github/
