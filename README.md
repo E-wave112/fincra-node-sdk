@@ -1,38 +1,41 @@
-# fincra-node-sdk
+# Fincra node SDK
 
-> A community supported NodeJS sdk that enables developers to build fintech products securely and seamlessy.
+A community suported NodeJS SDK for developers.
+
+## Table of content
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Available Services exposed by the SDK](#available-services-exposed-by-the-sdk)
 
 ## Getting Started
 
-- To start using this sdk, create an account at https://api.fincra.com or a sandbox account at https://sandboxapi.fincra.com if you haven't already.
-- You can then retrieve your API keys from your dashboard either from [here](https://app.fincra.com/) or [here](https://sandbox.fincra.com/dashboard).
-- Want to contribute to this project? please read the [Contributing](https://github.com/E-wave112/fincra-node-sdk/blob/dev/CONTRIBUTING.md) guide!
+- To get started with this SDK, create an [account]((https://api.fincra.com/)) on Fincra or a [sandbox account](https://sandboxapi.fincra.com/) if you haven't already.
+- You can then retrieve your API keys from your [sandbox dashboard](https://sandbox.fincra.com/dashboard) or [account dashboard.](https://app.fincra.com/).
 
 ## Installation
+This SDK can be installed with `npm` or `yarn`.
 
-```js
-npm install fincra-node
+Using `npm`,
+``` bash
+npm install fincra-node-sdk
 ```
+Using `yarn`,
 
-### Or with yarn
-
-```js
-yarn add fincra-node
+``` bash
+yarn add fincra-node-sdk
 ```
 
 ## Usage
+With JavaScript,
 
 ```js
-const Fincra = require('fincra-node');
+const Fincra = require('fincra-node-sdk');  // JavaScript
+import Fincra from 'fincra-node-sdk';   // Typescript
 ```
 
-### with Typescript
 
-```ts
-import Fincra from 'fincra-node';
-```
-
-### instantiate the Fincra class
+Instantiate the Fincra class
 
 ```js
 const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY, { sandbox: true });
@@ -40,24 +43,23 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY, { sandbox: true });
 
 **Note:**
 
-- sandbox is optional, if you don't specify it, it will default to false, and you will be using the [production(live)](https://api.fincra.com/) API. for example:
+- The sandbox is optional, if you don't specify it, it will default to false, and you will be using the [production(live)](https://api.fincra.com/) API. For example:
 
-```js
+```javascript
 const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 ```
 
 - For more information about the services exposed by the SDK, please refer to the [documentation](https://docs.fincra.com/docs).
-- Be sure to keep your API Credentials securely in [environment variables](https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html)
+- Be sure to keep your API Credentials securely in [environment variables](https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html).
 
 ## Available Services exposed by the SDK
+The following methods are available with this SDK
 
-<!-- create an hyperlink for easy navigation of the readme file -->
-
-**1**. [**Business**](#business)
+1. [Business](#1-business)
 
 - [Get Business details](#get-business-details)
 
-**2**. [**Beneficiaries**](#beneficiaries)
+2. [Beneficiaries](#2-beneficiaries)
 
 - [Create a beneficiary](#create-a-beneficiary)
 - [Fetch a beneficiary](#fetch-beneficiaries)
@@ -65,59 +67,59 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 - [Update a beneficiary](#update-a-beneficiary)
 - [Delete a beneficiary](#delete-a-beneficiary)
 
-**3**. [**Chargebacks**](#chargebacks)
+3. [Chargebacks](#3-chargebacks)
 
 - [List chargebacks](#list-chargebacks)
 - [Accept a chargeback](#accept-a-chargeback)
 - [Reject a chargeback](#reject-a-chargeback)
 
-**4**. [**Collections**](#collections)
+4. [Collections](#4-collections)
 
 - [Pay With Transfer](#pay-with-transfer)
 - [List Collection for a main Virtual Account](#list-collection-for-a-main-virtual-account)
 - [Fetch a collection for an additional virtual account](#fetch-a-collection-for-an-additional-virtual-account)
 
-**5**. [**Conversions**](#conversions)
+5. [Conversions](#5-conversions)
 
-**6**. [**Payouts**](#payouts)
+6. [Payouts](#6-payouts)
 
-**7**. [**Quotes**](#quotes)
+7. [Quotes](#7-quotes)
 
-**8**. [**Subaccounts**](#subaccounts)
+8. [Subaccounts](#8-subaccounts)
 
-**9**. [**Verification**](#verification)
+9. [Verification](#9-verification)
 
-**10**. [**Virtual-accounts**](#virtual-accounts)
+10. [Virtual-accounts](#10-virtual-accounts)
 
-**11**. [**Wallets**](#wallets)
+11. [Wallets](#11-wallets)
 
 - [Get Wallets](#get-wallets)
 <!-- add the business -->
 
-### Business
+### 1. Business
 
-> A business represents the merchant or any entity making use of this sdk
+A business represents the merchant or any entity making use of this SDK.
 
-#### `Get business details`
+#### Get business details
 
 <!-- add a description -->
 
-> This method lets you retrieves the unique Identifier of your business and other information such as your email etc.
+This method lets you retrieves the unique Identifier of your business and other information such as your email etc.
 
-> The unique identifier(businessId) allows your business to access other services.
+The unique identifier(businessId) allows your business to access other services.
 
 ```ts
 const business = fincra.business.getBusinessId();
 ```
 
-### Beneficiaries
+### 2. Beneficiaries
 
-> The beneficiary’s service allows the business to create beneficiaries that can receive payments.
+The beneficiary’s service allows the business to create beneficiaries that can receive payments.
 > **NOTE**: Beneficiaries and recipients are used interchangeably in this documentation.
 
-#### `Create a beneficiary`
+#### Create a beneficiary
 
-> This method is used for creating a Beneficiary.
+This method is used for creating a Beneficiary.
 
 ```ts
 const data = {
@@ -159,11 +161,11 @@ const createBen = fincra.beneficiary.createBeneficiary(data);
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/create-a-beneficiary)
 
-#### `List beneficiaries`
+#### List beneficiaries
 
 <!-- add a description -->
 
-> This method provides the ability to retrieve a list of beneficiaries attached to a business
+This method provides the ability to retrieve a list of beneficiaries attached to a business.
 
 ```ts
 const data = {
@@ -176,17 +178,17 @@ const listBen = fincra.beneficiary.listBeneficiaries(data);
 
 #### Parameters supported
 
-| Parameters   | Data type | Required | Description                                         |
+| **Parameters**   | **Data type** | **Required** | **Description**                                         |
 | ------------ | --------- | -------- | --------------------------------------------------- |
-| `businessId` | `string`  | `true`   | `the business unique identifier`.                   |
-| `page`       | `string`  | `false`  | `the current page`                                  |
-| `perPage`    | `string`  | `false`  | `the number of beneficiaries to be viewed per page` |
+| `businessId` | string | true  | The business unique identifier.                   |
+| `page`       | string  | false  | The current page.                                 |
+| `perPage`    | string  | false  | The number of beneficiaries to be viewed per page. |
 
-#### `Fetch beneficiaries`
+#### Fetch beneficiaries
 
 <!-- add a description -->
 
-> This method is used for retrieving a single beneficiary attached to a business.
+This method is used for retrieving a single beneficiary attached to a business.
 
 ```ts
 const data = {
@@ -199,14 +201,14 @@ const fetchBen = fincra.beneficiary.fetchBeneficiary(data);
 
 #### Parameters supported
 
-| Parameters      | Data type | Required | Description                       |
+| **Parameters**      | **Data type** | **Required** | **Description**                       |
 | --------------- | --------- | -------- | --------------------------------- |
-| `businessId`    | `string`  | `true`   | `the business unique identifier`. |
-| `beneficiaryId` | `string`  | `true`   | `the id of the beneficiary`       |
+| `businessId`    | string  | true  | The business unique identifier. |
+| `beneficiaryId` | string  | true   | The id of the beneficiary       |
 
-#### `Update a beneficiary`
+#### Update a beneficiary
 
-> This method is used for updating a Beneficiary.
+This method is used for updating a Beneficiary.
 
 ```ts
 const data = {
@@ -249,9 +251,9 @@ const updateBen = fincra.beneficiary.updateBeneficiary(data);
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/update-a-beneficiary)
 
-#### `Delete a beneficiary`
+#### Delete a beneficiary
 
-> This method is used for deleting a beneficiary.
+This method is used for deleting a beneficiary.
 
 ```ts
 const data = {
@@ -264,18 +266,18 @@ const deleteBen = fincra.beneficiary.deleteBeneficiary(data);
 
 #### Parameters supported
 
-| Parameters      | Data type | Required | Description                       |
+| **Parameters**      | **Data type** | **Required** | **Description**                       |
 | --------------- | --------- | -------- | --------------------------------- |
-| `businessId`    | `string`  | `true`   | `the business unique identifier`. |
-| `beneficiaryId` | `string`  | `true`   | `the id of the beneficiary`       |
+| `businessId`    | string` | true   | The business unique identifier. |
+| `beneficiaryId` | string  | true   | The id of the beneficiary.      |
 
-### Chargebacks
+### 3. Chargebacks
 
-> the chargeback service
+The chargeback service.
 
-#### `List chargebacks`
+#### List chargebacks
 
-> This method lets you list all the chargebacks incurred on your account
+This method lets you list all the chargebacks incurred on your account.
 
 ```ts
 const businessId = '618fefbe5a65ec99ba9af0de';
@@ -284,13 +286,13 @@ const listCharge = fincra.chargebacks.listChargeBacks(businessId);
 
 #### Parameters supported
 
-| Parameters   | Data type | Required | Description                       |
+| **Parameters**   | **Data type** | **Required** | **Description**                       |
 | ------------ | --------- | -------- | --------------------------------- |
-| `businessId` | `string`  | `true`   | `the business unique identifier`. |
+| `businessId` | string  | true   | The business unique identifier. |
 
-#### `Accept a chargeback`
+#### Accept a chargeback
 
-> This service lets you accept a chargeback
+This service lets you accept a chargeback
 
 ```ts
 const data = {
@@ -303,14 +305,14 @@ const acceptCharge = fincra.chargebacks.acceptChargeBack(acceptCharge);
 
 #### Parameters supported
 
-| Parameters     | Data type | Required | Description                         |
+| **Parameters**     | **Data type** | **Required** | **Description**                         |
 | -------------- | --------- | -------- | ----------------------------------- |
-| `businessId`   | `string`  | `true`   | `the business unique identifier`.   |
-| `chargeBackId` | `string`  | `true`   | `the id of the specific chargeback` |
+| `businessId`   | string  | true  | The business unique identifier.   |
+| `chargeBackId` | string  | true   | The id of the specific chargeback. |
 
-#### `Reject a chargeback`
+#### Reject a chargeback
 
-> This method lets you reject a chargeback
+This method lets you reject a chargeback
 
 ```ts
 const data = {
@@ -330,7 +332,7 @@ const rejectCharge = fincra.chargebacks.rejectChargeBack(data);
 | `chargeBackId` | `string`  | `true`   | `the current page`                |
 | `reason`       | `string`  | `true`   | `the reason for the chargeback`   |
 
-### Collections
+### 4. Collections
 
 > The Collections service enables you to perform actions such as viewing all deposits that come into your account etc.
 
@@ -350,15 +352,15 @@ const payWithTransfer = fincra.collection.payWithTransfer(data);
 
 #### Parameters supported
 
-| Parameters          | Data type | Required | Description                                                 |
+| **Parameters**          | **Data type** | **Required** | **Description**                                                 |
 | ------------------- | --------- | -------- | ----------------------------------------------------------- |
-| `expiresAt`         | `string`  | `true`   | `the expiry of the virtual account in minutes`.             |
-| `name`              | `string`  | `false`  | `The name that should be on the account`                    |
-| `merchantReference` | `string`  | `false`  | `The unique identifier of the transaction on your system .` |
+| `expiresAt`         | string  | true   | The expiry of the virtual account in minutes.             |
+| `name`              | string | false  | The name that should be on the account.                    |
+| `merchantReference` | string  | false | The unique identifier of the transaction on your system . |
 
-#### `List Collection for a main Virtual Account`
+#### List Collection for a main Virtual Account
 
-> This service can be used to view both a single or multiple collections of a main virtual account
+This service can be used to view both a single or multiple collections of a main virtual account
 
 ```ts
 const data = {
@@ -372,16 +374,16 @@ const listCollection = fincra.collection.listCollectionMain(data);
 
 #### Parameters supported
 
-| Parameters  | Data type | Required | Description                                       |
+| **Parameters**  | **Data type** | **Required** | **Description**                                       |
 | ----------- | --------- | -------- | ------------------------------------------------- |
-| `business`  | `string`  | `true`   | `the business unique identifier`.                 |
-| `reference` | `string`  | `false`  | `The reference of the transaction`.               |
-| `page`      | `string`  | `false`  | `the current page`                                |
-| `perPage`   | `string`  | `false`  | `the number of collections to be viewed per page` |
+| `business`  | string  | true   | The business unique identifier.                 |
+| `reference` | string  | false  | The reference of the transaction.               |
+| `page`      | string  | false  | The current page.                                |
+| `perPage`   | string  | false  | The number of collections to be viewed per page. |
 
-#### `Fetch a collection for an additional virtual account`
+#### Fetch a collection for an additional virtual account
 
-> This method is used for retrieving a single collection of an additional virtual account by a reference
+This method is used for retrieving a single collection of an additional virtual account by a reference
 
 ```ts
 const data = {
@@ -393,18 +395,18 @@ const fetchCollection = fincra.collection.fetchCollectionAddition(data);
 
 #### Parameters supported
 
-| Parameters  | Data type | Required | Description                               |
+| **Parameters**  | **Data type** | **Required** | **Description**                               |
 | ----------- | --------- | -------- | ----------------------------------------- |
-| `reference` | `string`  | `true`   | `The unique reference of the collection`. |
-| `business`  | `string`  | `false`  | `the business unique identifier`.         |
+| `reference` | string  | true   | The unique reference of the collection. |
+| `business`  | string  | false  | The business unique identifier.         |
 
-### Wallets
+### 5. Wallets
 
-> The wallet service consists of endpoints that provide information such as account balances, wallet number of a wallet, or wallets for a business. With the wallet service, You can manage the account balance for your business and that of your subaccounts.
+The wallet service consists of endpoints that provide information such as account balances, wallet number of a wallet, or wallets for a business. With the wallet service, You can manage the account balance for your business and that of your subaccounts.
 
-#### `Get wallets`
+#### Get wallets
 
-> This service lists all wallets belonging to a business.
+This method lists all wallets belonging to a business.
 
 ```ts
 const businessId = '627fefbe5a65ec99ba9af0be';
@@ -413,6 +415,28 @@ const wallets = fincra.wallet.listWallet(businessId);
 
 #### Parameters supported
 
-| Parameters   | Data type | Required | Description                        |
+| **Parameters**   | **Data type** | **Required** | **Description**                        |
 | ------------ | --------- | -------- | ---------------------------------- |
-| `businessId` | `string`  | `true`   | ` the business unique identifier`. |
+| `businessId` | string  | true   | The business unique identifier. |
+
+#### Get wallets of specific merchants
+This method lists the wallets od a specified merchant.
+
+#### Parameters supported
+
+| **Parameters**   | **Data type** | **Required** | **Description**                        |
+| ------------ | --------- | -------- | ---------------------------------- |
+| `businessId` | string  | true   | The business unique identifier. |
+
+#### Return a wallet object details 
+This method returns a wallet object of a specified wallet.
+
+#### Parameters supported
+
+| **Parameters**   | **Data type** | **Required** | **Description**                        |
+| ------------ | --------- | -------- | ---------------------------------- |
+| `walletId` | string  | true   | The business unique identifier. |
+
+### 6. Payouts
+
+#### 
