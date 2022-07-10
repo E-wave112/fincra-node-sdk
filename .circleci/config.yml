@@ -18,8 +18,4 @@ workflows:
   ship-software:
     jobs:
       - build-and-test:
-          matrix:
-            parameters:
-              os: [linux, macos, windows]
-              node-version: [14.17.1, 16.16.0]
 
