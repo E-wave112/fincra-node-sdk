@@ -1,5 +1,11 @@
 import { FincraCore } from '../../api';
-import { IAxiosStruct, BaseError, IEnvironment } from '../../utils';
+import {
+  IAxiosStruct,
+  BaseError,
+  IEnvironment,
+  handleAxiosError,
+  handleErrors,
+} from '../../utils';
 import { WalletLogsDto } from './dto';
 
 /**
@@ -33,11 +39,9 @@ export class Wallet extends FincraCore {
         data: data,
       };
       const response = await this.useGetRequest(reqObj);
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      console.error(error.message);
-      throw new BaseError({ message: error.message });
+    } catch (error) {
+      throw new BaseError({ message: handleAxiosError(error) });
     }
   }
 
@@ -51,8 +55,8 @@ export class Wallet extends FincraCore {
       const request = this.getBaseUrl();
       const response = await request.get(`/wallets/?businessID=${id}`);
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -65,10 +69,9 @@ export class Wallet extends FincraCore {
     try {
       const request = this.getBaseUrl();
       const response = await request.get(`/wallets/${id}`);
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 }

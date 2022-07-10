@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError, IEnvironment } from '../../utils';
+import { BaseError, handleErrors, IEnvironment } from '../../utils';
 import { AcceptChargeBackDto, RejectChargeBackDto } from './dto';
 
 /**
@@ -28,11 +28,9 @@ export class ChargeBacks extends FincraCore {
     try {
       const request = this.getBaseUrl();
       const response = await request.get(`/chargebacks?business=${id}`);
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      console.error(error.response);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -47,10 +45,9 @@ export class ChargeBacks extends FincraCore {
       const response = await request.patch(
         `/chargebacks/${data.chargeBackId}/accept?business=${data.businessId}`
       );
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -68,10 +65,9 @@ export class ChargeBacks extends FincraCore {
           business_reject_reason: data.reason,
         }
       );
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 }

@@ -18,4 +18,3 @@ workflows:
   ship-software:
     jobs:
       - build-and-test
-

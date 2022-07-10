@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError, IEnvironment } from '../../utils';
+import { BaseError, handleErrors, IEnvironment } from '../../utils';
 import { CreateConversionDto } from './dto';
 
 /**
@@ -29,8 +29,8 @@ export class Conversion extends FincraCore {
       const request = this.getBaseUrl();
       const response = await request.get(`/conversions?business=${id}`);
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -44,9 +44,8 @@ export class Conversion extends FincraCore {
       const request = this.getBaseUrl();
       const response = await request.get(`/conversions/${conversionId}`);
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -60,8 +59,8 @@ export class Conversion extends FincraCore {
       const request = this.getBaseUrl();
       const response = await request.post('/conversions/initiate', conversion);
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 }
