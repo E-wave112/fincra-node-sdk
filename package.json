@@ -21,11 +21,21 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
+  "keywords": [
+    "fincra",
+    "fintech",
+    "payments",
+    "sdk",
+    "typings"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/E-wave112/fincra-node-sdk.git"
   },
   "homepage": "https://github.com/E-wave112/fincra-node-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/E-wave112/fincra-node-sdk/issues"
+  },
   "readme": "README.md",
   "husky": {
     "hooks": {}
