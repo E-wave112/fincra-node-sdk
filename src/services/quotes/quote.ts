@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError, IEnvironment } from '../../utils';
+import { BaseError, handleErrors, IEnvironment } from '../../utils';
 import { CreateQuoteDto } from './dto';
 
 /**
@@ -30,10 +30,9 @@ export class Quote extends FincraCore {
     try {
       const request = this.getBaseUrl();
       const response = await request.post(`/quotes/generate`, data);
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 }

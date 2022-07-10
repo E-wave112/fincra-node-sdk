@@ -5,13 +5,15 @@ import {
   getUrl,
   BaseError,
   excludeFields,
+  handleErrors,
+  handleAxiosError,
 } from './utils';
 
 /**
  * @class Fincra REST api initializer
  */
 export class FincraCore {
-  public request;
+  public request: AxiosInstance;
 
   /**
    * This is a constructor for creating a fincra core instance
@@ -45,8 +47,8 @@ export class FincraCore {
   public getBaseUrl(): AxiosInstance {
     try {
       return this.request;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -65,8 +67,8 @@ export class FincraCore {
         data: req.data,
       });
       return requestInstance;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleAxiosError(error) });
     }
   }
 }

@@ -1,5 +1,7 @@
 # fincra-node-sdk
 
+![CircleCI](https://img.shields.io/circleci/build/github/E-wave112/fincra-node-sdk/main?token=2950ea968a490e910d269d5f8747660d3efe4d79)
+
 > A community supported NodeJS SDK that enables developers to build fintech products securely and seamlessy leveraging [Fincra's](https://fincra.com) API.
 
 ## Getting Started

@@ -1,5 +1,10 @@
 import { FincraCore } from '../../api';
-import { BaseError, excludeFields, IEnvironment } from '../../utils';
+import {
+  BaseError,
+  excludeFields,
+  handleErrors,
+  IEnvironment,
+} from '../../utils';
 import {
   CreateSubAccountDto,
   UpdateSubAccountDto,
@@ -37,8 +42,8 @@ export class Subaccount extends FincraCore {
         dataBody
       );
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -53,11 +58,9 @@ export class Subaccount extends FincraCore {
       const response = await request.get(
         `/profile/business/${id}/sub-accounts`
       );
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -73,8 +76,8 @@ export class Subaccount extends FincraCore {
         `/profile/business/${data.businessId}/sub-accounts/${data.subAccountId}`
       );
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -92,8 +95,8 @@ export class Subaccount extends FincraCore {
         dataBody
       );
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 }

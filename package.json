@@ -1,6 +1,6 @@
 {
   "version": "0.1.0",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -16,9 +16,17 @@
     "format": "yarn prettier --write .",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
+    "prepublishOnly": "yarn test && yarn build",
+    "preversion": "yarn test && yarn build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/E-wave112/fincra-node-sdk.git"
+  },
+  "homepage": "https://github.com/E-wave112/fincra-node-sdk#readme",
+  "readme": "README.md",
   "husky": {
     "hooks": {}
   },
@@ -28,16 +36,15 @@
   "size-limit": [
     {
       "path": "dist/fincra-node-sdk.cjs.production.min.js",
-      "limit": "20 KB"
+      "limit": "15 KB"
     },
     {
       "path": "dist/fincra-node-sdk.esm.js",
-      "limit": "20 KB"
+      "limit": "15 KB"
     }
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.8",
-    "@types/dotenv": "^8.2.0",
     "@types/jest": "^28.1.0",
     "class-validator": "^0.13.2",
     "dotenv": "^16.0.1",
