@@ -435,42 +435,59 @@ const fetchCollection = fincra.collection.fetchCollectionAddition(data);
 | `reference` | string  | true   | The unique reference of the collection. |
 | `business`  | string  | false  | The business unique identifier.         |
 
-### 5. Wallets
+### 5. Conversions
 
-The wallet service consists of endpoints that provide information such as account balances, wallet number of a wallet, or wallets for a business. With the wallet service, You can manage the account balance for your business and that of your subaccounts.
+The Conversions service provides methods that can be used to initiate conversion between two different currencies and also fetch conversions previously generated.
 
-#### Get wallets
+#### Convert a currency
 
-This method lists all wallets belonging to a business.
+This method can convert one currency to another provided that it's a supported conversion currency e.g NGN to USD.
 
 ```ts
-const businessId = '627fefbe5a65ec99ba9af0be';
-const wallets = fincra.wallet.listWallet(businessId);
+const data = {
+  business: '62c5c5876805783477ef9f7a',
+  quoteReference: '123456789',
+};
+
+const createConvert = fincra.conversion.createConversion(data);
 ```
 
 #### Parameters supported
 
-| **Parameters**   | **Data type** | **Required** | **Description**                        |
-| ------------ | --------- | -------- | ---------------------------------- |
-| `businessId` | string  | true   | The business unique identifier. |
+| **Parameters**       | **Data type** | **Required** | **Description**                                      |
+| ---------------- | --------- | -------- | ------------------------------------------------ |
+| `business`       | string  | true   | The business unique identifier.                |
+| `quoteReference` | string  | true   | This is the reference generated for the quote. |
 
-#### Get wallets of specific merchants
-This method lists the wallets od a specified merchant.
+#### Fetch a conversion
 
-#### Parameters supported
+This method fetches a specific conversion performed by a parent Business or sub account.
 
-| **Parameters**   | **Data type** | **Required** | **Description**                        |
-| ------------ | --------- | -------- | ---------------------------------- |
-| `businessId` | string  | true   | The business unique identifier. |
-
-#### Return a wallet object details 
-This method returns a wallet object of a specified wallet.
+```ts
+const conversionId = '62c5c5876805783477ef9f7a';
+const fetchConvert = fincra.conversion.fetchConversion(conversionId);
+```
 
 #### Parameters supported
 
-| **Parameters**   | **Data type** | **Required** | **Description**                        |
-| ------------ | --------- | -------- | ---------------------------------- |
-| `walletId` | string  | true   | The business unique identifier. |
+| **Parameters**     | **Data type** | **Required** | **Description**                        |
+| -------------- | --------- | -------- | ---------------------------------- |
+| `conversionId` | string  | true   | The id of a specific conversion. |
+
+#### List conversions
+
+This method provides a list of all conversions performed by a business.
+
+```ts
+const businessId = '62c5c5876805783477ef9f7a';
+const listBusinessConversions = fincra.conversion.getBusinessConversions(businessId);
+```
+
+#### Parameters supported
+
+| **Parameters**   | **Data type** | **Required** | **Description**                       |
+| ------------ | --------- | -------- | --------------------------------- |
+| `businessId` | string  | true   | The business unique identifier. |
 
 ### 6. Payouts
 
@@ -884,8 +901,7 @@ const data = {
   },
 };
 
-const createInstantApproval =
-  fincra.virtualAccount.createInstantApprovalVirtualAccount(data);
+const createInstantApproval = fincra.virtualAccount.createInstantApprovalVirtualAccount(data);
 ```
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/request-individual-virtual-account-for-a-sub-account-1)
@@ -933,8 +949,7 @@ const data = {
     additionalInfo: 'Nada',
   },
 };
-const createIndividual =
-  fincra.virtualAccount.createIndividualSubVirtualAccount(data);
+const createIndividual = fincra.virtualAccount.createIndividualSubVirtualAccount(data);
 ```
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/request-individual-virtual-account-for-a-sub-account)
@@ -988,8 +1003,7 @@ const createCorporateVirtualAccountObj = {
   channel: 'vfd',
 };
 
-const createCorporate =
-  fincra.virtualAccount.createCorporateSubVirtualAccount(data);
+const createCorporate = fincra.virtualAccount.createCorporateSubVirtualAccount(data);
 ```
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/request-virtual-account-for-a-sub-account)
@@ -1026,8 +1040,7 @@ const listMerchant = fincra.virtualAccount.listMerchantVirtual(data);
 This method is used for getting all virtual account requests belonging to a merchant
 
 ```ts
-const virtualAccountRequests =
-  fincra.virtualAccount.listVirtualAccountRequests();
+const virtualAccountRequests = fincra.virtualAccount.listVirtualAccountRequests();
 ```
 
 #### Fetch a virtual account by currency
@@ -1036,8 +1049,7 @@ This method is used for retrieving a virtual account that is belongs to a mercha
 
 ```ts
 const currency = 'NGN';
-const fetchVirtualAccount =
-  fincra.virtualAccount.fetchVirtualAccountByCurrency(currency);
+const fetchVirtualAccount = fincra.virtualAccount.fetchVirtualAccountByCurrency(currency);
 ```
 
 #### Parameters Supported
@@ -1052,8 +1064,7 @@ This method is used for retrieving a virtual account attached to a merchant.
 
 ```ts
 const virtualAccountId = '62c1be78a14d91ca07297cfd';
-const fetchSingle =
-  fincra.virtualAccount.fetchSingleVirtualAccount(virtualAccountId);
+const fetchSingle = fincra.virtualAccount.fetchSingleVirtualAccount(virtualAccountId);
 ```
 
 #### Parameters Supported
