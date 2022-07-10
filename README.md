@@ -1,6 +1,6 @@
 # fincra-node-sdk
 
-![CircleCI](https://img.shields.io/circleci/build/github/E-wave112/fincra-node-sdk/main?token=2950ea968a490e910d269d5f8747660d3efe4d79)
+![CircleCI](https://img.shields.io/circleci/build/github/E-wave112/fincra-node-sdk/main?token=2950ea968a490e910d269d5f8747660d3efe4d79) ![npm](https://img.shields.io/npm/v/fincra-node-sdk)
 
 > A community supported NodeJS SDK that enables developers to build fintech products securely and seamlessy leveraging [Fincra's](https://fincra.com) API.
 
@@ -13,25 +13,25 @@
 ## Installation
 
 ```js
-npm install fincra-node
+npm install fincra-node-sdk
 ```
 
 ### Or with yarn
 
 ```js
-yarn add fincra-node
+yarn add fincra-node-sdk
 ```
 
 ## Usage
 
 ```js
-const Fincra = require('fincra-node');
+const Fincra = require('fincra-node-sdk');
 ```
 
 ### with Typescript
 
 ```ts
-import Fincra from 'fincra-node';
+import Fincra from 'fincra-node-sdk';
 ```
 
 ### instantiate the Fincra class
