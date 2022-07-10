@@ -1,6 +1,6 @@
 # Fincra node SDK
 
-A community suported NodeJS SDK for developers.
+A community supported NodeJS SDK that enables developers to build fintech products securely and seamlessy leveraging [Fincra's](https://fincra.com/) API.
 
 ## Table of content
 - [Getting Started](#getting-started)
@@ -10,7 +10,7 @@ A community suported NodeJS SDK for developers.
 
 ## Getting Started
 
-- To get started with this SDK, create an [account]((https://api.fincra.com/)) on Fincra or a [sandbox account](https://sandboxapi.fincra.com/) if you haven't already.
+- To get started with this SDK, create an [account]((https://app.fincra.com/)) on Fincra or a [sandbox account](https://sandbox.fincra.com/) if you haven't already.
 - You can then retrieve your API keys from your [sandbox dashboard](https://sandbox.fincra.com/dashboard) or [account dashboard.](https://app.fincra.com/).
 
 #### Want to contribute?
@@ -30,7 +30,6 @@ yarn add fincra-node-sdk
 ```
 
 ## Usage
-With JavaScript,
 
 ```js
 const Fincra = require('fincra-node-sdk');  // JavaScript
@@ -46,7 +45,7 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY, { sandbox: true });
 
 **Note:**
 
-- The sandbox is optional, if you don't specify it, it will default to false, and you will be using the [production(live)](https://api.fincra.com/) API. For example:
+- The sandbox field is optional, if you don't specify it, it will default to false, and you will be using the [production(live)](https://api.fincra.com/) API. For example:
 
 ```javascript
 const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
@@ -56,7 +55,7 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 - Be sure to keep your API Credentials securely in [environment variables](https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html).
 
 ## Available Services exposed by the SDK
-The following methods are available with this SDK
+The following services are available with this SDK
 
 **1**. [**Business**](#1-business)
 
