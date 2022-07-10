@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError, IEnvironment } from '../../utils';
+import { BaseError, handleErrors, IEnvironment } from '../../utils';
 import {
   FetchCollectionVirtualAccountDto,
   ListCollectionMainVirtualAccountDto,
@@ -35,9 +35,8 @@ export class Collection extends FincraCore {
         data
       );
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -53,9 +52,8 @@ export class Collection extends FincraCore {
         `/wallets/topups?business=${data.business}&reference=${data.reference}&page=${data.page}&perPage=${data.perPage}`
       );
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
   /**
@@ -70,9 +68,8 @@ export class Collection extends FincraCore {
         `/collections/reference/${data.reference}?business=${data.business}`
       );
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 

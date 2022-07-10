@@ -4,6 +4,8 @@ import {
   BaseError,
   IEnvironment,
   excludeFields,
+  handleErrors,
+  handleAxiosError,
 } from '../../utils';
 import {
   CreateBeneficiaryDto,
@@ -43,9 +45,8 @@ export class Beneficiary extends FincraCore {
         dataBody
       );
       return response.data;
-    } catch (error: any) {
-      // console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -64,11 +65,9 @@ export class Beneficiary extends FincraCore {
         data: dataBody,
       };
       const response = await this.useGetRequest(requestObj);
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      // console.error(error);
-      throw new BaseError({ message: error.message });
+    } catch (error) {
+      throw new BaseError({ message: handleAxiosError(error) });
     }
   }
 
@@ -84,9 +83,9 @@ export class Beneficiary extends FincraCore {
         `/profile/beneficiaries/business/${data.businessId}/${data.beneficiaryId}`
       );
       return response.data;
-    } catch (error: any) {
-      // console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      //
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -104,9 +103,8 @@ export class Beneficiary extends FincraCore {
         dataBody
       );
       return response.data;
-    } catch (error: any) {
-      // console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -122,9 +120,8 @@ export class Beneficiary extends FincraCore {
         `/profile/beneficiaries/business/${data.businessId}/${data.beneficiaryId}`
       );
       return response.data;
-    } catch (error: any) {
-      // console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 }

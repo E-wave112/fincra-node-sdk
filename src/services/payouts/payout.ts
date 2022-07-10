@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError, IEnvironment } from '../../utils';
+import { BaseError, IEnvironment, handleErrors } from '../../utils';
 import {
   CreatePayoutDto,
   WalletToWalletTransferDto,
@@ -33,9 +33,8 @@ export class Payout extends FincraCore {
       const request = this.getBaseUrl();
       const response = await request.post(`/disbursements/payouts`, data);
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -52,9 +51,8 @@ export class Payout extends FincraCore {
         data
       );
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -70,9 +68,8 @@ export class Payout extends FincraCore {
         `/disbursements/payouts/reference/${reference}`
       );
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -88,9 +85,8 @@ export class Payout extends FincraCore {
         `/disbursements/payouts/customer-reference/${creference}`
       );
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -99,9 +95,8 @@ export class Payout extends FincraCore {
       const request = this.getBaseUrl();
       const response = await request.get(`/core/banks?currency=NGN&country=NG`);
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -115,9 +110,8 @@ export class Payout extends FincraCore {
       const request = this.getBaseUrl();
       const response = await request.post(`/payouts/documents-upload `, data);
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
   // TODO: list payouts

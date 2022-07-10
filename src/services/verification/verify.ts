@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError, IEnvironment } from '../../utils';
+import { BaseError, handleErrors, IEnvironment } from '../../utils';
 import { VerifyBankAccountDto } from './dto';
 
 /**
@@ -29,10 +29,9 @@ export class VerifyCreds extends FincraCore {
     try {
       const request = this.getBaseUrl();
       const response = await request.post(`/core/accounts/resolve`, data);
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
   /**
@@ -46,11 +45,9 @@ export class VerifyCreds extends FincraCore {
       const response = await request.get(
         `/checkout/payments/merchant-reference/${reference}`
       );
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 }

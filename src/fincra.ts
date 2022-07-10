@@ -1,4 +1,3 @@
-import sanitizedConfig from './config/envconfig';
 import {
   Conversion,
   Business,
@@ -78,20 +77,3 @@ export class Fincra {
     this.environment
   );
 }
-
-// const fin = new Fincra(
-//   'pk_NjI3ZmVmYmU1YTY1ZWM5OWJhOWFmMGJlOjoxMjE2NzA=',
-//   'hzjMvDeY0dmBrDPSxZH5exnmdNc0aUXy'
-// );
-
-const fin = new Fincra(
-  sanitizedConfig.FINCRA_PUBLIC_KEY,
-  sanitizedConfig.FINCRA_SECRET_KEY,
-  { sandbox: false }
-);
-
-// let result = fin.convert.getBusinessConversions("627fefbe5a65ec99ba9af0be")
-// console.log(result)
-
-let result = fin.wallet.listWallet('627fefbe5a65ec99ba9af0be');
-console.log(result);

@@ -1,5 +1,5 @@
 import { FincraCore } from '../../api';
-import { BaseError, IEnvironment } from '../../utils';
+import { BaseError, handleErrors, IEnvironment } from '../../utils';
 
 /**
  * The Business module for handling the business related operations.
@@ -26,11 +26,9 @@ export class Business extends FincraCore {
     try {
       const request = this.getBaseUrl();
       const response = await request.get(`/profile/merchants/me`);
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      console.error(error);
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 }

@@ -4,6 +4,8 @@ import {
   BaseError,
   IEnvironment,
   excludeFields,
+  handleAxiosError,
+  handleErrors,
 } from '../../utils';
 import {
   CreateVirtualAccountDto,
@@ -43,8 +45,8 @@ export class VirtualAccount extends FincraCore {
         data
       );
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
   /**
@@ -63,8 +65,8 @@ export class VirtualAccount extends FincraCore {
         dataBody
       );
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -84,8 +86,8 @@ export class VirtualAccount extends FincraCore {
         dataBody
       );
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
   /**
@@ -104,8 +106,8 @@ export class VirtualAccount extends FincraCore {
         dataBody
       );
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
   /**
@@ -117,8 +119,8 @@ export class VirtualAccount extends FincraCore {
       const request = this.getBaseUrl();
       const response = await request.get('/profile/virtual-accounts/requests');
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -134,8 +136,8 @@ export class VirtualAccount extends FincraCore {
         `/profile/virtual-accounts?currency=${currency}`
       );
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -153,10 +155,9 @@ export class VirtualAccount extends FincraCore {
         data: dataBody,
       };
       const response = await this.useGetRequest(requestObj);
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.message });
+    } catch (error) {
+      throw new BaseError({ message: handleAxiosError(error) });
     }
   }
   /**
@@ -171,8 +172,8 @@ export class VirtualAccount extends FincraCore {
         `/profile/virtual-accounts/${virtualAccountId}`
       );
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.response.data });
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
     }
   }
 
@@ -190,10 +191,9 @@ export class VirtualAccount extends FincraCore {
         data,
       };
       const response = await this.useGetRequest(requestObj);
-      console.log(response.data);
       return response.data;
-    } catch (error: any) {
-      throw new BaseError({ message: error.message });
+    } catch (error) {
+      throw new BaseError({ message: handleAxiosError(error) });
     }
   }
 }
