@@ -1,47 +1,47 @@
 # Fincra-node-sdk
 
-![CircleCI](https://img.shields.io/circleci/build/github/E-wave112/fincra-node-sdk/main?token=2950ea968a490e910d269d5f8747660d3efe4d79) ![npm](https://img.shields.io/npm/v/fincra-node-sdk)
-
+![CircleCI](https://img.shields.io/circleci/build/github/E-wave112/fincra-node-sdk/main?token=2950ea968a490e910d269d5f8747660d3efe4d79) ![npm](https://img.shields.io/npm/v/fincra-node-sdk) ![npm](https://img.shields.io/npm/dt/fincra-node-sdk) ![NPM](https://img.shields.io/npm/l/fincra-node-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/min/fincra-node-sdk)
 
 A community supported NodeJS SDK that enables developers to build fintech products securely and seamlessy leveraging [Fincra's](https://fincra.com/) API.
 
 ## Table of content
+
 - [Getting Started](#getting-started)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Available Services exposed by the SDK](#available-services-exposed-by-the-sdk)
 
-
 ## Getting Started
 
-- To get started with this SDK, create an [account]((https://app.fincra.com/)) on Fincra or a [sandbox account](https://sandbox.fincra.com/) if you haven't already.
+- To get started with this SDK, create an [account](https://app.fincra.com/) on Fincra or a [sandbox account](https://sandbox.fincra.com/) if you haven't already.
 - You can then retrieve your API keys from your [sandbox dashboard](https://sandbox.fincra.com/dashboard) or [account dashboard.](https://app.fincra.com/).
 
 #### Want to contribute?
-Contributions are welcome! Kindly refer to the [contribution guidelines](CONTRIBUTING.md).
+
+Contributions are welcome! Kindly refer to the [contribution guidelines](https://github.com/E-wave112/fincra-node-sdk/blob/main/CONTRIBUTING.md).
 
 ## Installation
+
 This SDK can be installed with `npm` or `yarn`.
 
-
 Using `npm`,
+
 ```
 npm install fincra-node-sdk
 ```
+
 Using `yarn`,
 
-``` bash
+```bash
 yarn add fincra-node-sdk
 ```
 
 ## Usage
 
 ```js
-const Fincra = require('fincra-node-sdk');  // JavaScript
-import Fincra from 'fincra-node-sdk';   // Typescript
+const { Fincra } = require('fincra-node-sdk'); // JavaScript
+import { Fincra } from 'fincra-node-sdk'; // Typescript
 ```
-
-
 
 Instantiate the Fincra class
 
@@ -61,6 +61,7 @@ const fincra = new Fincra(PUBLIC_KEY, PRIVATE_KEY);
 - Be sure to keep your API Credentials securely in [environment variables](https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html).
 
 ## Available Services exposed by the SDK
+
 The following services are available with this SDK
 
 **1**. [**Business**](#1-business)
@@ -150,12 +151,13 @@ This method lets you retrieves the unique Identifier of your business and other 
 The unique identifier(businessId) allows your business to access other services.
 
 ```ts
-const business = fincra.business.getBusinessId();
+const business = await fincra.business.getBusinessId();
 ```
 
 ### 2. Beneficiaries
 
 The beneficiary’s service allows the business to create beneficiaries that can receive payments.
+
 > **NOTE**: Beneficiaries and recipients are used interchangeably in this documentation.
 
 #### Create a beneficiary
@@ -197,7 +199,7 @@ const data = {
   destinationAddress: 'AKoka, yaba, lagos',
 };
 
-const createBen = fincra.beneficiary.createBeneficiary(data);
+const createBen = await fincra.beneficiary.createBeneficiary(data);
 ```
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/create-a-beneficiary)
@@ -214,16 +216,16 @@ const data = {
   page: '1',
   perPage: '10',
 };
-const listBen = fincra.beneficiary.listBeneficiaries(data);
+const listBen = await fincra.beneficiary.listBeneficiaries(data);
 ```
 
 #### Parameters supported
 
-| **Parameters**   | **Data type** | **Required** | **Description**                                         |
-| ------------ | --------- | -------- | --------------------------------------------------- |
-| `businessId` | string | true  | The business unique identifier.                   |
-| `page`       | string  | false  | The current page.                                 |
-| `perPage`    | string  | false  | The number of beneficiaries to be viewed per page. |
+| **Parameters** | **Data type** | **Required** | **Description**                                    |
+| -------------- | ------------- | ------------ | -------------------------------------------------- |
+| `businessId`   | string        | true         | The business unique identifier.                    |
+| `page`         | string        | false        | The current page.                                  |
+| `perPage`      | string        | false        | The number of beneficiaries to be viewed per page. |
 
 #### Fetch beneficiaries
 
@@ -237,15 +239,15 @@ const data = {
   beneficiaryId: '618fefbe4a68ec99ba5af0be',
 };
 
-const fetchBen = fincra.beneficiary.fetchBeneficiary(data);
+const fetchBen = await fincra.beneficiary.fetchBeneficiary(data);
 ```
 
 #### Parameters supported
 
-| **Parameters**      | **Data type** | **Required** | **Description**                       |
-| --------------- | --------- | -------- | --------------------------------- |
-| `businessId`    | string  | true  | The business unique identifier. |
-| `beneficiaryId` | string  | true   | The id of the beneficiary       |
+| **Parameters**  | **Data type** | **Required** | **Description**                 |
+| --------------- | ------------- | ------------ | ------------------------------- |
+| `businessId`    | string        | true         | The business unique identifier. |
+| `beneficiaryId` | string        | true         | The id of the beneficiary       |
 
 #### Update a beneficiary
 
@@ -287,7 +289,7 @@ const data = {
   beneficiaryId: '618fefbe4a68ec99ba5af0be',
 };
 
-const updateBen = fincra.beneficiary.updateBeneficiary(data);
+const updateBen = await fincra.beneficiary.updateBeneficiary(data);
 ```
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/update-a-beneficiary)
@@ -302,15 +304,15 @@ const data = {
   beneficiaryId: '618fefbe4a68ec99ba5af0be',
 };
 
-const deleteBen = fincra.beneficiary.deleteBeneficiary(data);
+const deleteBen = await fincra.beneficiary.deleteBeneficiary(data);
 ```
 
 #### Parameters supported
 
-| **Parameters**      | **Data type** | **Required** | **Description**                       |
-| --------------- | --------- | -------- | --------------------------------- |
-| `businessId`    | string` | true   | The business unique identifier. |
-| `beneficiaryId` | string  | true   | The id of the beneficiary.      |
+| **Parameters**  | **Data type** | **Required** | **Description**                 |
+| --------------- | ------------- | ------------ | ------------------------------- |
+| `businessId`    | string`       | true         | The business unique identifier. |
+| `beneficiaryId` | string        | true         | The id of the beneficiary.      |
 
 ### 3. Chargebacks
 
@@ -322,14 +324,14 @@ This method lets you list all the chargebacks incurred on your account.
 
 ```ts
 const businessId = '618fefbe5a65ec99ba9af0de';
-const listCharge = fincra.chargebacks.listChargeBacks(businessId);
+const listCharge = await fincra.chargebacks.listChargeBacks(businessId);
 ```
 
 #### Parameters supported
 
-| **Parameters**   | **Data type** | **Required** | **Description**                       |
-| ------------ | --------- | -------- | --------------------------------- |
-| `businessId` | string  | true   | The business unique identifier. |
+| **Parameters** | **Data type** | **Required** | **Description**                 |
+| -------------- | ------------- | ------------ | ------------------------------- |
+| `businessId`   | string        | true         | The business unique identifier. |
 
 #### Accept a chargeback
 
@@ -341,15 +343,15 @@ const data = {
   businessId: '627fefbe5a65ec99ba9af0be',
 };
 
-const acceptCharge = fincra.chargebacks.acceptChargeBack(acceptCharge);
+const acceptCharge = await fincra.chargebacks.acceptChargeBack(acceptCharge);
 ```
 
 #### Parameters supported
 
-| **Parameters**     | **Data type** | **Required** | **Description**                         |
-| -------------- | --------- | -------- | ----------------------------------- |
-| `businessId`   | string  | true  | The business unique identifier.   |
-| `chargeBackId` | string  | true   | The id of the specific chargeback. |
+| **Parameters** | **Data type** | **Required** | **Description**                    |
+| -------------- | ------------- | ------------ | ---------------------------------- |
+| `businessId`   | string        | true         | The business unique identifier.    |
+| `chargeBackId` | string        | true         | The id of the specific chargeback. |
 
 #### Reject a chargeback
 
@@ -362,7 +364,7 @@ const data = {
   reason: 'suspected duplicate chargeback',
 };
 
-const rejectCharge = fincra.chargebacks.rejectChargeBack(data);
+const rejectCharge = await fincra.chargebacks.rejectChargeBack(data);
 ```
 
 #### Parameters supported
@@ -388,16 +390,16 @@ const data = {
   merchantReference: '627fefbe5a65ec99ba9cf0fe',
 };
 
-const payWithTransfer = fincra.collection.payWithTransfer(data);
+const payWithTransfer = await fincra.collection.payWithTransfer(data);
 ```
 
 #### Parameters supported
 
-| **Parameters**   | **Data type** | **Required** | **Description**                                                 |
-| ------------------- | --------- | -------- | ----------------------------------------------------------- |
-| `expiresAt`         | string  | true   | The expiry of the virtual account in minutes.             |
-| `name`              | string | false  | The name that should be on the account.                    |
-| `merchantReference` | string  | false | The unique identifier of the transaction on your system . |
+| **Parameters**      | **Data type** | **Required** | **Description**                                           |
+| ------------------- | ------------- | ------------ | --------------------------------------------------------- |
+| `expiresAt`         | string        | true         | The expiry of the virtual account in minutes.             |
+| `name`              | string        | false        | The name that should be on the account.                   |
+| `merchantReference` | string        | false        | The unique identifier of the transaction on your system . |
 
 #### List Collection for a main Virtual Account
 
@@ -410,17 +412,17 @@ const data = {
   page: '1',
   perPage: '30',
 };
-const listCollection = fincra.collection.listCollectionMain(data);
+const listCollection = await fincra.collection.listCollectionMain(data);
 ```
 
 #### Parameters supported
 
-| **Parameters**  | **Data type** | **Required** | **Description**                                       |
-| ----------- | --------- | -------- | ------------------------------------------------- |
-| `business`  | string  | true   | The business unique identifier.                 |
-| `reference` | string  | false  | The reference of the transaction.               |
-| `page`      | string  | false  | The current page.                                |
-| `perPage`   | string  | false  | The number of collections to be viewed per page. |
+| **Parameters** | **Data type** | **Required** | **Description**                                  |
+| -------------- | ------------- | ------------ | ------------------------------------------------ |
+| `business`     | string        | true         | The business unique identifier.                  |
+| `reference`    | string        | false        | The reference of the transaction.                |
+| `page`         | string        | false        | The current page.                                |
+| `perPage`      | string        | false        | The number of collections to be viewed per page. |
 
 #### Fetch a collection for an additional virtual account
 
@@ -431,15 +433,15 @@ const data = {
   reference: '77gefbe5a65ec99ba9af3be',
   business: '627fefbe5a65ec99ba9af0be',
 };
-const fetchCollection = fincra.collection.fetchCollectionAddition(data);
+const fetchCollection = await fincra.collection.fetchCollectionAddition(data);
 ```
 
 #### Parameters supported
 
-| **Parameters**  | **Data type** | **Required** | **Description**                               |
-| ----------- | --------- | -------- | ----------------------------------------- |
-| `reference` | string  | true   | The unique reference of the collection. |
-| `business`  | string  | false  | The business unique identifier.         |
+| **Parameters** | **Data type** | **Required** | **Description**                         |
+| -------------- | ------------- | ------------ | --------------------------------------- |
+| `reference`    | string        | true         | The unique reference of the collection. |
+| `business`     | string        | false        | The business unique identifier.         |
 
 ### 5. Conversions
 
@@ -455,15 +457,15 @@ const data = {
   quoteReference: '123456789',
 };
 
-const createConvert = fincra.conversion.createConversion(data);
+const createConvert = await fincra.conversion.createConversion(data);
 ```
 
 #### Parameters supported
 
-| **Parameters**       | **Data type** | **Required** | **Description**                                      |
-| ---------------- | --------- | -------- | ------------------------------------------------ |
-| `business`       | string  | true   | The business unique identifier.                |
-| `quoteReference` | string  | true   | This is the reference generated for the quote. |
+| **Parameters**   | **Data type** | **Required** | **Description**                                |
+| ---------------- | ------------- | ------------ | ---------------------------------------------- |
+| `business`       | string        | true         | The business unique identifier.                |
+| `quoteReference` | string        | true         | This is the reference generated for the quote. |
 
 #### Fetch a conversion
 
@@ -471,14 +473,14 @@ This method fetches a specific conversion performed by a parent Business or sub 
 
 ```ts
 const conversionId = '62c5c5876805783477ef9f7a';
-const fetchConvert = fincra.conversion.fetchConversion(conversionId);
+const fetchConvert = await fincra.conversion.fetchConversion(conversionId);
 ```
 
 #### Parameters supported
 
-| **Parameters**     | **Data type** | **Required** | **Description**                        |
-| -------------- | --------- | -------- | ---------------------------------- |
-| `conversionId` | string  | true   | The id of a specific conversion. |
+| **Parameters** | **Data type** | **Required** | **Description**                  |
+| -------------- | ------------- | ------------ | -------------------------------- |
+| `conversionId` | string        | true         | The id of a specific conversion. |
 
 #### List conversions
 
@@ -486,14 +488,16 @@ This method provides a list of all conversions performed by a business.
 
 ```ts
 const businessId = '62c5c5876805783477ef9f7a';
-const listBusinessConversions = fincra.conversion.getBusinessConversions(businessId);
+const listBusinessConversions = await fincra.conversion.getBusinessConversions(
+  businessId
+);
 ```
 
 #### Parameters supported
 
-| **Parameters**   | **Data type** | **Required** | **Description**                       |
-| ------------ | --------- | -------- | --------------------------------- |
-| `businessId` | string  | true   | The business unique identifier. |
+| **Parameters** | **Data type** | **Required** | **Description**                 |
+| -------------- | ------------- | ------------ | ------------------------------- |
+| `businessId`   | string        | true         | The business unique identifier. |
 
 ### 6. Payouts
 
@@ -545,7 +549,7 @@ const data = {
   quoteReference: 'wwwqqereqa',
 };
 
-const createPayout = fincra.payouts.createPayout(data);
+const createPayout = await fincra.payouts.createPayout(data);
 ```
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/payout-1)
@@ -562,18 +566,18 @@ const data = {
   description: 'For the month',
   beneficiaryWalletNumber: '11234568943',
 };
-const walletToWallet = fincra.payouts.walletToWalletTransfer(data);
+const walletToWallet = await fincra.payouts.walletToWalletTransfer(data);
 ```
 
 #### Parameters Supported
 
-| **Parameters**               | **Data type** | **Required** | **Description**                                                                       |
-| ------------------------- | --------- | -------- | --------------------------------------------------------------------------------- |
-| `amount`                  | string  | true   | The value that is to be transferred from the source currency wallet.           |
-| `business`                | string  | true   | The business unique identifier.                                                 |
-| `customerReference`       | string  | true   | The reference of the transaction.                                               |
-| `description`             | string  | true   | The purpose of payment.                                                         |
-| `beneficiaryWalletNumber` | string  | true   | This is the unique wallet number of the beneficiary you want to make payment to. |
+| **Parameters**            | **Data type** | **Required** | **Description**                                                                  |
+| ------------------------- | ------------- | ------------ | -------------------------------------------------------------------------------- |
+| `amount`                  | string        | true         | The value that is to be transferred from the source currency wallet.             |
+| `business`                | string        | true         | The business unique identifier.                                                  |
+| `customerReference`       | string        | true         | The reference of the transaction.                                                |
+| `description`             | string        | true         | The purpose of payment.                                                          |
+| `beneficiaryWalletNumber` | string        | true         | This is the unique wallet number of the beneficiary you want to make payment to. |
 
 #### Upload transaction document
 
@@ -586,17 +590,17 @@ const data = {
   reference: '29012939483828ej',
   file: 'data:text/html;name=Zoom%20Clone.html;base64,PGh0bWwgbGFuZz0iZW4iPjxoZWFkPgo8bWV0YSBodHRwLWVxdWl2PSJjb250ZW50LXR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD1VVEYtOCI+CiAgICA8bWV0YSBjaGFyc2V0PSJVVEYtOCI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCI+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Ilpvb20lMjBDbG9uZV9maWxlcy9zdHlsZS5jc3MiPgogICAgPHRpdGxlPlpvb20gQ2xvbmU8L3RpdGxlPgogICAgPHNjcmlwdCBzcmM9Ilpvb20lMjBDbG9uZV9maWxlcy9zb2NrZXQuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdCBzcmM9Ilpvb20lMjBDbG9uZV9maWxlcy9wZWVyanMuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdD4KICAgICAgICBjb25zdCBST09NX0lEID0gIjZiNzk5ZTUxLWE1MDUtNDlmYi04ZGViLTgxMDRhOGU5Y2QwYyIKICAgIDwvc2NyaXB0Pgo8L2hlYWQ+Cjxib2R5PgogICAKICAgIAogICAgPCEtLSBtYWluIHNlY3Rpb24gZm9yIG1ldGEgdmlkZW8gZGF0YSAtLT4KICAgIDxkaXYgY2xhc3M9Im1haW4iIHN0eWxlPSJoZWlnaHQiPgogICAgICAgIAogICAgPGRpdiBjbGFzcz0ibWFpbl9fbGVmdCI+CiAgICAgICAgPGRpdiBjbGFzcz0ibWFpbl9fdmlkZW9zIj4KICAgICAgICA8ZGl2IGlkPSJ2aWRlby1ncmlkIj4KICAgICAgICAgPHZpZGVvPjwvdmlkZW8+PC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9Im1haW5fX2NvbnRyb2xzIj4KICAgICAgICAKCgogICAgPC9kaXY+CjwvZGl2PgoKICAgIDxkaXYgY2xhc3M9Im1haW5fX3JpZ2h0Ij4KICAgICAgICA8ZGl2IGNsYXNzPSJtYWluX19oZWFkZXIiPjwvZGl2PgogICAgICAgIDxoNj5DaGF0PC9oNj4KICAgIDwvZGl2Pgo8L2Rpdj4KICAgIDxzY3JpcHQgc3JjPSJab29tJTIwQ2xvbmVfZmlsZXMvc2NyaXB0LmpzIj48L3NjcmlwdD4KCjwvYm9keT48L2h0bWw+',
 };
-const uploadPayout = fincra.payouts.uploadTransactionDocument(data);
+const uploadPayout = await fincra.payouts.uploadTransactionDocument(data);
 ```
 
 #### Parameters Supported
 
-| **Parameters**  | **Data type** | **Required** | **Description**                                                                                                                                                              |
-| ----------- | --------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `name`      | string  | true   | The name of the document.                                                                                                                                              |
-| `type`      | string  | true   | The type of document required to complete the transaction. After the payout has been initiated, this can be obtained from the response object of the payout response. |
-| `reference` | string  | true   | This is the unique reference generated for the payout.                                                                                                                 |
-| `file`      | string  | true   | The document required encoded to a base64 format.                                                                                                                       |
+| **Parameters** | **Data type** | **Required** | **Description**                                                                                                                                                       |
+| -------------- | ------------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`         | string        | true         | The name of the document.                                                                                                                                             |
+| `type`         | string        | true         | The type of document required to complete the transaction. After the payout has been initiated, this can be obtained from the response object of the payout response. |
+| `reference`    | string        | true         | This is the unique reference generated for the payout.                                                                                                                |
+| `file`         | string        | true         | The document required encoded to a base64 format.                                                                                                                     |
 
 #### Fetch a payout by reference
 
@@ -604,14 +608,14 @@ This method lets you retrieve and view a specific payout.
 
 ```ts
 const transactionReference = '29012939483828ej';
-const fetchPayout = fincra.payouts.fetchPayout(transactionReference);
+const fetchPayout = await fincra.payouts.fetchPayout(transactionReference);
 ```
 
 #### Parameters Supported
 
-| Parameters             | Data type | Required | Description                           |
-| ---------------------- | --------- | -------- | ------------------------------------- |
-| `transactionReference` | string  | true   | The unique reference of the payout. |
+| Parameters             | Data type | Required | Description                         |
+| ---------------------- | --------- | -------- | ----------------------------------- |
+| `transactionReference` | string    | true     | The unique reference of the payout. |
 
 #### Fetch a payout by Customer Reference
 
@@ -619,21 +623,23 @@ This method lets you retrieve and view a specific payout by the customer referen
 
 ```ts
 const customerReference = '677gefbe5a65ec99ba9af3be';
-const fetchCustomer = fincra.payouts.fetchCustomerPayout(customerReference);
+const fetchCustomer = await fincra.payouts.fetchCustomerPayout(
+  customerReference
+);
 ```
 
 #### Parameters Supported
 
-| **Parameters**          | **Data type** | **Required** | **Description**                                          |
-| ------------------- | --------- | -------- | ---------------------------------------------------- |
-| `customerReference` | string  | true   | The transaction's unique identifier on your system. |
+| **Parameters**      | **Data type** | **Required** | **Description**                                     |
+| ------------------- | ------------- | ------------ | --------------------------------------------------- |
+| `customerReference` | string        | true         | The transaction's unique identifier on your system. |
 
 #### List Banks
 
 This method lets you view a list of banks and mobile money wallet providers, together with their details such as code, swiftCode, and Bic.
 
 ```ts
-const banks = fincra.payouts.listBanks();
+const banks = await fincra.payouts.listBanks();
 ```
 
 ### 7. Quotes
@@ -658,23 +664,23 @@ const data = {
   transactionType: 'conversion',
 };
 
-const newQuote = fincra.quote.createQuote(data);
+const newQuote = await fincra.quote.createQuote(data);
 ```
 
 #### Parameters Supported
 
-| **Parameters**            | **Data type** | **Required** | **Description**                                                                                                                                                                         |
-| --------------------- | --------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `action`              | string  | true   | This value can only be "send" for conversions and disbursement.                                                                                                                   |
-| `amount`              | string  | true   | The amount you want to send or convert.                                                                                                                                            |
-| `beneficiaryType`     | string  | true   | The beneficiary type e.g individual or corporate. This is necessary in order to generate quotes for all African currencies.                                                      |
-| `business`            | string  | true   | This is the ID of the business.                                                                                                                                                       |
-| `destinationCurrency` | string  | true   | The currency in which the recipient will be receiving funds.                                                                                                                       |
-| `feeBearer`           | string  | true   | The bearer of the fees. it is usually one of conversion or business.                                                                                                               |
-| `paymentDestination`  | string  | true   | The payment destination. it is one of bank_accounts, fliqpay_wallet, mobile_money_wallet.                                                                                          |
-| `paymentScheme`       | string  | true  | This is the valid payment scheme for the destination currency you want to generate a quote for. This is only required when the transaction type is disbursement and not conversion. |
-| `sourceCurrency`      | string  | true   | The currency which is used to fund a currency conversion or payout.                                                                                                               |
-| `transactionType`     | string  | true   | The transaction type. It is usually one of conversion or disbursement.                                                                                                             |
+| **Parameters**        | **Data type** | **Required** | **Description**                                                                                                                                                                     |
+| --------------------- | ------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `action`              | string        | true         | This value can only be "send" for conversions and disbursement.                                                                                                                     |
+| `amount`              | string        | true         | The amount you want to send or convert.                                                                                                                                             |
+| `beneficiaryType`     | string        | true         | The beneficiary type e.g individual or corporate. This is necessary in order to generate quotes for all African currencies.                                                         |
+| `business`            | string        | true         | This is the ID of the business.                                                                                                                                                     |
+| `destinationCurrency` | string        | true         | The currency in which the recipient will be receiving funds.                                                                                                                        |
+| `feeBearer`           | string        | true         | The bearer of the fees. it is usually one of conversion or business.                                                                                                                |
+| `paymentDestination`  | string        | true         | The payment destination. it is one of bank_accounts, fliqpay_wallet, mobile_money_wallet.                                                                                           |
+| `paymentScheme`       | string        | true         | This is the valid payment scheme for the destination currency you want to generate a quote for. This is only required when the transaction type is disbursement and not conversion. |
+| `sourceCurrency`      | string        | true         | The currency which is used to fund a currency conversion or payout.                                                                                                                 |
+| `transactionType`     | string        | true         | The transaction type. It is usually one of conversion or disbursement.                                                                                                              |
 
 ### 8. SubAccounts
 
@@ -693,18 +699,18 @@ const data = {
   country: 'NG',
 };
 
-const newSubAcct = fincra.subacct.createSubAccount(data);
+const newSubAcct = await fincra.subacct.createSubAccount(data);
 ```
 
 #### Parameters Supported
 
-| **Parameters**   | **Data type** | **Required** | **Description**                                                                      |
-| ------------ | --------- | -------- | -------------------------------------------------------------------------------- |
-| `name`       | string  | true   | The name of your customer.                                                      |
-| `businessId` | string  | true   | The ID of the parent business.                                                 |
-| `email`      | string  | true   | The email of your customer.                                                     |
-| `mobile`     | string  | true   | The mobile number of your customer.                                             |
-| `country`    | string  | true   | The country code of your customer according to ISO 3166-1 alpha-2 codes e.g GB. |
+| **Parameters** | **Data type** | **Required** | **Description**                                                                 |
+| -------------- | ------------- | ------------ | ------------------------------------------------------------------------------- |
+| `name`         | string        | true         | The name of your customer.                                                      |
+| `businessId`   | string        | true         | The ID of the parent business.                                                  |
+| `email`        | string        | true         | The email of your customer.                                                     |
+| `mobile`       | string        | true         | The mobile number of your customer.                                             |
+| `country`      | string        | true         | The country code of your customer according to ISO 3166-1 alpha-2 codes e.g GB. |
 
 #### List sub-accounts
 
@@ -712,14 +718,14 @@ This method lets you view a list of sub-accounts for a business.
 
 ```ts
 const businessId = '62c5c5876805783477ef9f7a';
-const subAccounts = fincra.subacct.listSubAccounts(businessId);
+const subAccounts = await fincra.subacct.listSubAccounts(businessId);
 ```
 
 #### Parameters Supported
 
-| **Parameters**   | **Data type** | **Required** | **Description**                      |
-| ------------ | --------- | -------- | -------------------------------- |
-| `businessId` | string  | true   | The ID of the parent business. |
+| **Parameters** | **Data type** | **Required** | **Description**                |
+| -------------- | ------------- | ------------ | ------------------------------ |
+| `businessId`   | string        | true         | The ID of the parent business. |
 
 #### Fetch a sub-account
 
@@ -731,15 +737,15 @@ const data = {
   subAccountId: '62c631d3118b23e56849c97a',
 };
 
-const fetchSub = fincra.subacct.fetchSubAccount(data);
+const fetchSub = await fincra.subacct.fetchSubAccount(data);
 ```
 
 #### Parameters Supported
 
-| **Parameters**     | **Data type** | **Required** | **Description**                      |
-| -------------- | --------- | -------- | -------------------------------- |
-| `businessId`   | string  | true   | The ID of the parent business. |
-| `subAccountId` | string  | true   | The ID of the subaccount.      |
+| **Parameters** | **Data type** | **Required** | **Description**                |
+| -------------- | ------------- | ------------ | ------------------------------ |
+| `businessId`   | string        | true         | The ID of the parent business. |
+| `subAccountId` | string        | true         | The ID of the subaccount.      |
 
 #### Update a sub-account
 
@@ -754,18 +760,18 @@ const data = {
   mobile: '+23470745477514',
 };
 
-const updateSub = fincra.subacct.updateSubAccount(data);
+const updateSub = await fincra.subacct.updateSubAccount(data);
 ```
 
 #### Parameters Supported
 
-| **Parameters**     | **Data type** | **Required** | **Description**                          |
-| -------------- | --------- | -------- | ------------------------------------ |
-| `business`     | string  | true   | The ID of the parent business.     |
-| `subAccountId` | string  | true   | The ID of the subaccount.        |
-| `name`         | string | false | The name of your customer.         |
-| `email`        | string  | false  | The email of your customer.       |
-| `mobile`       | string  | false  | The mobile number of your customer. |
+| **Parameters** | **Data type** | **Required** | **Description**                     |
+| -------------- | ------------- | ------------ | ----------------------------------- |
+| `business`     | string        | true         | The ID of the parent business.      |
+| `subAccountId` | string        | true         | The ID of the subaccount.           |
+| `name`         | string        | false        | The name of your customer.          |
+| `email`        | string        | false        | The email of your customer.         |
+| `mobile`       | string        | false        | The mobile number of your customer. |
 
 ### 9. Verification
 
@@ -783,17 +789,17 @@ const data = {
   iban: 'GB29 NWBK 6016 1331 9268 19',
 };
 
-const verifyBank = fincra.verify.verifyBankAccount(data);
+const verifyBank = await fincra.verify.verifyBankAccount(data);
 ```
 
 #### Parameters Supported
 
-| **Parameters**      | **Data type** | **Required** | **Description**                                                                                             |
-| --------------- | --------- | -------- | ------------------------------------------------------------------------------------------------------- |
-| `accountNumber` | string  | true   | The account number of the bank.                                                                        |
-| `bankCode`      | string  | true   | The bank Code. This is required for NUBAN accounts.                                                    |
-| `type`          | string  | false  | The type of the account. It is either iban(international bank accounts) nuban(Nigerian bank accounts). |
-| `iban`          | string  | false  | The international bank account number. it is required when type is iban.                               |
+| **Parameters**  | **Data type** | **Required** | **Description**                                                                                        |
+| --------------- | ------------- | ------------ | ------------------------------------------------------------------------------------------------------ |
+| `accountNumber` | string        | true         | The account number of the bank.                                                                        |
+| `bankCode`      | string        | true         | The bank Code. This is required for NUBAN accounts.                                                    |
+| `type`          | string        | false        | The type of the account. It is either iban(international bank accounts) nuban(Nigerian bank accounts). |
+| `iban`          | string        | false        | The international bank account number. it is required when type is iban.                               |
 
 #### Verify Payment
 
@@ -801,14 +807,14 @@ This method lets you verify the status of the transaction on the checkout API
 
 ```ts
 const reference = 'a323f8f8f8f8f8f8';
-const verifyPay = fincra.verify.verifyPayment(reference);
+const verifyPay = await fincra.verify.verifyPayment(reference);
 ```
 
 #### Parameters Supported
 
-| **Parameters**  | **Data type** | **Required** | **Description**                                               |
-| ----------- | --------- | -------- | --------------------------------------------------------- |
-| `reference` | string  | true   | The unique reference for the transaction on your system. |
+| **Parameters** | **Data type** | **Required** | **Description**                                          |
+| -------------- | ------------- | ------------ | -------------------------------------------------------- |
+| `reference`    | string        | true         | The unique reference for the transaction on your system. |
 
 ### 10. Virtual Accounts
 
@@ -858,7 +864,7 @@ const data = {
   attachments: '',
 };
 
-const createVirtual = fincra.virtualAccount.createVirtualAccount(data);
+const createVirtual = await fincra.virtualAccount.createVirtualAccount(data);
 ```
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/request-virtual-accounts)
@@ -907,7 +913,8 @@ const data = {
   },
 };
 
-const createInstantApproval = fincra.virtualAccount.createInstantApprovalVirtualAccount(data);
+const createInstantApproval =
+  await fincra.virtualAccount.createInstantApprovalVirtualAccount(data);
 ```
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/request-individual-virtual-account-for-a-sub-account-1)
@@ -955,7 +962,8 @@ const data = {
     additionalInfo: 'Nada',
   },
 };
-const createIndividual = fincra.virtualAccount.createIndividualSubVirtualAccount(data);
+const createIndividual =
+  await fincra.virtualAccount.createIndividualSubVirtualAccount(data);
 ```
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/request-individual-virtual-account-for-a-sub-account)
@@ -1009,7 +1017,8 @@ const createCorporateVirtualAccountObj = {
   channel: 'vfd',
 };
 
-const createCorporate = fincra.virtualAccount.createCorporateSubVirtualAccount(data);
+const createCorporate =
+  await fincra.virtualAccount.createCorporateSubVirtualAccount(data);
 ```
 
 - More details about the parameters for the above method [here](https://docs.fincra.com/reference/request-virtual-account-for-a-sub-account)
@@ -1027,26 +1036,27 @@ const data = {
   accountNumber: '0234521090',
   status: 'approved',
 };
-const listMerchant = fincra.virtualAccount.listMerchantVirtual(data);
+const listMerchant = await fincra.virtualAccount.listMerchantVirtual(data);
 ```
 
 #### Parameters Supported
 
-| **Parameters**      | **Data type** | **Required** | **Description**                                                                                                                                                    |
-| --------------- | --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `currency`      | string  | true   | The virtual account currency.it is usually one of EUR, GPB or NGN.                                                                                            |
-| `businessName`  | string  | true   | Specify the name of the business or subaccount you want to retrieve.                                                                                         |
-| `issuedDate`    | string  | false  | The date the virtual account was issued . It must be in ISO 8601 date format e.g 2020-07-10 15:00:00.000, which represents the 10th of July 2020 at 3 p.m.    |
-| `requestedDate` | string  | false  | The date the virtual account was requested . It must be in ISO 8601 date format e.g 2020-07-10 15:00:00.000, which represents the 10th of July 2020 at 3 p.m. |
-| `accountNumber` | string  | false  | The account number of the virtual account.                                                                                                                   |
-| `status`        | string  | false  | The status of the virtual account. It can be one of the following: approved, pending, or declined.                                                             |
+| **Parameters**  | **Data type** | **Required** | **Description**                                                                                                                                               |
+| --------------- | ------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `currency`      | string        | true         | The virtual account currency.it is usually one of EUR, GPB or NGN.                                                                                            |
+| `businessName`  | string        | true         | Specify the name of the business or subaccount you want to retrieve.                                                                                          |
+| `issuedDate`    | string        | false        | The date the virtual account was issued . It must be in ISO 8601 date format e.g 2020-07-10 15:00:00.000, which represents the 10th of July 2020 at 3 p.m.    |
+| `requestedDate` | string        | false        | The date the virtual account was requested . It must be in ISO 8601 date format e.g 2020-07-10 15:00:00.000, which represents the 10th of July 2020 at 3 p.m. |
+| `accountNumber` | string        | false        | The account number of the virtual account.                                                                                                                    |
+| `status`        | string        | false        | The status of the virtual account. It can be one of the following: approved, pending, or declined.                                                            |
 
 #### List virtual account requests
 
 This method is used for getting all virtual account requests belonging to a merchant
 
 ```ts
-const virtualAccountRequests = fincra.virtualAccount.listVirtualAccountRequests();
+const virtualAccountRequests =
+  await fincra.virtualAccount.listVirtualAccountRequests();
 ```
 
 #### Fetch a virtual account by currency
@@ -1055,14 +1065,15 @@ This method is used for retrieving a virtual account that is belongs to a mercha
 
 ```ts
 const currency = 'NGN';
-const fetchVirtualAccount = fincra.virtualAccount.fetchVirtualAccountByCurrency(currency);
+const fetchVirtualAccount =
+  await fincra.virtualAccount.fetchVirtualAccountByCurrency(currency);
 ```
 
 #### Parameters Supported
 
-| **Parameters** | **Data type** | **Required** | **Description**                                                         |
-| ---------- | --------- | -------- | ------------------------------------------------------------------- |
-| `currency` | string  | true   | The virtual account currency.it is usually one of EUR, GPB or NGN. |
+| **Parameters** | **Data type** | **Required** | **Description**                                                    |
+| -------------- | ------------- | ------------ | ------------------------------------------------------------------ |
+| `currency`     | string        | true         | The virtual account currency.it is usually one of EUR, GPB or NGN. |
 
 #### Fetch a single virtual account
 
@@ -1070,14 +1081,16 @@ This method is used for retrieving a virtual account attached to a merchant.
 
 ```ts
 const virtualAccountId = '62c1be78a14d91ca07297cfd';
-const fetchSingle = fincra.virtualAccount.fetchSingleVirtualAccount(virtualAccountId);
+const fetchSingle = await fincra.virtualAccount.fetchSingleVirtualAccount(
+  virtualAccountId
+);
 ```
 
 #### Parameters Supported
 
-| **Parameters**         | **Data type** | **Required** | **Description**                      |
-| ------------------ | --------- | -------- | -------------------------------- |
-| `virtualAccountId` | string  | true   | The ID of the virtual account. |
+| **Parameters**     | **Data type** | **Required** | **Description**                |
+| ------------------ | ------------- | ------------ | ------------------------------ |
+| `virtualAccountId` | string        | true         | The ID of the virtual account. |
 
 #### List Sub-account Virtual Accounts
 
@@ -1090,17 +1103,19 @@ const data = {
   page: '1',
   perPage: '20',
 };
-const listSubVirtualAcct = fincra.virtualAccount.listSubVirtualAccounts(data);
+const listSubVirtualAcct = await fincra.virtualAccount.listSubVirtualAccounts(
+  data
+);
 ```
 
 #### Parameters Supported
 
-| **Parameters**     | **Data type** | **Required** | **Description**                       |
-| -------------- | --------- | -------- | --------------------------------- |
-| `businessId`   | string  | true   | The ID of the parent business.  |
-| `subAccountId` | string  | true   | The ID of the subaccount.       |
-| `page`         | string  | false  | The page number.                |
-| `perPage`      | string  | false  | The number of records per page. |
+| **Parameters** | **Data type** | **Required** | **Description**                 |
+| -------------- | ------------- | ------------ | ------------------------------- |
+| `businessId`   | string        | true         | The ID of the parent business.  |
+| `subAccountId` | string        | true         | The ID of the subaccount.       |
+| `page`         | string        | false        | The page number.                |
+| `perPage`      | string        | false        | The number of records per page. |
 
 ### 11. Wallets
 
@@ -1112,14 +1127,14 @@ This method lists all wallets belonging to a business.
 
 ```ts
 const businessId = '62c5c5876805783477ef9f7a';
-const wallets = fincra.wallet.listWallet(businessId);
+const wallets = await fincra.wallet.listWallet(businessId);
 ```
 
 #### Parameters Supported
 
-| **Parameters**   | **Data type** | **Required** | **Description**               |
-| ------------ | --------- | -------- | ------------------------- |
-| `businessId` | string  | true   | The ID of the business. |
+| **Parameters** | **Data type** | **Required** | **Description**         |
+| -------------- | ------------- | ------------ | ----------------------- |
+| `businessId`   | string        | true         | The ID of the business. |
 
 #### Fetch a wallet
 
@@ -1127,14 +1142,14 @@ This method provides information to the merchant about wallet balance, numbers, 
 
 ```ts
 const walletId = '62c1be78a14d91ca07297cfd';
-const getWallet = fincra.wallet.getWallet(walletId);
+const getWallet = await fincra.wallet.getWallet(walletId);
 ```
 
 #### Parameters Supported
 
-| **Parameters** | **Data type** | **Required** | **Description**             |
-| ---------- | --------- | -------- | ----------------------- |
-| `walletId` | string  | true   | The ID of the wallet. |
+| **Parameters** | **Data type** | **Required** | **Description**       |
+| -------------- | ------------- | ------------ | --------------------- |
+| `walletId`     | string        | true         | The ID of the wallet. |
 
 #### List Wallet Logs
 
@@ -1148,15 +1163,15 @@ const data = {
   page: '1',
   perPage: '10',
 };
-const walletLogs = fincra.wallet.listWalletLogs(data);
+const walletLogs = await fincra.wallet.listWalletLogs(data);
 ```
 
 #### Parameters Supported
 
-| **Parameters** | **Data type** | **Required** | **Description**                                                          |
-| ---------- | --------- | -------- | -------------------------------------------------------------------- |
-| `business` | string  | true   | The ID of the business.                                           |
-| `amount`   | string  | false  | The amount of the transaction.                                     |
-| `action`   | string  | false  | The action of the transaction.it is usually one of credit or debit |
-| `page`     | string  | false  | The page number.                                                  |
-| `perPage`  | string  | false  | The number of records per page.                                    |
+| **Parameters** | **Data type** | **Required** | **Description**                                                    |
+| -------------- | ------------- | ------------ | ------------------------------------------------------------------ |
+| `business`     | string        | true         | The ID of the business.                                            |
+| `amount`       | string        | false        | The amount of the transaction.                                     |
+| `action`       | string        | false        | The action of the transaction.it is usually one of credit or debit |
+| `page`         | string        | false        | The page number.                                                   |
+| `perPage`      | string        | false        | The number of records per page.                                    |

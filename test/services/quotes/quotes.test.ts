@@ -2,7 +2,7 @@ import { Quote } from '../../../src/services';
 import { CreateQuoteDto } from '../../../src/services/quotes/dto';
 import { keys } from '../../env';
 
-const quoteInstance = new Quote(keys[0], keys[1]);
+const quoteInstance = new Quote(keys[0], keys[1], { sandbox: true });
 
 describe('service to create a quote object for a merchant', () => {
   it('returns a message object on the status of a quote', async () => {

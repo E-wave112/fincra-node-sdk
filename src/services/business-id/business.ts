@@ -19,8 +19,8 @@ export class Business extends FincraCore {
   }
 
   /**
-   * It gets the business id of the merchant.
-   * @returns The business id of the merchant
+   * This method gets the business id of the merchant.
+   * @returns The business id and other information of the merchant
    */
   public async getBusinessId() {
     try {

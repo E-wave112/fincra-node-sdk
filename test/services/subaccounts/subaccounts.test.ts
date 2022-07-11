@@ -6,7 +6,7 @@ import {
   UpdateSubAccountDto,
 } from '../../../src/services/subaccounts/dto';
 
-const subaccountInstance = new Subaccount(keys[0], keys[1]);
+const subaccountInstance = new Subaccount(keys[0], keys[1], { sandbox: true });
 
 describe('service to create a subaccount', () => {
   it('should return a subaccount object', async () => {
