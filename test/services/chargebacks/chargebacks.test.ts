@@ -5,7 +5,7 @@ import {
 } from '../../../src/services/chargebacks/dto';
 import { keys } from '../../env';
 
-const chargeBackInstance = new ChargeBacks(keys[0], keys[1]);
+const chargeBackInstance = new ChargeBacks(keys[0], keys[1], { sandbox: true });
 
 describe('this service returns all the chargebacks for a particular chargeback', () => {
   it('returns an array of chargeback objects', async () => {
