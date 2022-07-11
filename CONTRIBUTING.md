@@ -26,4 +26,4 @@ This will keep your changes in sync with the main branch and most importantly, t
 
 ### LICENSE
 
-This project is licenced under [GNU GPL](https://github.com/E-wave112/fincra-node-sdk/blob/main/LICENCE)
+This project is licenced under the [GNU GPL Licence](https://github.com/E-wave112/fincra-node-sdk/blob/main/LICENCE).
