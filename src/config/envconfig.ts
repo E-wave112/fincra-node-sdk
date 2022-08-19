@@ -3,7 +3,6 @@ import { config } from 'dotenv';
 
 // Parsing the env file from the root directory of the project
 config({ path: path.join(__dirname, '../../.env') });
-// dotenv.config({ path: require('find-config')('.env') });
 
 // Interface to load env variables
 // Note these variables can possibly be undefined

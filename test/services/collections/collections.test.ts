@@ -3,6 +3,7 @@ import { Collection } from '../../../src/services';
 import {
   FetchCollectionVirtualAccountDto,
   ListCollectionMainVirtualAccountDto,
+  ListCollectionMultipleVirtualAccountsDto,
   PayWithTransferDto,
 } from '../../../src/services/collections/dto';
 
@@ -35,6 +36,29 @@ describe('service to to view both a single or multiple collections of a main vir
         perPage: '30',
       };
       const result = await collectionInstance.listCollectionMain(data);
+      expect(result).toHaveBeenCalledWith(data);
+      expect(typeof result).toBe('object');
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
+  });
+});
+
+describe('service to to view both a single or multiple collections of additional virtual accounts by a business', () => {
+  it('should return a collection object/array', async () => {
+    try {
+      const data: ListCollectionMultipleVirtualAccountsDto = {
+        status: ['processing'],
+        business: '627fefbe5a65ec99ba9af0be',
+        sourceCurrency: 'NGN',
+        destinationCurrency: 'EUR',
+        subAccount: '62ba8f973acaf73df03238aa',
+        page: '1',
+        perPage: '15',
+        dateFrom: '2022-08-19T00:00:00.000Z',
+        dateTo: '2022-08-30T00:00:00.000Z',
+      };
+      const result = await collectionInstance.listCollectionAdditional(data);
       expect(result).toHaveBeenCalledWith(data);
       expect(typeof result).toBe('object');
     } catch (error) {
