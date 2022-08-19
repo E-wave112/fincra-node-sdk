@@ -1,8 +1,15 @@
 import { FincraCore } from '../../api';
-import { BaseError, handleErrors, IEnvironment } from '../../utils';
+import {
+  BaseError,
+  handleErrors,
+  handleAxiosError,
+  IAxiosStruct,
+  IEnvironment,
+} from '../../utils';
 import {
   FetchCollectionVirtualAccountDto,
   ListCollectionMainVirtualAccountDto,
+  ListCollectionMultipleVirtualAccountsDto,
   PayWithTransferDto,
 } from './dto';
 
@@ -73,5 +80,28 @@ export class Collection extends FincraCore {
     }
   }
 
-  // TODO: List collections for additional virtual accounts
+  // TODO: List collections for additional virtual accounts done
+
+  /**
+   * this methods returns a single or multiple collection of a additiona virtual accounts of a business
+   * @param {ListCollectionMultipleVirtualAccountsDto} data - the data to be sent to the server
+   * @returns an array of collection objects
+   */
+  public async listCollectionAdditional(
+    data: ListCollectionMultipleVirtualAccountsDto
+  ) {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'GET',
+        url: '/collections',
+        data,
+      };
+      const response = await this.useGetRequest(requestObj);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw new BaseError({ message: handleAxiosError(error) });
+    }
+  }
 }

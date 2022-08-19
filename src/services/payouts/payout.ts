@@ -90,6 +90,10 @@ export class Payout extends FincraCore {
     }
   }
 
+  /**
+   * This method retrieve a list of banks supported by fincra to process payments
+   * @returns A list of banks
+   */
   public async listBanks() {
     try {
       const request = this.getBaseUrl();
