@@ -1,7 +1,14 @@
 import { FincraCore } from '../../api';
-import { BaseError, IEnvironment, handleErrors } from '../../utils';
+import {
+  BaseError,
+  IEnvironment,
+  handleErrors,
+  handleAxiosError,
+  IAxiosStruct,
+} from '../../utils';
 import {
   CreatePayoutDto,
+  ListPayoutDto,
   WalletToWalletTransferDto,
   UploadPayoutDto,
 } from './dto';
@@ -90,6 +97,10 @@ export class Payout extends FincraCore {
     }
   }
 
+  /**
+   * This method retrieve a list of banks supported by fincra to process payments
+   * @returns A list of banks
+   */
   public async listBanks() {
     try {
       const request = this.getBaseUrl();
@@ -115,4 +126,20 @@ export class Payout extends FincraCore {
     }
   }
   // TODO: list payouts
+
+  public async listPayouts(data: ListPayoutDto) {
+    try {
+      const requestObj: IAxiosStruct = {
+        method: 'GET',
+        url: '/disbursements/payouts',
+        data,
+      };
+      const response = await this.useGetRequest(requestObj);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw new BaseError({ message: handleAxiosError(error) });
+    }
+  }
 }
