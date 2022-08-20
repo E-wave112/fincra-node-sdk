@@ -1,1 +1,3 @@
-export class ListPayoutDto {}
+import { ListCollectionMultipleVirtualAccountsDto } from '../../collections/dto';
+
+export class ListPayoutDto extends ListCollectionMultipleVirtualAccountsDto {}

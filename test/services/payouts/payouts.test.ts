@@ -2,6 +2,7 @@ import { keys } from '../../env';
 import { Payout } from '../../../src/services';
 import {
   CreatePayoutDto,
+  ListPayoutDto,
   UploadPayoutDto,
   WalletToWalletTransferDto,
 } from '../../../src/services/payouts/dto';
@@ -134,5 +135,29 @@ describe('uploads a payout document', () => {
     } catch (error) {
       expect(error).toBeInstanceOf(Error);
     }
+  });
+
+  describe('it should return all payouts from a business', () => {
+    it('returns an array of transaction objects', async () => {
+      try {
+        const data: ListPayoutDto = {
+          status: ['processing'],
+          business: '627fefbe5a65ec99ba9af0be',
+          sourceCurrency: 'NGN',
+          destinationCurrency: 'EUR',
+          subAccount: '62ba8f973acaf73df03238aa',
+          page: '1',
+          perPage: '15',
+          dateFrom: '2022-08-19T00:00:00.000Z',
+          dateTo: '2022-08-30T00:00:00.000Z',
+        };
+
+        const result = await payoutInstance.listPayouts(data);
+        expect(result).toHaveBeenCalledWith(data);
+        expect(typeof result).toBe('object');
+      } catch (error) {
+        expect(error).toBeInstanceOf(Error);
+      }
+    });
   });
 });

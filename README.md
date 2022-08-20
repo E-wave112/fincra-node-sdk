@@ -103,6 +103,7 @@ The following services are available with this SDK
 - [Fetch a payout by reference](#fetch-a-payout-by-reference)
 - [Fetch a payout by Customer Reference](#fetch-a-payout-by-customer-reference)
 - [List Banks](#list-banks)
+- [List Payouts](#list-payouts)
 
 **7**. [**Quotes**](#7-quotes)
 
@@ -612,6 +613,40 @@ const walletToWallet = await fincra.payouts.walletToWalletTransfer(data);
 | `customerReference`       | string        | true         | The reference of the transaction.                                                |
 | `description`             | string        | true         | The purpose of payment.                                                          |
 | `beneficiaryWalletNumber` | string        | true         | This is the unique wallet number of the beneficiary you want to make payment to. |
+
+#### List payouts
+
+This method lets a business view all her payouts and that of her subaccounts
+
+```ts
+const data = {
+  status: ['processing'],
+  business: '627fefbe5a65ec99ba9af0be',
+  sourceCurrency: 'NGN',
+  destinationCurrency: 'EUR',
+  subAccount: '62ba8f973acaf73df03238aa',
+  page: '1',
+  perPage: '15',
+  dateFrom: '2022-08-19T00:00:00.000Z',
+  dateTo: '2022-08-30T00:00:00.000Z',
+};
+
+const allPayout = await fincra.payouts.listPayouts(data);
+```
+
+#### Parameters supported
+
+| **Parameters**        | **Data type** | **Required** | **Description**                                                         |
+| --------------------- | ------------- | ------------ | ----------------------------------------------------------------------- |
+| `business`            | string        | true         | The business unique identifier.                                         |
+| `status`              | array         | true         | The status of the collection e.g ["processing", "failed", "successful]. |
+| `sourceCurrency`      | string        | true         | The currency the payments was sent in.                                  |
+| `destinationCurrency` | string        | true         | The currency the recipient receives.                                    |
+| `subAccount`          | string        | true         | The ID of the subAccount.                                               |
+| `page`                | string        | false        | Specify exactly what page you want to retrieve.                         |
+| `perPage`             | string        | false        | How many records you want to retrieve per page.                         |
+| `dateFrom`            | string        | true         | The start date. This must be in ISO 8601 date format(YYYY-MM-DD).       |
+| `dateTo`              | string        | true         | The end date.This must be in ISO 8601 date format(YYYY-MM-DD).          |
 
 #### Upload transaction document
 
