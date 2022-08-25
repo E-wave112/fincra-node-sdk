@@ -321,11 +321,9 @@ describe('service to deactivate a virtual account belonging to a merchant', () =
       const result = await virtualAccountInstance.deactivateVirtualAccount(
         virtualAccountId
       );
-      console.log(result);
       expect(result).toHaveBeenCalledWith(virtualAccountId);
       expect(typeof result).toBe('object');
     } catch (error) {
-      console.error(error);
       expect(error).toBeInstanceOf(Error);
     }
   });

@@ -97,10 +97,8 @@ export class Collection extends FincraCore {
         data,
       };
       const response = await this.useGetRequest(requestObj);
-      console.log(response.data);
       return response.data;
     } catch (error) {
-      console.error(error);
       throw new BaseError({ message: handleAxiosError(error) });
     }
   }
