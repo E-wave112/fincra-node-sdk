@@ -133,6 +133,7 @@ The following services are available with this SDK
 - [Fetch a virtual account by currency](#fetch-a-virtual-account-by-currency)
 - [Fetch a single virtual account](#fetch-a-single-virtual-account)
 - [List Sub-account Virtual Accounts](#list-sub-account-virtual-accounts)
+- [Deactivate a Virtual Account](#deactivate-a-virtual-account)
 
 **11**. [**Wallets**](#11-wallets)
 
