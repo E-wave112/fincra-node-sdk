@@ -196,4 +196,24 @@ export class VirtualAccount extends FincraCore {
       throw new BaseError({ message: handleAxiosError(error) });
     }
   }
+
+  /**
+   * this method de-activates a Naira(NGN) virtual account
+   * @param {string} id - the virtual account id
+   * @returns a response object
+   */
+  public async deactivateVirtualAccount(virtualAccountId: string) {
+    try {
+      const request = this.getBaseUrl();
+      const response = await request.patch(
+        `/profile/virtual-accounts/inactive`,
+        {
+          id: virtualAccountId,
+        }
+      );
+      return response.data;
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
+    }
+  }
 }

@@ -1206,6 +1206,23 @@ const listSubVirtualAcct = await fincra.virtualAccount.listSubVirtualAccounts(
 | `page`         | string        | false        | The page number.                |
 | `perPage`      | string        | false        | The number of records per page. |
 
+#### Deactivate a Virtual Account
+
+This method lets you de-activate a Naira(NGN) virtual account
+
+```ts
+const virtualAccountId = '62c1be78a14d91ca07297cfd';
+const deactivated = await fincra.virtualAccount.deactivateVirtualAccount(
+  virtualAccountId
+);
+```
+
+#### Parameters Supported
+
+| **Parameters**     | **Data type** | **Required** | **Description**                |
+| ------------------ | ------------- | ------------ | ------------------------------ |
+| `virtualAccountId` | string        | true         | The ID of the virtual account. |
+
 ### 11. Wallets
 
 The wallet service consists of services that provide information such as account balances, wallet number of a wallet, or wallets for a business. With the wallet service, You can manage the account balance for your business and that of your subaccounts.
