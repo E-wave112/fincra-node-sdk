@@ -1,6 +1,6 @@
 import { FincraCore } from '../../api';
 import { BaseError, handleErrors, IEnvironment } from '../../utils';
-import { VerifyBankAccountDto } from './dto';
+import { VerifyBankAccountDto, BvnResolutionDto } from './dto';
 
 /**
  * The verify module for handling the verification and kyc related operations.
@@ -45,6 +45,21 @@ export class VerifyCreds extends FincraCore {
       const response = await request.get(
         `/checkout/payments/merchant-reference/${reference}`
       );
+      return response.data;
+    } catch (error) {
+      throw new BaseError({ message: handleErrors(error) });
+    }
+  }
+
+  /**
+   * This methods helps resolves and validates a bvn
+   * @param {BvnResolutionDto} data - The data object that will be sent to the API.
+   * @returns The user details linked to the bvn
+   */
+  public async resolveBvn(data: BvnResolutionDto) {
+    try {
+      const request = this.getBaseUrl();
+      const response = await request.post(`/core/bvn-verification`, data);
       return response.data;
     } catch (error) {
       throw new BaseError({ message: handleErrors(error) });

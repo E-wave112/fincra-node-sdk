@@ -120,6 +120,7 @@ The following services are available with this SDK
 
 - [Verify account Number](#verify-account-number)
 - [Verify Payment](#verify-payment)
+- [Resolve BVN](#resolve-bvn)
 
 **10**. [**Virtual-accounts**](#10-virtual-accounts)
 
@@ -884,6 +885,25 @@ const verifyPay = await fincra.verify.verifyPayment(reference);
 | **Parameters** | **Data type** | **Required** | **Description**                                          |
 | -------------- | ------------- | ------------ | -------------------------------------------------------- |
 | `reference`    | string        | true         | The unique reference for the transaction on your system. |
+
+#### Resolve BVN
+
+This method lets you verify a bank verification number(BVN)
+
+```ts
+const data = {
+  bvn: '09292929221',
+  business: '627fefbe5a65ec99ba9af0be',
+};
+const verifyBvn = await fincra.verify.resolveBvn(data);
+```
+
+#### Parameters Supported
+
+| **Parameters** | **Data type** | **Required** | **Description**                                                                  |
+| -------------- | ------------- | ------------ | -------------------------------------------------------------------------------- |
+| `bvn`          | string        | true         | The bank verification number . Must be 11 digits.                                |
+| `business`     | string        | true         | The unique identifier or business ID of the parent business or it's sub account. |
 
 ### 10. Virtual Accounts
 
