@@ -313,3 +313,18 @@ describe('service to fetch all virtual accounts belonging to a merchant', () => 
     }
   });
 });
+
+describe('service to deactivate a virtual account belonging to a merchant', () => {
+  it('returns a response object', async () => {
+    try {
+      const virtualAccountId: string = '62adfcc11acaf7bc0941c017';
+      const result = await virtualAccountInstance.deactivateVirtualAccount(
+        virtualAccountId
+      );
+      expect(result).toHaveBeenCalledWith(virtualAccountId);
+      expect(typeof result).toBe('object');
+    } catch (error) {
+      expect(error).toBeInstanceOf(Error);
+    }
+  });
+});

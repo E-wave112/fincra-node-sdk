@@ -120,6 +120,7 @@ The following services are available with this SDK
 
 - [Verify account Number](#verify-account-number)
 - [Verify Payment](#verify-payment)
+- [Resolve BVN](#resolve-bvn)
 
 **10**. [**Virtual-accounts**](#10-virtual-accounts)
 
@@ -132,6 +133,7 @@ The following services are available with this SDK
 - [Fetch a virtual account by currency](#fetch-a-virtual-account-by-currency)
 - [Fetch a single virtual account](#fetch-a-single-virtual-account)
 - [List Sub-account Virtual Accounts](#list-sub-account-virtual-accounts)
+- [Deactivate a Virtual Account](#deactivate-a-virtual-account)
 
 **11**. [**Wallets**](#11-wallets)
 
@@ -885,6 +887,25 @@ const verifyPay = await fincra.verify.verifyPayment(reference);
 | -------------- | ------------- | ------------ | -------------------------------------------------------- |
 | `reference`    | string        | true         | The unique reference for the transaction on your system. |
 
+#### Resolve BVN
+
+This method lets you verify a bank verification number(BVN)
+
+```ts
+const data = {
+  bvn: '09292929221',
+  business: '627fefbe5a65ec99ba9af0be',
+};
+const verifyBvn = await fincra.verify.resolveBvn(data);
+```
+
+#### Parameters Supported
+
+| **Parameters** | **Data type** | **Required** | **Description**                                                                  |
+| -------------- | ------------- | ------------ | -------------------------------------------------------------------------------- |
+| `bvn`          | string        | true         | The bank verification number . Must be 11 digits.                                |
+| `business`     | string        | true         | The unique identifier or business ID of the parent business or it's sub account. |
+
 ### 10. Virtual Accounts
 
 The Virtual account service allows the merchant to create and maintain a foreign currency account also known as the virtual account, which can be used to perform international transactions. Multiple virtual accounts can be requested for the same currency by a merchant.
@@ -1185,6 +1206,23 @@ const listSubVirtualAcct = await fincra.virtualAccount.listSubVirtualAccounts(
 | `subAccountId` | string        | true         | The ID of the subaccount.       |
 | `page`         | string        | false        | The page number.                |
 | `perPage`      | string        | false        | The number of records per page. |
+
+#### Deactivate a Virtual Account
+
+This method lets you de-activate a Naira(NGN) virtual account
+
+```ts
+const virtualAccountId = '62c1be78a14d91ca07297cfd';
+const deactivated = await fincra.virtualAccount.deactivateVirtualAccount(
+  virtualAccountId
+);
+```
+
+#### Parameters Supported
+
+| **Parameters**     | **Data type** | **Required** | **Description**                |
+| ------------------ | ------------- | ------------ | ------------------------------ |
+| `virtualAccountId` | string        | true         | The ID of the virtual account. |
 
 ### 11. Wallets
 
