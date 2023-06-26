@@ -1,2 +1,11 @@
 export * from './fincra';
-// export * from './services/dtos';
+export * from './services/payouts/dto/index';
+export * from './services/beneficiaries/dto/index';
+export * from './services/chargebacks/dto/index';
+export * from './services/collections/dto/index';
+export * from './services/conversions/dto/index';
+export * from './services/quotes/dto/index';
+export * from './services/subaccounts/dto/index';
+export * from './services/verification/dto/index';
+export * from './services/virtual-accounts/dto/index';
+export * from './services/wallets/dto/index';
