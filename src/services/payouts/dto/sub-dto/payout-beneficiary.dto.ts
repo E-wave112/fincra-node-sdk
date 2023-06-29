@@ -7,7 +7,7 @@ import {
   ValidateNested,
 } from 'class-validator';
 import { AddressDto } from '../../../beneficiaries/dto';
-import { PayoutDocumentDto } from './';
+import { PayoutDocumentDto } from './payout-document.dto';
 export class PayoutBeneficiaryDto {
   @IsOptional()
   @IsString()
