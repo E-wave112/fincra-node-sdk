@@ -1,6 +1,7 @@
 # Fincra-node-sdk
 
-![CircleCI](https://img.shields.io/circleci/build/github/E-wave112/fincra-node-sdk/main?token=2950ea968a490e910d269d5f8747660d3efe4d79) ![npm](https://img.shields.io/npm/v/fincra-node-sdk) ![npm](https://img.shields.io/npm/dt/fincra-node-sdk) ![NPM](https://img.shields.io/npm/l/fincra-node-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/min/fincra-node-sdk)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/E-wave112/fincra-node-sdk/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/E-wave112/fincra-node-sdk/tree/main)
+![npm](https://img.shields.io/npm/v/fincra-node-sdk) ![npm](https://img.shields.io/npm/dt/fincra-node-sdk) ![NPM](https://img.shields.io/npm/l/fincra-node-sdk) ![npm bundle size](https://img.shields.io/bundlephobia/min/fincra-node-sdk)
 
 A community supported NodeJS SDK that enables developers to build fintech products securely and seamlessy leveraging [Fincra's](https://fincra.com/) API.
 
