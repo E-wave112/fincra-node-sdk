@@ -1,3 +1,4 @@
+import { ListCollectionMultipleVirtualAccountsDto } from '../collections/collections';
 import { PayoutBeneficiaryDto } from './sub-dto/payouts-sub';
 
 export interface WalletToWalletTransferDto {
@@ -43,3 +44,6 @@ export interface CreatePayoutDto {
 
   quoteReference?: string;
 }
+
+export interface ListPayoutDto
+  extends ListCollectionMultipleVirtualAccountsDto {}
