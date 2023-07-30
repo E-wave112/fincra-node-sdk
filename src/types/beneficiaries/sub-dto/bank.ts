@@ -1,4 +1,4 @@
-import { AddressDto } from '../../../services/dtos';
+import { AddressDto } from '../sub-dto';
 
 export interface BankDto {
   name?: string;

@@ -1,4 +1,4 @@
-import { ListCollectionMultipleVirtualAccountsDto } from '../collections/collections';
+import { ListCollectionMultipleVirtualAccountsDto } from '../collections';
 import { PayoutBeneficiaryDto } from './sub-dto/payouts-sub';
 
 export interface WalletToWalletTransferDto {

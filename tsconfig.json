@@ -7,7 +7,7 @@
     "lib": ["dom", "esnext"],
     "target": "ES5",
     "importHelpers": true,
-    "typeRoots": ["./src/types"],
+    // "typeRoots": ["./src/types"],
     // output .d.ts declaration files for consumers
     "declaration": true,
     // output .js.map sourcemap files for consumers
