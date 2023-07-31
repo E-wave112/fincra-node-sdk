@@ -27,7 +27,9 @@ export class ChargeBacks extends FincraCore {
   public async listChargeBacks(id: string) {
     try {
       const request = this.getBaseUrl();
-      const response = await request.get(`/chargebacks?business=${id}`);
+      const response = await request.get(
+        `/collections/chargebacks?business=${id}`
+      );
       return response.data;
     } catch (error) {
       throw new BaseError({ message: handleErrors(error) });
@@ -43,7 +45,7 @@ export class ChargeBacks extends FincraCore {
     try {
       const request = this.getBaseUrl();
       const response = await request.patch(
-        `/chargebacks/${data.chargeBackId}/accept?business=${data.businessId}`
+        `/collections/chargebacks/${data.chargeBackId}/accept?business=${data.businessId}`
       );
       return response.data;
     } catch (error) {
@@ -60,7 +62,7 @@ export class ChargeBacks extends FincraCore {
     try {
       const request = this.getBaseUrl();
       const response = await request.patch(
-        `/chargebacks/${data.chargeBackId}/reject?business=${data.businessId}`,
+        `/collections/chargebacks/${data.chargeBackId}/reject?business=${data.businessId}`,
         {
           business_reject_reason: data.reason,
         }

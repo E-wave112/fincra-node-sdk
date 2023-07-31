@@ -1,2 +1,2 @@
 export * from './fincra';
-// export * from './services/dtos';
+export * from './types';

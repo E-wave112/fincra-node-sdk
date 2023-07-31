@@ -42,7 +42,9 @@ export class Conversion extends FincraCore {
   public async fetchConversion(conversionId: string) {
     try {
       const request = this.getBaseUrl();
-      const response = await request.get(`/conversions/${conversionId}`);
+      const response = await request.get(
+        `/conversions/reference/${conversionId}`
+      );
       return response.data;
     } catch (error) {
       throw new BaseError({ message: handleErrors(error) });
