@@ -43,4 +43,4 @@ file.js
 test.ts
 
 # gh actions
-.github/
+# .github/
