@@ -19,3 +19,5 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+          FINCRA_SECRET_KEY: ${{ secrets.FINCRA_SECRET_KEY }}
+          FINCRA_PUBLIC_KEY: ${{ secrets.FINCRA_PUBLIC_KEY }}
