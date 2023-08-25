@@ -5,10 +5,10 @@
 - Create a fork of the repository.
 - Create a new branch for your contribution.
 - Add your contribution to the new branch and push your changes.
-- Submit a pull request to the dev branch.
-- The pull request will be merged to the dev branch and then to the master branch.
+- Submit a pull request to the main branch.
+- If all goes well, the pull request will be merged to the main branch.
 
-**Recommended**: It is possible that the dev/main branch would have been updated before you made a contribution so you can frequently keep rebasing off the main branch while you make your contributions. i.e
+**Recommended**: It is possible that the main branch would have been updated before you made a contribution so you can frequently keep rebasing off the main branch while you make your contributions. i.e
 
 - fetch from origin
 
