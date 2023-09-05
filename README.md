@@ -403,8 +403,8 @@ const payWithTransfer = await fincra.collection.payWithTransfer(data);
 | **Parameters**      | **Data type** | **Required** | **Description**                                           |
 | ------------------- | ------------- | ------------ | --------------------------------------------------------- |
 | `expiresAt`         | string        | true         | The expiry of the virtual account in minutes.             |
-| `name`              | string        | false        | The name that should be on the account.                   |
-| `merchantReference` | string        | false        | The unique identifier of the transaction on your system . |
+| `amount`            | string        | true         | The amount to receive from customer.                      |
+| `merchantReference` | string        | false        | The unique identifier of the transaction on your system.  |
 
 #### List Collection for a main Virtual Account
 
